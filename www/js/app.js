@@ -60,9 +60,11 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
       "background-color": "rgb(237,28,36)"
     },
     // variable para habilitar/deshabilitar el modal de productos pesables
-    modal_enabled:false,
+    // modal_enabled:false,
+    modal_enabled:true,       //ESTA ES LA VARIABLE QUE TE MUESTRA EL ITEM SPECS!
 
-    modal_cantidad_enabled:false,
+    // modal_cantidad_enabled:false,
+    modal_cantidad_enabled:true,
 
     defaultQuantity:"1",
 

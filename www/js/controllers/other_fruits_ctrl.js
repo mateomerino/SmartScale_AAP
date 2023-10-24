@@ -312,10 +312,10 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
  */
     $scope.cancelProduct = function () {
       restartIdleTimeCountdownOF();
-      if($scope.show_modal===true){
-        $cordovaNativeAudio.play( 'pop' );
-      }
-      sendClearMessage();
+      // if($scope.show_modal===true){
+      //   $cordovaNativeAudio.play( 'pop' );
+      // }
+      // sendClearMessage();
       $scope.product_selected=null;
       $scope.show_modal=false;
       $scope.show_quant_modal=false;
@@ -333,7 +333,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
     $scope.acceptProduct = function (product) {
       restartIdleTimeCountdownOF();
       if($scope.show_modal===true){
-        $cordovaNativeAudio.play( 'pop' );
+        // $cordovaNativeAudio.play( 'pop' );
       }
       // try{
       //   sendEnterMessage();
@@ -343,6 +343,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
       // }
       $scope.product_selected=null;
       $scope.show_modal=false;
+      // $scope.show_modal=true;
       $timeout(enableSelection,300);
     }
 

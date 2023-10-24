@@ -94,30 +94,30 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * Se ejecuta una única vez.
    */
       $ionicPlatform.ready(function () {
-        // showInitModal();                    //MUESTRA LA PANTALLITA DE "INICIANDO APLICACION"
+        showInitModal();                    //MUESTRA LA PANTALLITA DE "INICIANDO APLICACION"
         
-        // getSettings().then(function(settings){
-        //     console.log("HOME CTRL!");
-        //     ////////////////////////////////
-        //     updateProducts();
-        //     ////////////////////////////////
-        //     //Obtengo los productos desde el archivo local de la app
-        //     productDataService.getItems().then(function(products){
-        //       // console.log("paso getiten");
-        //       if(products){
-        //       /**
-        //       * Variable que contiene la información de todos los productos.
-        //       * @type {array}
-        //       */
-        //         $scope.products = products;
-        //       }
-        //       else{
-        //         $scope.products = [];
-        //       }
-        //       startUpdatePromise.resolve();
-        //       console.log("Products: ", $scope.products);
-        //     });
-        //   });
+        getSettings().then(function(settings){
+            console.log("HOME CTRL!");
+            ////////////////////////////////
+            updateProducts();
+            // ////////////////////////////////
+            // //Obtengo los productos desde el archivo local de la app
+            // productDataService.getItems().then(function(products){
+            //   // console.log("paso getiten");
+            //   if(products){
+            //   /**
+            //   * Variable que contiene la información de todos los productos.
+            //   * @type {array}
+            //   */
+            //     $scope.products = products;
+            //   }
+            //   else{
+            //     $scope.products = [];
+            //   }
+            //   startUpdatePromise.resolve();
+            //   console.log("Products: ", $scope.products);
+            // });
+          });
       });
   
   

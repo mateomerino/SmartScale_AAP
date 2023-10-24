@@ -51,7 +51,6 @@ angular.module('appServices', [])
  * resuelve luego de terminar de leer el contenido del archivo.
  */
     service.readProductsFile = function () {
-      // console.log("Quiero leer el archivo local de productos");
         productsDeferred = $q.defer();
         getFileEntry("/products.json").then(function(fileEntry){
         readFile(fileEntry).then(function(fileContent){
@@ -62,7 +61,6 @@ angular.module('appServices', [])
           else{
             result=fileContent;
           }
-
           try{
             result.sort(function(a, b){
                 if(a.name < b.name) return -1;
@@ -81,8 +79,7 @@ angular.module('appServices', [])
             console.log("Error",e);
           }
           productsDeferred.resolve(result);
-          console.log("Result:",result);
-
+          
         });
       });
     }
@@ -128,7 +125,7 @@ function getFileEntry(fileName){
 /**
  * Funcion que retorna el contenido de un archivo
  * a partir de la entrada de archivo proporcionada.
- * @param{object} fileEntry Entrada del archivo cuyo contenido será leido 
+ * @param{object} fileEntry Entrada del archivo cuyo contenido será leido (/products.json)
  * y retornado como resolución de promesa.
  * @return{promise} Promesa que será resuelta con el contenido del archivo
  * una vez haya concluido la lectura.
@@ -144,13 +141,11 @@ function getFileEntry(fileName){
         reader.readAsText(file);
       }, onErrorReadFile);
     } else {
-      console.log("Not cordubensis");
       fetch(fileEntry)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
-          // return response.json();
           return response.json();
         })
         .then(fileContent => {

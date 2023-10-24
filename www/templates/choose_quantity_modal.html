@@ -1,0 +1,37 @@
+<div class = "modal-background"></div>
+<div class = "modal-container centered">
+    <div class="row">
+        <div class = "box-container col-60 col-offset-20">
+            <div class = "row">
+                <div class = "col" ng-if = "product_selected !== undefined && product_selected !== null"> 
+                    <img class = "modal-qty-image center on-top" ng-cache-src ng-src='{{"http://" + settings.server_ip + "/" + product_selected.big_img}}'></img>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col text-center"> 
+                    <h2 class="modal-title thick-text lib-text">{{product_selected.name.toUpperCase()}}</h2>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col item-text-wrap expl-text "> 
+                    <h2 class="font-22 thick-text lib-text">1- INGRESE EL NÚMERO DE UNIDADES PARA IMPRIMIR EL TICKET.<br>
+                    <br> 2- SI DESEA VOLVER ATRÁS SIN IMPRIMIR EL TICKET, PRESIONE CANCELAR.</h2>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-80 col-offset-10">
+                    <div ng-repeat = "quant in [1,2,3,4,5,6,7,8,9]" ng-if = "$index % 3 == 0" ng-init = "lineIndex = $index" class = "row line-h-60-2">
+                        <div ng-repeat = "quant in [1,2,3,4,5,6,7,8,9]" ng-if = "$index >= lineIndex && $index < (lineIndex + 3)" class = "col-quantity-button button-block font-35 lib-text text-center" ng-style="{{GuiSettings.color_style}}" on-touch="acceptQuantity(quant.toString())" on-drag="acceptQuantity(quant.toString())"> {{quant}} </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class = "col-80 col-offset-10">
+                    <button class="on-top button font-30 line-h-60-2 lib-text cancel-quantity-button" 
+                        on-touch="cancelProduct()" on-drag="cancelProduct()">CANCELAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

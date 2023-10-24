@@ -1,0 +1,17 @@
+<ion-view view-title = "Home" scroll="false" overflow-scroll="false">
+    <div ng-show="show_init_modal" ng-include src="'templates/init_modal.html'"></div>
+    <div class="row" ng-style="{{GuiSettings.menu_container_style}}">
+        <div class="col col-center menu-button" >
+            <div class="menu-button-content" scroll="false">
+                <img ng-src="{{GuiSettings.menu_picture}}" usemap="#viewmap" class="menu-img">
+            </div>
+        </div>
+        <map name="viewmap">
+          <area shape="rect" coords="0,0,521,486" on-touch='goToFruits()' on-drag='goToFruits()'>
+          <area shape="rect" coords="521,0,1042,486" on-touch='goToVegetables()' on-drag='goToVegetables()'>
+        </map>
+    </div>
+    <div class="logo-container">
+        <img ng-src="{{GuiSettings.menu_logo}}" class="logo">
+    </div>
+</ion-view>

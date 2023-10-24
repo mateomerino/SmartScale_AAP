@@ -1,0 +1,27 @@
+<ion-view view-title = "Products" swipeBackEnabled="false">
+
+    <div ng-show="show_modal" ng-include src="'templates/modal.html'"></div>
+    <div class="navigation-arrow arrow-left" on-touch="changeProducts(false)" on-drag="changeProducts(false)">
+      <div class="arrow-content">&lt;</div>
+    </div>
+    <div class="row">
+        <div class="col col-center">
+          <div ng-repeat = "product in products" ng-if = "$index >= startIndex && $index < (startIndex + 45) && $index % 9 == 0"
+               ng-init = "sectionIndex = $index" class = "row product-row offset-5">
+
+              <div ng-repeat = "product in products"
+                        ng-if = "$index >= sectionIndex && $index < (sectionIndex + 9)"
+                        on-touch="selectProduct(product)" on-drag="selectProduct(product)"
+                        class="col-10">
+                <div  class="product-image" ng-style = "{'background-image':'url(' + product.image + ')'}">
+                            <!-- <div class="layer" ng-show="product_selected.code == product.code"></div>-->
+                </div>
+                <div class="product-text item-text-wrap">{{product.name}}</div>
+              </div>
+          </div>
+        </div>
+    </div>
+  <div class="navigation-arrow arrow-right" on-touch="changeProducts(true)" on-drag="changeProducts(true)">
+      <div class="arrow-content">&gt;</div>
+  </div>
+</ion-view>

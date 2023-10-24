@@ -1,0 +1,13 @@
+
+
+{
+  "name": "Visor/Teclado Digital para Balanza MT8442",
+  "short_name": "App MT8442",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "icon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}

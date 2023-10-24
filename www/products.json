@@ -1,0 +1,752 @@
+[
+    {
+        "id": 1,
+        "name": "Banana",
+        "version": 1,
+        "small_img": "banana.jpg",
+        "big_img": "banana_big.jpg",
+        "plu": "1",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 2,
+        "name": "Durazno",
+        "version": 1,
+        "small_img": "durazno.jpg",
+        "big_img": "durazno_big.jpg",
+        "plu": "2",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 3,
+        "name": "Frutillas",
+        "version": 1,
+        "small_img": "frutilla.jpg",
+        "big_img": "frutilla_big.jpg",
+        "plu": "3",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 4,
+        "name": "Naranja",
+        "version": 1,
+        "small_img": "naranja.jpg",
+        "big_img": "naranja_big.jpg",
+        "plu": "4",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 5,
+        "name": "Anana",
+        "version": 1,
+        "small_img": "anana.jpg",
+        "big_img": "anana_big.jpg",
+        "plu": "5",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 6,
+        "name": "Damasco",
+        "version": 1,
+        "small_img": "damasco.jpg",
+        "big_img": "damasco_big.jpg",
+        "plu": "6",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 7,
+        "name": "Pera",
+        "version": 1,
+        "small_img": "pera.jpg",
+        "big_img": "pera_big.jpg",
+        "plu": "7",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 8,
+        "name": "Kiwi",
+        "version": 1,
+        "small_img": "kiwi.jpg",
+        "big_img": "kiwi_big.jpg",
+        "plu": "8",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 9,
+        "name": "Manzana Verde",
+        "version": 1,
+        "small_img": "manzana_verde.jpg",
+        "big_img": "manzana_verde_big.jpg",
+        "plu": "9",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 10,
+        "name": "Mandarina",
+        "version": 1,
+        "small_img": "mandarina.jpg",
+        "big_img": "mandarina_big.jpg",
+        "plu": "10",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 11,
+        "name": "Manzana Roja",
+        "version": 1,
+        "small_img": "manzana_roja.jpg",
+        "big_img": "manzana_roja_big.jpg",
+        "plu": "11",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 12,
+        "name": "Limon",
+        "version": 1,
+        "small_img": "limon.jpg",
+        "big_img": "limon_big.jpg",
+        "plu": "12",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 13,
+        "name": "Sandia",
+        "version": 1,
+        "small_img": "sandia.jpg",
+        "big_img": "sandia_big.jpg",
+        "plu": "13",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 14,
+        "name": "Cereza",
+        "version": 1,
+        "small_img": "cereza.jpg",
+        "big_img": "cereza_big.jpg",
+        "plu": "14",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 15,
+        "name": "Ciruela",
+        "version": 1,
+        "small_img": "ciruela.jpg",
+        "big_img": "ciruela_big.jpg",
+        "plu": "15",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 16,
+        "name": "Acelga",
+        "version": 1,
+        "small_img": "acelga.jpg",
+        "big_img": "acelga_big.jpg",
+        "plu": "20",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 17,
+        "name": "Achicoria",
+        "version": 1,
+        "small_img": "achicoria.jpg",
+        "big_img": "achicoria_big.jpg",
+        "plu": "21",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 18,
+        "name": "Aguaymanto",
+        "version": 1,
+        "small_img": "aguaymanto.jpg",
+        "big_img": "aguaymanto_big.jpg",
+        "plu": "22",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 19,
+        "name": "Aji",
+        "version": 6,
+        "small_img": "aji.jpg",
+        "big_img": "aji_big.jpg",
+        "plu": "23",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 20,
+        "name": "Ajo",
+        "version": 1,
+        "small_img": "ajo.jpg",
+        "big_img": "ajo_big.jpg",
+        "plu": "24",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 21,
+        "name": "Alcaucil",
+        "version": 1,
+        "small_img": "alcaucil.jpg",
+        "big_img": "alcaucil_big.jpg",
+        "plu": "25",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 22,
+        "name": "Anquito",
+        "version": 1,
+        "small_img": "anquito.jpg",
+        "big_img": "anquito_big.jpg",
+        "plu": "27",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 23,
+        "name": "Apio",
+        "version": 1,
+        "small_img": "apio.jpg",
+        "big_img": "apio_big.jpg",
+        "plu": "28",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 24,
+        "name": "Arandano",
+        "version": 1,
+        "small_img": "arandano.jpg",
+        "big_img": "arandano_big.jpg",
+        "plu": "29",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 25,
+        "name": "Arveja",
+        "version": 1,
+        "small_img": "arveja.jpg",
+        "big_img": "arveja_big.jpg",
+        "plu": "30",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 26,
+        "name": "Batata",
+        "version": 1,
+        "small_img": "batata.jpg",
+        "big_img": "batata_big.jpg",
+        "plu": "32",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 27,
+        "name": "Berenjena",
+        "version": 1,
+        "small_img": "berenjena.jpg",
+        "big_img": "berenjena_big.jpg",
+        "plu": "33",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 28,
+        "name": "Brocoli",
+        "version": 1,
+        "small_img": "brocoli.jpg",
+        "big_img": "brocoli_big.jpg",
+        "plu": "34",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 29,
+        "name": "Calabaza",
+        "version": 1,
+        "small_img": "calabaza.jpg",
+        "big_img": "calabaza_big.jpg",
+        "plu": "35",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 30,
+        "name": "Cebolla",
+        "version": 1,
+        "small_img": "cebolla.jpg",
+        "big_img": "cebolla_big.jpg",
+        "plu": "36",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 31,
+        "name": "Cebolla Blanca",
+        "version": 1,
+        "small_img": "cebolla_blanca.jpg",
+        "big_img": "cebolla_blanca_big.jpg",
+        "plu": "37",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 32,
+        "name": "Cebolla Roja",
+        "version": 1,
+        "small_img": "cebolla_roja.jpg",
+        "big_img": "cebolla_roja_big.jpg",
+        "plu": "38",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 33,
+        "name": "Champigñon",
+        "version": 1,
+        "small_img": "champignon.jpg",
+        "big_img": "champignon_big.jpg",
+        "plu": "40",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 34,
+        "name": "Chaucha",
+        "version": 1,
+        "small_img": "chaucha.jpg",
+        "big_img": "chaucha_big.jpg",
+        "plu": "41",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 35,
+        "name": "Choclo",
+        "version": 1,
+        "small_img": "choclo.jpg",
+        "big_img": "choclo_big.jpg",
+        "plu": "42",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 36,
+        "name": "Ciboulette",
+        "version": 1,
+        "small_img": "ciboulette.jpg",
+        "big_img": "ciboulette_big.jpg",
+        "plu": "43",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 37,
+        "name": "Coco",
+        "version": 1,
+        "small_img": "coco.jpg",
+        "big_img": "coco_big.jpg",
+        "plu": "45",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 38,
+        "name": "Coliflor",
+        "version": 1,
+        "small_img": "coliflor.jpg",
+        "big_img": "coliflor_big.jpg",
+        "plu": "46",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 39,
+        "name": "Endivia",
+        "version": 1,
+        "small_img": "endivia.jpg",
+        "big_img": "endivia_big.jpg",
+        "plu": "49",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 40,
+        "name": "Esparrago",
+        "version": 1,
+        "small_img": "esparrago.jpg",
+        "big_img": "esparrago_big.jpg",
+        "plu": "50",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 41,
+        "name": "Espinaca",
+        "version": 1,
+        "small_img": "espinaca.jpg",
+        "big_img": "espinaca_big.jpg",
+        "plu": "51",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 42,
+        "name": "Frambuesa",
+        "version": 1,
+        "small_img": "frambuesa.jpg",
+        "big_img": "frambuesa_big.jpg",
+        "plu": "52",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 43,
+        "name": "Granada",
+        "version": 1,
+        "small_img": "granada.jpg",
+        "big_img": "granada_big.jpg",
+        "plu": "54",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 44,
+        "name": "Higo",
+        "version": 1,
+        "small_img": "higo.jpg",
+        "big_img": "higo_big.jpg",
+        "plu": "55",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 45,
+        "name": "Lechuga Criolla",
+        "version": 1,
+        "small_img": "lechuga_criolla.jpg",
+        "big_img": "lechuga_criolla_big.jpg",
+        "plu": "57",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 46,
+        "name": "Lechuga Repollada",
+        "version": 1,
+        "small_img": "lechuga_repollada.jpg",
+        "big_img": "lechuga_repollada_big.jpg",
+        "plu": "58",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 47,
+        "name": "Lechuga Romana",
+        "version": 1,
+        "small_img": "lechuga_romana.jpg",
+        "big_img": "lechuga_romana_big.jpg",
+        "plu": "59",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 48,
+        "name": "Lima",
+        "version": 1,
+        "small_img": "lima.jpg",
+        "big_img": "lima_big.jpg",
+        "plu": "60",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 49,
+        "name": "Mango",
+        "version": 1,
+        "small_img": "mango.jpg",
+        "big_img": "mango_big.jpg",
+        "plu": "63",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 50,
+        "name": "Maracuya",
+        "version": 1,
+        "small_img": "maracuya.jpg",
+        "big_img": "maracuya_big.jpg",
+        "plu": "66",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 51,
+        "name": "Melon",
+        "version": 1,
+        "small_img": "melon.jpg",
+        "big_img": "melon_big.jpg",
+        "plu": "67",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 52,
+        "name": "Mora",
+        "version": 1,
+        "small_img": "mora.jpg",
+        "big_img": "mora_big.jpg",
+        "plu": "68",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 53,
+        "name": "Palta",
+        "version": 1,
+        "small_img": "palta.jpg",
+        "big_img": "palta_big.jpg",
+        "plu": "70",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 55,
+        "name": "Papaya",
+        "version": 1,
+        "small_img": "papaya.jpg",
+        "big_img": "papaya_big.jpg",
+        "plu": "72",
+        "best_selling": 1,
+        "type": "fruit"
+    },
+    {
+        "id": 56,
+        "name": "Pepino",
+        "version": 1,
+        "small_img": "pepino.jpg",
+        "big_img": "pepino_big.jpg",
+        "plu": "73",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 57,
+        "name": "Perejil",
+        "version": 1,
+        "small_img": "perejil.jpg",
+        "big_img": "perejil_big.jpg",
+        "plu": "75",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 58,
+        "name": "Pimiento Amarillo",
+        "version": 1,
+        "small_img": "pimiento_a.jpg",
+        "big_img": "pimiento_a_big.jpg",
+        "plu": "76",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 59,
+        "name": "Pimiento Rojo",
+        "version": 1,
+        "small_img": "pimiento_r.jpg",
+        "big_img": "pimiento_r_big.jpg",
+        "plu": "77",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 60,
+        "name": "Pimiento Verde",
+        "version": 1,
+        "small_img": "pimiento_v.jpg",
+        "big_img": "pimiento_v_big.jpg",
+        "plu": "78",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 61,
+        "name": "Pomelo",
+        "version": 1,
+        "small_img": "pomelo.jpg",
+        "big_img": "pomelo_big.jpg",
+        "plu": "79",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 62,
+        "name": "Rabanito",
+        "version": 1,
+        "small_img": "rabanito.jpg",
+        "big_img": "rabanito_big.jpg",
+        "plu": "80",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 63,
+        "name": "Remolacha",
+        "version": 1,
+        "small_img": "remolacha.jpg",
+        "big_img": "remolacha_big.jpg",
+        "plu": "81",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 64,
+        "name": "Repollito De Bruselas",
+        "version": 1,
+        "small_img": "repollito_de_bruselas.jpg",
+        "big_img": "repollito_de_bruselas_big.jpg",
+        "plu": "82",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 65,
+        "name": "Repollo",
+        "version": 1,
+        "small_img": "repollo.jpg",
+        "big_img": "repollo_big.jpg",
+        "plu": "83",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 66,
+        "name": "Repollo Morado",
+        "version": 1,
+        "small_img": "repollo_morado.jpg",
+        "big_img": "repollo_morado_big.jpg",
+        "plu": "84",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 67,
+        "name": "Rucula",
+        "version": 1,
+        "small_img": "rucula.jpg",
+        "big_img": "rucula_big.jpg",
+        "plu": "85",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 68,
+        "name": "Tomate De Arbol",
+        "version": 1,
+        "small_img": "tomate_de_arbol.jpg",
+        "big_img": "tomate_de_arbol_big.jpg",
+        "plu": "87",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 69,
+        "name": "Tomate Perita",
+        "version": 1,
+        "small_img": "tomate_perita.jpg",
+        "big_img": "tomate_perita_big.jpg",
+        "plu": "88",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 70,
+        "name": "Tomate Redondo",
+        "version": 1,
+        "small_img": "tomate_redondo.jpg",
+        "big_img": "tomate_redondo_big.jpg",
+        "plu": "89",
+        "best_selling": 0,
+        "type": "vegetable"
+    },
+    {
+        "id": 71,
+        "name": "Tuna",
+        "version": 1,
+        "small_img": "tuna.jpg",
+        "big_img": "tuna_big.jpg",
+        "plu": "90",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 72,
+        "name": "Uva",
+        "version": 1,
+        "small_img": "uva.jpg",
+        "big_img": "uva_big.jpg",
+        "plu": "91",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 73,
+        "name": "Uva Blanca",
+        "version": 1,
+        "small_img": "uva_verde.jpg",
+        "big_img": "uva_verde_big.jpg",
+        "plu": "92",
+        "best_selling": 0,
+        "type": "fruit"
+    },
+    {
+        "id": 74,
+        "name": "Zanahoria",
+        "version": 1,
+        "small_img": "zanahoria.jpg",
+        "big_img": "zanahoria_big.jpg",
+        "plu": "93",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 75,
+        "name": "Zapallito",
+        "version": 1,
+        "small_img": "zapallito.jpg",
+        "big_img": "zapallito_big.jpg",
+        "plu": "94",
+        "best_selling": 1,
+        "type": "vegetable"
+    },
+    {
+        "id": 76,
+        "name": "Zapallo",
+        "version": 1,
+        "small_img": "zapallo.jpg",
+        "big_img": "zapallo_big.jpg",
+        "plu": "95",
+        "best_selling": 1,
+        "type": "vegetable"
+    }
+]

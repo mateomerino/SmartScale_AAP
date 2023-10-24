@@ -1,0 +1,342 @@
+.menu-button-content{
+  height: 100%;
+  width: 80%;
+  text-align: center;
+  align-content: center;
+  background-color: white;
+  color: white;
+  z-index: 200;
+  margin-left: 10%;
+  border-radius: 10px;
+}
+.menu-text{
+  font-family: "sanuk" !important;
+  margin-top: 30px;
+  color: white;
+  font-size: 70px !important;
+}
+.lib-text{
+  font-family: 'sanuk';
+}
+.menu-container{
+  height: 100%;
+  background-color: rgb(228,0,43);
+}
+.menu-img{
+  margin-top: 50px !important;
+  width:200px;
+  height: 200px;
+}
+.menu-button{
+  height: 500px;
+}
+.product-item{
+  margin-top: 1%;
+  width: 10%;
+  height: 20%;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+.products-container{
+  margin-top: 3%
+}
+.modal-title{
+  font-family: 'sanuk';
+  font-size: 70px !important;
+}
+.font-35{
+  font-size: 35px !important;
+}
+.font-30{
+  font-size: 30px !important;
+}
+.line-h-60{
+  line-height: 90px !important;
+}
+.navigation-arrow{
+  position: fixed;
+  width:8%;
+  height: 100%;
+  background-color: rgb(228,0,43);
+  color: white;
+  z-index: 200;
+}
+.navigation-arrow-half{
+  position: fixed;
+  width:5%;
+  height: 50% !important;
+  background-color: rgb(228,0,43);
+  color: white;
+  z-index: 200;
+}
+.navigation-arrow-half-disabled{
+  position: fixed;
+  width:5%;
+  height: 50% !important;
+  background-color:  rgb(211,211,211);
+  color: rgb(63,63,63);
+  z-index: 200;
+}
+.navigation-arrow-half-bottom{
+  position: fixed;
+  width:5%;
+  height: 50% !important;
+  top: 50.5% !important;
+  background-color: rgb(228,0,43);
+  color: white;
+  z-index: 200;
+}
+.navigation-arrow-half-bottom-disabled{
+  position: fixed;
+  width:5%;
+  height: 50% !important;
+  top: 50.5% !important;
+  background-color: rgb(211,211,211);
+  color: rgb(63,63,63);
+  z-index: 200;
+}
+
+.arrow-left{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  top: 0;
+  left: 0;
+}
+.arrow-content{
+  font-size: 60px;
+  height: auto;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+    /* adjust top up half the height of a single line */
+  margin-top: -0.5em;
+}
+.arrow-right{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  top: 0;
+  left: 92%;
+}
+.offset-5{
+  margin-left: 5%;
+}
+.offset-8{
+  margin-left: 8%;
+}
+.item{
+  margin-left: 0;
+  margin-bottom: 0;
+}
+.product-image:before {
+    content:     "";
+    display:     block;
+    padding-top: 100%; /*ratio of 1:1*/
+}
+.product-image{
+  z-index: -100;
+  background: no-repeat center center;
+  text-align: center;
+  background-size: 90%  90%;
+  overflow-y: hidden;
+  position: relative;
+}
+.layer {
+    z-index: -10;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.product-text{
+  font-family: 'sanuk';
+  text-align: center;
+  color: black;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 25px;
+  width: 100%;
+}
+.item-complex .item-content {
+  position: absolute;
+  top:      0;
+  left:     0;
+  bottom:   0;
+  right:    0;
+  height: auto;
+  background-color: transparent !important;
+  padding: 0;
+  text-align: center;
+}
+.modal-background{
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.box-container{
+   display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1010;
+  background-color: white;
+  border-radius: 10px;
+}
+.modal-image{
+    width: 40%;
+    height: auto;
+}
+.on-top{
+    position: relative;
+    z-index: 1100;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.expl-text{
+  text-align: justify;
+  text-justify: inter-word;
+  font-family: 'sanuk';
+}
+.centered{
+  margin-top: 80px;
+  position: absolute;
+  width:100%;
+  z-index: 1100;
+}
+.thick-text{
+  font-weight: 900 !important;
+}
+
+.product-20-image:before {
+    content:     "";
+    display:     block;
+    padding-top: 57%; 
+}
+.product-20-image{
+  z-index: -100;
+  background: no-repeat center center;
+  text-align: center;
+  background-size: 50%  88%;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.product-20-row{
+  margin-bottom: 1% !important;
+}
+
+.icon-content{
+  font-size: 45px;
+  height: auto;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+    /* adjust top up half the height of a single line */
+  margin-top: -0.5em;
+}
+
+.arrow-text-content{
+  font-size: 22px;
+  line-height: 22px;
+  font-weight: 700;
+  height: auto;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 55%;
+    /* adjust top up half the height of a single line */
+  margin-top: -0.5em;
+}
+
+.arrow-text-content-half{
+  font-size: 22px;
+  line-height: 22px;
+  font-weight: 700;
+  height: auto;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 60%;
+    /* adjust top up half the height of a single line */
+  margin-top: -0.5em;
+}
+
+.line-64p{
+  line-height: 64px;
+  background-color: white;
+  text-align: center;
+}
+
+.box-container-long{
+  vertical-align: middle;
+  position: relative;
+  z-index: 1010;
+  background-color: white;
+  border-radius: 10px;
+  width: 80%;
+  margin-left: 10%;
+  height: 500px;
+}
+
+.modal-button-separator{
+  width: 99% !important;
+}
+
+.cancel-prompt-button{
+  background-color: rgb(21,126,194);
+  border-color: transparent;
+  color: white !important;
+}
+
+.products-center{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+}
+
+.col-modif-84{
+  width: 84% !important;
+  -webkit-flex: 0 0 84% !important; 
+  flex: 0 0 84% !important;
+  max-width: 84% !important;
+}
+.product-row{
+  margin-bottom: 25px;
+}
+.logo{
+    position: fixed;
+    top: 84%;
+    left: 43%;
+}
+.arrow-row{
+  margin-top: 5px !important;
+  position: fixed;
+  top: 85%;
+  right: 1%
+}
+.arrow-img{
+  width: 120px;
+  margin: auto;
+  display: block;
+}
+
+@font-face {
+    font-family: 'sanuk';
+    src: url('../fonts/SanukScOffcMedium.eot');
+    src: url('../fonts/SanukScOffcMedium.eot') format('embedded-opentype'),
+         url('../fonts/SanukScOffcMedium.woff2') format('woff2'),
+         url('../fonts/SanukScOffcMedium.woff') format('woff'),
+         url('../fonts/SanukScOffcMedium.ttf') format('truetype'),
+         url('../fonts/SanukScOffcMedium.svg#SanukScOffcMedium') format('svg');
+}

@@ -1,0 +1,59 @@
+<ion-view view-title = "Other Fruits" scroll="false" overflow-scroll="false">
+
+    <div ng-show="show_modal" ng-include src="'templates/modal.html'"></div>
+    <div ng-show="show_quant_modal" ng-include src="'templates/choose_quantity_modal.html'"></div>
+    <div class="navigation-arrow arrow-left" ng-style="{{GuiSettings.color_style}}" on-touch="goToMenu()" on-drag="goToMenu()">
+        <i class="icon ion-navicon-round icon-content"></i>
+        <div class="arrow-text-content lib-text"> INICIO </div>
+    </div>
+    <div class="{{MatrizSettings.parentRow}}">
+        <div class="col-90 col-modif-84 {{MatrizSettings.offset}} col-center">
+          <!-- Los dos 'ng-repeat' anidados son los bucles que forman la matriz de productos -->
+          <div ng-repeat = "product in products" ng-if = "$index >= startIndex && $index < (startIndex + MatrizSettings.prodsPerPage) && $index % MatrizSettings.colsPerPage == 0"
+               ng-init = "sectionIndex = $index" class = "{{MatrizSettings.parentRow}} {{MatrizSettings.row}}">
+
+              <div ng-repeat = "product in products track by product.plu"
+                        ng-if = "$index >= sectionIndex && $index < (sectionIndex + MatrizSettings.colsPerPage)"
+                        on-touch="selectProduct(product)" on-drag="selectProduct(product)"
+                        class="{{MatrizSettings.col}}">
+                <div  class="product-20-image" ng-cache back-img='{{"http://" + settings.server_ip + "/" + product.small_img}}'>
+                            <!-- <div class="layer" ng-show="product_selected.code == product.code"></div>-->
+                </div>
+                <div class="product-text item-text-wrap lib-text">{{product.name.toUpperCase()}}</div>
+              </div>
+          </div>
+          <!-- Elementos a mostrar si está DESHABILITADO el modo de navegación de páginas tipo bucle infinito -->
+            <div class = "{{MatrizSettings.parentRow}} product-20-row arrow-row layer-row" ng-show="numOfPages > 1 && {{!GuiSettings.page_loop_enabled}}">
+              <div class="col-12 col-offset-25-modif" ng-show= "startPage == 0">
+                <img ng-src="{{GuiSettings.arrow_imgs.left_dis}}" class = "arrow-img">
+              </div>
+
+              <div class="col-12 col-offset-25-modif" on-touch="changeProducts(false)" on-drag="changeProducts(false)" ng-show= "startPage > 0">
+                <img ng-src="{{GuiSettings.arrow_imgs.left}}" class = "arrow-img">
+              </div>
+
+              <div class="col-12 col-offset-10-modif" on-touch="changeProducts(true)" on-drag="changeProducts(true)" ng-show= "startPage < numOfPages-1">
+                <img ng-src="{{GuiSettings.arrow_imgs.right}}" class= "arrow-img">
+              </div>
+
+              <div class="col-12 col-offset-10-modif" ng-show= "startPage == numOfPages-1">
+                <img ng-src="{{GuiSettings.arrow_imgs.right_dis}}" class= "arrow-img">
+              </div>
+            </div>
+            <!-- Elementos a mostrar si está HABILITADO el modo de navegación de páginas tipo bucle infinito -->
+            <div class = "{{MatrizSettings.parentRow}} product-20-row arrow-row layer-row" ng-show="numOfPages > 1 && {{GuiSettings.page_loop_enabled}}">
+              <div class="col-12 col-offset-25-modif" on-touch="changeProducts(false)" on-drag="changeProducts(false)">
+                <img ng-src="{{GuiSettings.arrow_imgs.left}}" class = "arrow-img">
+              </div>
+              <div class="col-12 col-offset-10-modif" on-touch="changeProducts(true)" on-drag="changeProducts(true)">
+                <img ng-src="{{GuiSettings.arrow_imgs.right}}" class= "arrow-img">
+              </div>
+          </div>
+    </div>
+  <div class="navigation-arrow arrow-right" ng-style="{{GuiSettings.color_style}}" on-touch="goToVegetables()" on-drag="goToVegetables()">
+        <i class="icon ion-more icon-content"></i>
+        <div class="arrow-text-content lib-text"> VERDURAS </div>
+  </div>
+  
+</ion-view>
+

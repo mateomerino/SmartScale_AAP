@@ -1,0 +1,32 @@
+<div class = "modal-background"></div>
+<div class = "modal-container centered">
+    <div class="row">
+        <div class = "box-container col-60 col-offset-20">
+            <div class = "row">
+                <div class = "col" ng-if = "product_selected !== undefined && product_selected !== null"> 
+                    <img class = "modal-image center on-top" ng-cache-src ng-src='{{"http://" + settings.server_ip + "/" + product_selected.big_img}}'></img>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col text-center"> 
+                    <h2 class="modal-title thick-text lib-text">{{product_selected.name.toUpperCase()}}</h2>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col item-text-wrap expl-text "> 
+                    <h2 class="font-22 thick-text lib-text">1- COLOQUE SU PRODUCTO SOBRE LA BALANZA.<br><br> 2- UNA VEZ PESADO EL PRODUCTO PRESIONE ACEPTAR PARA IMPRIMIR EL TICKET.<br><br> 3- SI DESEA VOLVER ATRÁS SIN IMPRIMIR EL TICKET, PRESIONE CANCELAR.</h2>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-50">
+                    <button class="on-top button button-block cancel-color font-22 line-h-60 modal-button-separator lib-text" 
+                        on-touch="cancelProduct()" on-drag="cancelProduct()">CANCELAR</button>
+                </div>
+                <div class = "col-50">
+                    <button class = "on-top button button-block button-balanced font-22 line-h-60 modal-button-separator lib-text"
+                    on-touch="acceptProduct()" on-drag="acceptProduct()">ACEPTAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

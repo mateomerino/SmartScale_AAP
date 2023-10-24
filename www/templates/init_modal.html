@@ -1,0 +1,36 @@
+<div class = "modal-background"></div>
+<div class = "modal-container centered">
+    <div class="row box-container-long">
+        <div class="col-10 col-offset-33 col-center" ng-show="touchs<15">
+            <img src="res_img/loading_icon.gif" on-touch='increase()' on-drag='increase()'>
+        </div>
+        <div class="col-33 col-center" ng-show="init10Secs && touchs<15">
+            <h2 class="lib-text init-text"> Inicializando Aplicación </h2>
+        </div>
+        <div class="col-33 col-center" ng-show="!connectedToBluetooth && !init10Secs && touchs<15">
+            <h2 class="lib-text init-text"> Estableciendo Conexión </h2>
+        </div>
+
+        <div class="list col-50 col-offset-25 col-center" ng-show="touchs>=15">
+           <label class="item item-input">
+               <span class="input-label">Bluetooth MAC</span>
+               <input type="text" placeholder="Bluetooth MAC" ng-model="settings.bluetooth_mac">
+           </label>
+
+           <label class="item item-input">
+               <span class="input-label">DB Server IP</span>
+               <input type="text" placeholder="DB Server IP" ng-model="settings.server_ip">
+           </label>
+           <br>
+           <br>
+           <br>
+           <hr>
+           <button class="button button-full button-balanced" ng-click="saveSettings()">
+              Guardar
+            </button>
+            <button class="button button-full button-assertive" ng-click="cancelSettings()">
+              Cancelar
+            </button>
+        </div>
+    </div>
+</div>

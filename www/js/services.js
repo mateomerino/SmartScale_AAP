@@ -24,7 +24,7 @@ angular.module('appServices', [])
  */
    $ionicPlatform.ready(function () {
     //Leo productos desde archivo local
-    console.log("PRIMERO EN SERVICES!");
+   
     service.readProductsFile();
     //service.getFromApi();
     

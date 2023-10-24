@@ -10,6 +10,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * @default {false}
    */
      var BLE_DISABLE=true;
+    
   
   /**
    * Intentos realizados de conexión BLE
@@ -97,26 +98,27 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
         showInitModal();                    //MUESTRA LA PANTALLITA DE "INICIANDO APLICACION"
         
         getSettings().then(function(settings){
-            console.log("HOME CTRL!");
+           
             ////////////////////////////////
             updateProducts();
             // ////////////////////////////////
-            // //Obtengo los productos desde el archivo local de la app
-            // productDataService.getItems().then(function(products){
-            //   // console.log("paso getiten");
-            //   if(products){
-            //   /**
-            //   * Variable que contiene la información de todos los productos.
-            //   * @type {array}
-            //   */
-            //     $scope.products = products;
-            //   }
-            //   else{
-            //     $scope.products = [];
-            //   }
-            //   startUpdatePromise.resolve();
-            //   console.log("Products: ", $scope.products);
-            // });
+            //Obtengo los productos desde el archivo local de la app
+            //Se los pido a services.js que ya los tiene
+            productDataService.getItems().then(function(products){
+            
+              if(products){
+              /**
+              * Variable que contiene la información de todos los productos.
+              * @type {array}
+              */
+                $scope.products = products;
+              }
+              else{
+                $scope.products = [];
+              }
+              startUpdatePromise.resolve();
+              // console.log("Products: ", $scope.products);
+            });
           });
       });
   
@@ -257,7 +259,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               $scope.show_init_modal=false;
               $scope.$apply();
               //enableAndConnectBle();
-          },5000);
+          },1000);
         }
       }
       else{
@@ -407,7 +409,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * Si ocurre un error comunicandose con el servidor, se reintenta llamar a (updateProducts()) a los 5 segundos.
    */
        function updateProducts () {
-        console.log("Sale update products");
+        
         $http.get('http://localhost:3000/api/images').then(function(response) {
           // console.log("Me conecte wacho");
           // console.log("Datos de la respuesta:", response.data);
@@ -419,112 +421,112 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
           console.error('Error en la solicitud a la API', error);
           return $q.reject(error);
         });
-        // $http.get("http://"+$rootScope.settings.server_ip+"/api/images", { timeout: 10000 }).then(
-        //   function(response){
-        //     //response.data contiene los productos provenientes del server.
-        //     var update;
-        //     var productToUpdate;
-        //     var indexToUpdate;
-        //     var itemsPluToDelete = {};
-        //     var itemsPluVersion = {};
-        //     var diff = []
-        //     var update = $q.defer();
-        //     //Seteo un array de true, indexado por plu de todos los valores recibidos del server.
-        //     for (var i = 0; i < response.data.length; i++){
-        //       itemsPluToDelete[response.data[i].plu] = true;
-        //     }
+        $http.get("http://"+$rootScope.settings.server_ip+"/api/images", { timeout: 10000 }).then(
+          function(response){
+            //response.data contiene los productos provenientes del server.
+            var update;
+            var productToUpdate;
+            var indexToUpdate;
+            var itemsPluToDelete = {};
+            var itemsPluVersion = {};
+            var diff = []
+            var update = $q.defer();
+            //Seteo un array de true, indexado por plu de todos los valores recibidos del server.
+            for (var i = 0; i < response.data.length; i++){
+              itemsPluToDelete[response.data[i].plu] = true;
+            }
   
-        //     //Recorro los productos presentes en la app.
-        //     for (var j = 0; j < $scope.products.length; j++){
-        //         //Si para el plu del producto presente en la app
-        //         //existe un valor true dentro del array de trues seteado previamente
-        //         if (itemsPluToDelete[$scope.products[j].plu]) {
-        //           // elimino el elemento true del array de trues
-        //           delete itemsPluToDelete[$scope.products[j].plu];
-        //         }
-        //         //Si NO existe un valor true dentro del array de trues
-        //         //significa que la app contiene un producto que ha sido
-        //         //eliminado de la base de datos.
-        //         //
-        //         else{
-        //           //Elimino el producto de la app
-        //           $scope.products.splice(j);
-        //           //resuelvo que es necesario actualizar las imagenes.
-        //           update.resolve(true);
-        //         }
-        //     }
+            //Recorro los productos presentes en la app.
+            for (var j = 0; j < $scope.products.length; j++){
+                //Si para el plu del producto presente en la app
+                //existe un valor true dentro del array de trues seteado previamente
+                if (itemsPluToDelete[$scope.products[j].plu]) {
+                  // elimino el elemento true del array de trues
+                  delete itemsPluToDelete[$scope.products[j].plu];
+                }
+                //Si NO existe un valor true dentro del array de trues
+                //significa que la app contiene un producto que ha sido
+                //eliminado de la base de datos.
+                //
+                else{
+                  //Elimino el producto de la app
+                  $scope.products.splice(j);
+                  //resuelvo que es necesario actualizar las imagenes.
+                  update.resolve(true);
+                }
+            }
   
-        //     var isNew;
-        //     //Por cada producto de la base de datos
-        //     for (j = 0; j < response.data.length; j++){
-        //       //Lo declaro nuevo por defecto
-        //       isNew = true;
-        //       //Por cada producto presente en la app
-        //       for(i = 0;  i < $scope.products.length ; i++ ){
-        //         //Si el plu del producto de la base de datos coincide con el de la app
-        //         if($scope.products[i].plu === response.data[j].plu){
-        //           //No es un producto nuevo
-        //           isNew = false;
-        //           // Si la version del producto de la base de datos es mayor a la presente en la app
-        //           if( $scope.products[i].version < response.data[j].version){
-        //             //actualizo el producto presente en la app
-        //             $scope.products[i] = response.data[j];
-        //             //resuelvo que es necesario actualizar las imágenes
-        //             update.resolve(true);
-        //           }
-        //           break;
-        //         }
-        //       }
-        //       //Si el producto sigue marcado como nuevo
-        //       if(isNew){
-        //         //Incorporo el producto a la app
-        //         $scope.products.push(response.data[j]);
-        //         //resuelvo que es necesario actualizar las imágenes
-        //         update.resolve(true);
-        //       }
-        //     }
+            var isNew;
+            //Por cada producto de la base de datos
+            for (j = 0; j < response.data.length; j++){
+              //Lo declaro nuevo por defecto
+              isNew = true;
+              //Por cada producto presente en la app
+              for(i = 0;  i < $scope.products.length ; i++ ){
+                //Si el plu del producto de la base de datos coincide con el de la app
+                if($scope.products[i].plu === response.data[j].plu){
+                  //No es un producto nuevo
+                  isNew = false;
+                  // Si la version del producto de la base de datos es mayor a la presente en la app
+                  if( $scope.products[i].version < response.data[j].version){
+                    //actualizo el producto presente en la app
+                    $scope.products[i] = response.data[j];
+                    //resuelvo que es necesario actualizar las imágenes
+                    update.resolve(true);
+                  }
+                  break;
+                }
+              }
+              //Si el producto sigue marcado como nuevo
+              if(isNew){
+                //Incorporo el producto a la app
+                $scope.products.push(response.data[j]);
+                //resuelvo que es necesario actualizar las imágenes
+                update.resolve(true);
+              }
+            }
   
-        //     //Cuando resuelvo si es necesario actualizar la app
-        //     update.promise.then(function(needUpdate){
-        //       //Si lo resuelvo con true
-        //       if(needUpdate){
-        //         console.log("Updating images");
-        //         //Limpio la cache de imágenes
-        //         CacheImages.clearCache().then(function(){
-        //           //Por cada producto de la base de datos
-        //           response.data.forEach(function(product){
-        //             //Descargo las imágenes grande y pequeña
-        //             CacheImages.checkCacheStatus("http://" + $rootScope.settings.server_ip + "/" + product.small_img);
-        //             CacheImages.checkCacheStatus("http://" + $rootScope.settings.server_ip + "/" + product.big_img);
-        //           })
-        //         });
-        //         //Guardo en archivo los cambios en los productos de la app
-        //         productDataService.updateProducts($scope.products).then(function(){
-        //           //Leo nuevamente los productos desde archivo
-        //           productDataService.readProductsFile();
-        //         })
+            //Cuando resuelvo si es necesario actualizar la app
+            update.promise.then(function(needUpdate){
+              //Si lo resuelvo con true
+              if(needUpdate){
+                console.log("Updating images");
+                //Limpio la cache de imágenes
+                CacheImages.clearCache().then(function(){
+                  //Por cada producto de la base de datos
+                  response.data.forEach(function(product){
+                    //Descargo las imágenes grande y pequeña
+                    CacheImages.checkCacheStatus("http://" + $rootScope.settings.server_ip + "/" + product.small_img);
+                    CacheImages.checkCacheStatus("http://" + $rootScope.settings.server_ip + "/" + product.big_img);
+                  })
+                });
+                //Guardo en archivo los cambios en los productos de la app
+                productDataService.updateProducts($scope.products).then(function(){
+                  //Leo nuevamente los productos desde archivo
+                  productDataService.readProductsFile();
+                })
                 
-        //       }
-        //     });
-        //   },
-        //   function(error) {
-        //     console.log("Error connecting to Server: ", error);
-        //     try{
-        //       $timeout.cancel(updateProductsNextPromise);
-        //     }
-        //     finally{
-        //         updateProductsNextPromise = $timeout(updateProducts,UPDATE_PRODUCTS_RATE);
-        //       return;
-        //     }
-        //   });
+              }
+            });
+          },
+          function(error) {
+            console.log("Error connecting to Server: ", error);
+            try{
+              $timeout.cancel(updateProductsNextPromise);
+            }
+            finally{
+                updateProductsNextPromise = $timeout(updateProducts,UPDATE_PRODUCTS_RATE);
+              return;
+            }
+          });
   
-        //   try{
-        //     $timeout.cancel(updateProductsNextPromise);
-        //   }
-        //   finally{
-        //     updateProductsNextPromise = $timeout(updateProducts,UPDATE_PRODUCTS_RATE);
-        //     return;
-        //   }
+          try{
+            $timeout.cancel(updateProductsNextPromise);
+          }
+          finally{
+            updateProductsNextPromise = $timeout(updateProducts,UPDATE_PRODUCTS_RATE);
+            return;
+          }
       }
   
   /**

@@ -136,10 +136,11 @@ controllers.controller('TopFruitsCtrl', function ($scope, $q, $rootScope, $http,
  */
     $ionicPlatform.ready(function () {
       $scope.products = [];
+      console.log("Entro a redi fruts");
       //obtengo las frutas más vendidas desde archivo local
       productDataService.getBestSellingFruits()
         .then(function (response) {
-//          console.log("entre",response);
+        //  console.log("response bestfruts",response);
           $scope.products = response;
         });
     });

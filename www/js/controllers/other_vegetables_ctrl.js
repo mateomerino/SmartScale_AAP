@@ -131,7 +131,7 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
  */
     $scope.changeProducts = function (to_right) {
        restartIdleTimeCountdownOV();
-       $cordovaNativeAudio.play( 'pop' );
+      //  $cordovaNativeAudio.play( 'pop' );
        var step=1
        if(!to_right){step=-1}
        var numOfPages= Math.ceil($scope.products.length / PRODS_PER_PAGE);
@@ -235,6 +235,7 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
  * @param{object} product El producto seleccionado.
  */
     $scope.selectProduct = function (product) {
+      console.log("Product:",product.plu);
       restartIdleTimeCountdownOV();
       if($scope.EnabledSelection){
         if($scope.product_selected){
@@ -242,14 +243,14 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
             return;
           }
         }
-        $cordovaNativeAudio.play( 'pop' );
+        // $cordovaNativeAudio.play( 'pop' );
         $scope.product_selected=product;
-        try{
-          sendClearMessageAndData(product.plu);
-        }
-        catch(err){
-          console.log("Error sending message", err);
-        }
+        // try{
+        //   sendClearMessageAndData(product.plu);
+        // }
+        // catch(err){
+        //   console.log("Error sending message", err);
+        // }
         if(product.type === "veg-cant"){
           if($rootScope.GuiSettings.modal_cantidad_enabled){
             $scope.show_quant_modal=true;
@@ -301,10 +302,10 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
  */
     $scope.acceptProduct = function (product) {
       restartIdleTimeCountdownOV();
-      if($scope.show_modal===true){
-        $cordovaNativeAudio.play( 'pop' );
-      }
-      sendEnterMessage();
+      // if($scope.show_modal===true){
+      //   $cordovaNativeAudio.play( 'pop' );
+      // }
+      // sendEnterMessage();
       $timeout(enableSelection,300);
       $scope.show_modal=false;
       $scope.product_selected = null;

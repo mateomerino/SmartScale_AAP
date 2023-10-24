@@ -47,7 +47,8 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
  * (/templates/modal.html)
  * @type {boolean}
  */
-    $scope.show_modal=false;
+    // $scope.show_modal=false;
+    $scope.show_modal=true;
 
 /**
  * Variable que indica si se muestra la pantalla de pesaje de productos para productos por cantidad
@@ -118,8 +119,6 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
         
     };
 
-
-
 /**
  * Función que reinicializa el contador de tiempo de inactividad
  * al máximo permitido e inhabilita la cuenta atrás del mismo.
@@ -158,7 +157,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
  */
     $scope.changeProducts = function (to_right) {
        restartIdleTimeCountdownOF();
-       $cordovaNativeAudio.play( 'pop' );
+      //  $cordovaNativeAudio.play( 'pop' );
        var step=1;
        if(!to_right){step=-1}
        var numOfPages= Math.ceil($scope.products.length / PRODS_PER_PAGE);
@@ -179,9 +178,10 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
       $scope.startPage=0;
       //Seteo el índice inicial de productos a mostrar en la página en 0
       $scope.startIndex=0;
-      
       $scope.show_modal=false;
+      // $scope.show_modal=true;
       $scope.show_quant_modal=false;
+      // $scope.show_quant_modal=true;
       $scope.EnabledSelection=true;
       $scope.product_selected = null;
       //obtengo todas las frutas desde archivo local
@@ -233,9 +233,11 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
  * Se ejecuta una única vez.
  */
     $ionicPlatform.ready(function () {
+      console.log("fruts");
       $scope.products = [];
       //obtengo todas las frutas desde archivo local
       if($rootScope.GuiSettings.best_selling_screen_enabled){
+        console.log("voy al if");
         productDataService.getOtherFruits()
           .then(function (response) {
             $scope.products = response;
@@ -263,38 +265,40 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
  * @param{object} product El producto seleccionado.
  */
     $scope.selectProduct = function (product) {
-      restartIdleTimeCountdownOF();
-      if($scope.EnabledSelection){
+      console.log("product:",product.plu);
+      restartIdleTimeCountdownOF(); // Llama a una función para reiniciar el contador de inactividad.
+      if($scope.EnabledSelection){  // Comprueba si la selección de productos está habilitada.
         if($scope.product_selected){
-          if($scope.product_selected.plu === product.plu){
+          if($scope.product_selected.plu === product.plu){// Si el producto seleccionado ya es el mismo que el nuevo producto, no se realiza ninguna acción adicional y la función se detiene.
             return;
           }
         }
-        $cordovaNativeAudio.play( 'pop' );
-        $scope.product_selected=product;
-        try{
-          sendClearMessageAndData(product.plu);
-        }
-        catch(err){
-          console.log("Error sending message", err);
-        }
+        // $cordovaNativeAudio.play( 'pop' );
+        $scope.product_selected=product; // Establece el producto seleccionado en el objeto $scope.
+        // try{
+        //   sendClearMessageAndData(product.plu);
+        // }
+        // catch(err){
+        //   console.log("Error sending message", err);
+        // }
+
         if(product.type === "fruit-cant"){
           if($rootScope.GuiSettings.modal_cantidad_enabled){
-            $scope.show_quant_modal=true;
+            $scope.show_quant_modal=true; // Muestra un modal si está habilitado en la configuración.
           }
           else{
-            $scope.acceptQuantity($rootScope.GuiSettings.defaultQuantity);
+            $scope.acceptQuantity($rootScope.GuiSettings.defaultQuantity); // Acepta la cantidad predeterminada si el modal no está habilitado.
           }
         }
-        else if(product.type === "fruit"){
+        else if(product.type === "fruit"){  // Comprueba otro tipo de producto.
           if($rootScope.GuiSettings.modal_enabled){
-            $scope.show_modal=true;
+            $scope.show_modal=true; // Muestra un modal si está habilitado en la configuración.
           }
           else{
-            $scope.acceptProduct(product);
+            $scope.acceptProduct(product);  // Acepta el producto si el modal no está habilitado.
           }
         }
-        $scope.EnabledSelection=false;
+        $scope.EnabledSelection=false;  // Inhabilita la selección de otros productos.
       }
     }
 
@@ -331,12 +335,12 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
       if($scope.show_modal===true){
         $cordovaNativeAudio.play( 'pop' );
       }
-      try{
-        sendEnterMessage();
-      }
-      catch(err){
-        console.log("Error sending message", err);
-      }
+      // try{
+      //   sendEnterMessage();
+      // }
+      // catch(err){
+      //   console.log("Error sending message", err);
+      // }
       $scope.product_selected=null;
       $scope.show_modal=false;
       $timeout(enableSelection,300);

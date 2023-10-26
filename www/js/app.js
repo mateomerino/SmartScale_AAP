@@ -1,7 +1,6 @@
 // Visor/Teclado Digital para Balanza MT8442 App
 angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices','ngImgCache'])
 
-//LA FUNCION RUN ES LO PRIMERO QUE SE EJECUTA
 .run(function($ionicPlatform, $rootScope) {
   /* Definiciones de las settings de Gui 
    * para los diferentes supermercados
@@ -30,6 +29,7 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
      },
     // variable para habilitar/deshabilitar el modal de productos pesables
     modal_enabled:false,
+    
 
     // variable para habilitar/deshabilitar el modo bucle al avanzar páginas de productos
     page_loop_enabled:true,
@@ -60,11 +60,9 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
       "background-color": "rgb(237,28,36)"
     },
     // variable para habilitar/deshabilitar el modal de productos pesables
-    // modal_enabled:false,
-    modal_enabled:true,       //ESTA ES LA VARIABLE QUE TE MUESTRA EL ITEM SPECS!
+    modal_enabled:false,
 
-    // modal_cantidad_enabled:false,
-    modal_cantidad_enabled:true,
+    modal_cantidad_enabled:false,
 
     defaultQuantity:"1",
 
@@ -165,9 +163,7 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
 
 
   //selección del setting de Gui a utilizar
-  // $rootScope.GuiSettings = walmartSettings;
-  $rootScope.GuiSettings = libertadSettings
-  
+  $rootScope.GuiSettings = libertadSettings;
 
   //seleccion del setting de tamaño de matriz 
   $rootScope.MatrizSettings = matriz24prod;
@@ -184,11 +180,6 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
     if (window.StatusBar) {
       StatusBar.hide();
     }
-
-    // Aquí se agrega el condicional para usar 'cordova' solo en entornos Cordova
-    if (typeof cordova !== 'undefined') {
-      ImgCache.options.cordovaFilesystemRoot = cordova.file.dataDirectory;
-  }
   });
 })
 

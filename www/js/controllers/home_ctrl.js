@@ -10,7 +10,6 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * @default {false}
    */
      var BLE_DISABLE=true;
-    
   
   /**
    * Intentos realizados de conexión BLE
@@ -49,7 +48,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * para la apertura de la pantalla de configuración.
    * @type {number}
    */
-      $scope.touchs = 5;
+      $scope.touchs = 0;
   
   /**
    * Variable que indica si se muestra la pantalla de inicialización
@@ -95,17 +94,10 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * Se ejecuta una única vez.
    */
       $ionicPlatform.ready(function () {
-        showInitModal();                    //MUESTRA LA PANTALLITA DE "INICIANDO APLICACION"
-        
+        showInitModal();
         getSettings().then(function(settings){
-           
-            ////////////////////////////////
-            updateProducts();
-            // ////////////////////////////////
             //Obtengo los productos desde el archivo local de la app
-            //Se los pido a services.js que ya los tiene
             productDataService.getItems().then(function(products){
-            
               if(products){
               /**
               * Variable que contiene la información de todos los productos.
@@ -117,7 +109,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
                 $scope.products = [];
               }
               startUpdatePromise.resolve();
-              // console.log("Products: ", $scope.products);
+            //  console.log("Products: ", $scope.products);
             });
           });
       });
@@ -194,53 +186,41 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * @return {promise} promesa que se resuelve cuando los datos son obtenidos.
    */
       function getSettings(){
-        // console.log("Entro a settings!");
         settingsDeferred = $q.defer();
-        try{
+
+        if(window.cordova){
+          getFileEntry("/settings.json").then(function(fileEntry){
+            readFile(fileEntry).then(function(fileContent){
+    //          console.log(fileContent);
+              var fileContentJson ={};
+              try{
+              fileContentJson = JSON.parse(fileContent);
+              }
+              catch(err){
+                console.log("Cannot obtain MAC and server ip settings", err);
+              }
+              finally{
+                var serverIpEmpty = fileContentJson.server_ip === undefined || fileContentJson.server_ip === "" || fileContentJson.server_ip === null;
+                var btMacEmpty = fileContentJson.bluetooth_mac === undefined || fileContentJson.bluetooth_mac === "" || fileContentJson.bluetooth_mac === null;
+                $rootScope.settings.server_ip = serverIpEmpty? '172.16.30.122:3000' : fileContentJson.server_ip;
+                $rootScope.settings.bluetooth_mac = btMacEmpty? 'CC:78:AB:8A:9A:02' : fileContentJson.bluetooth_mac;
+                $scope.settings = angular.copy($rootScope.settings);
+                settingsDeferred.resolve($scope.settings);
+              }
+            });
+          });
+          return settingsDeferred.promise
+        
+        }
+        else{
           var serverIp='172.16.30.122:3000';
           var btMac = 'CC:78:AB:8A:9A:02';
           $rootScope.settings.server_ip = serverIp;
           $rootScope.settings.bluetooth_mac = btMac;
           $scope.settings = angular.copy($rootScope.settings);
           settingsDeferred.resolve($scope.settings);
-        }
-        catch(err){
-          console.log("No se pudo setear bien",err);
-        }
-        finally{
-          // console.log("Server IP:",$rootScope.settings.server_ip);
-          // console.log("Bluetooth MAC:",$rootScope.settings.bluetooth_mac);
           return settingsDeferred.promise
         }
-  //       getFileEntry("/settings.json").then(function(fileEntry){
-  //         readFile(fileEntry).then(function(fileContent){
-  // //          console.log(fileContent);
-  //           var fileContentJson ={};
-  //           try{
-  //             console.log("Estoy en el try");
-  //           fileContentJson = JSON.parse(fileContent);
-  //             // var serverIpEmpty = fileContentJson.server_ip === undefined || fileContentJson.server_ip === "" || fileContentJson.server_ip === null;
-  //             // var btMacEmpty = fileContentJson.bluetooth_mac === undefined || fileContentJson.bluetooth_mac === "" || fileContentJson.bluetooth_mac === null;
-  //             // $rootScope.settings.server_ip = serverIpEmpty? '172.16.30.122:3000' : fileContentJson.server_ip;
-  //             // $rootScope.settings.bluetooth_mac = btMacEmpty? 'CC:78:AB:8A:9A:02' : fileContentJson.bluetooth_mac;
-  //             // $scope.settings = angular.copy($rootScope.settings);
-  //             // settingsDeferred.resolve($scope.settings);
-  //           }
-  //           catch(err){
-  //             console.log("Cannot obtain MAC and server ip settings", err);
-  //           }
-  //           finally{
-  //             var serverIpEmpty = fileContentJson.server_ip === undefined || fileContentJson.server_ip === "" || fileContentJson.server_ip === null;
-  //             var btMacEmpty = fileContentJson.bluetooth_mac === undefined || fileContentJson.bluetooth_mac === "" || fileContentJson.bluetooth_mac === null;
-  //             $rootScope.settings.server_ip = serverIpEmpty? '172.16.30.122:3000' : fileContentJson.server_ip;
-  //             $rootScope.settings.bluetooth_mac = btMacEmpty? 'CC:78:AB:8A:9A:02' : fileContentJson.bluetooth_mac;
-  //             $scope.settings = angular.copy($rootScope.settings);
-  //             settingsDeferred.resolve($scope.settings);
-  //           }
-  //         });
-  //       });
-  //       console.log("Server IP",$rootScope.settings.server_ip);
-  //       return settingsDeferred.promise
       };
   
   /**
@@ -259,7 +239,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               $scope.show_init_modal=false;
               $scope.$apply();
               //enableAndConnectBle();
-          },1000);
+          },8000);
         }
       }
       else{
@@ -409,18 +389,6 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * Si ocurre un error comunicandose con el servidor, se reintenta llamar a (updateProducts()) a los 5 segundos.
    */
        function updateProducts () {
-        
-        $http.get('http://localhost:3000/api/images').then(function(response) {
-          // console.log("Me conecte wacho");
-          // console.log("Datos de la respuesta:", response.data);
-          return response.data; // Devuelve los datos de la respuesta
-          
-        })
-        .catch(function(error) {
-          // Maneja el error aquí
-          console.error('Error en la solicitud a la API', error);
-          return $q.reject(error);
-        });
         $http.get("http://"+$rootScope.settings.server_ip+"/api/images", { timeout: 10000 }).then(
           function(response){
             //response.data contiene los productos provenientes del server.
@@ -578,16 +546,13 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    */
       function getFileEntry(fileName){
         var fileEntryDeferred = $q.defer();
-        if(window.cordova){
-          window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function (fs) {
-            console.log('file system open: ' + fs.name);
-            console.log(fs);
-            fs.getFile(fileName, { create: true, exclusive: false }, function (fileEntry) {
-                fileEntryDeferred.resolve(fileEntry);
-            }, onErrorCreateFile);
-            }, onErrorLoadFs);
-        }
-        
+        window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function (fs) {
+        console.log('file system open: ' + fs.name);
+        console.log(fs);
+        fs.getFile(fileName, { create: true, exclusive: false }, function (fileEntry) {
+            fileEntryDeferred.resolve(fileEntry);
+        }, onErrorCreateFile);
+        }, onErrorLoadFs);
         return fileEntryDeferred.promise;
       };
   

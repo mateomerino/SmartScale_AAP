@@ -1,9 +1,6 @@
-
-
 angular.module('appServices', [])
 
-
-.factory('productDataService', function($ionicPlatform, $q, $http) {
+.factory('productDataService', function($ionicPlatform, $q) {
 
 /**
  * Servicio de obtención de productos y actualización a partir de archivo local
@@ -24,26 +21,9 @@ angular.module('appServices', [])
  */
    $ionicPlatform.ready(function () {
     //Leo productos desde archivo local
-   
     service.readProductsFile();
-    //service.getFromApi();
-    
   });
 
-  // Función para hacer una solicitud GET a la API REST
-  service.getFromApi = function() {
-    return $http.get('http://localhost:3000/api/images')
-      .then(function(response) {
-        // console.log("Me conecte wacho");
-        return response.data; // Devuelve los datos de la respuesta
-        
-      })
-      .catch(function(error) {
-        // Maneja el error aquí
-        console.error('Error en la solicitud a la API', error);
-        return $q.reject(error);
-      });
-  }
 
 /**
  * Función que lee el contenido del archivo local de productos.
@@ -53,34 +33,36 @@ angular.module('appServices', [])
     service.readProductsFile = function () {
         productsDeferred = $q.defer();
         getFileEntry("/products.json").then(function(fileEntry){
-        readFile(fileEntry).then(function(fileContent){
-          var result = [];
-          if(window.cordova){
-            result = JSON.parse(fileContent);
-          }
-          else{
-            result=fileContent;
-          }
-          try{
-            result.sort(function(a, b){
-                if(a.name < b.name) return -1;
-                if(a.name > b.name) return 1;
-                return 0;
-            });
-            result.forEach(function (product){
-              if(product.$$hashKey){
-                //elimino campo $$hashkey autogenerado por JSON.parse, que puede 
-                //generar errores en la utilización de ng-repeat en la vista
-                delete product.$$hashKey;
+          readFile(fileEntry).then(function(fileContent){
+            var result = [];
+
+            try{
+
+              if(window.cordova){
+                result = JSON.parse(fileContent);
               }
-            });
-          }
-          catch(e){
-            console.log("Error",e);
-          }
-          productsDeferred.resolve(result);
-          
-        });
+              else{
+                result=fileContent;
+                console.log("Result:",result);
+              }
+              
+              result.sort(function(a, b){
+                  if(a.name < b.name) return -1;
+                  if(a.name > b.name) return 1;
+                  return 0;
+              });
+              result.forEach(function (product){
+                if(product.$$hashKey){
+                  //elimino campo $$hashkey autogenerado por JSON.parse, que puede 
+                  //generar errores en la utilización de ng-repeat en la vista
+                  delete product.$$hashKey;
+                }
+              });
+            }
+            catch(e){
+            }
+            productsDeferred.resolve(result);
+          });
       });
     }
 
@@ -91,57 +73,48 @@ angular.module('appServices', [])
  * @return{promise} Promesa que será resuelta con la entrada de 
  * archivo una vez haya sido determinada.
  */
+    function getFileEntry(fileName){
+      var fileEntryDeferred = $q.defer();
 
-function getFileEntry(fileName){
-  var fileEntryDeferred = $q.defer();
-  
-  if(window.cordova){
-    // Lógica para Cordova
-    window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function (fs) {
-      fs.getFile(fileName, { create: true, exclusive: false }, function (fileEntry) {
-        fileEntryDeferred.resolve(fileEntry);
-      }, onErrorCreateFile);
-    }, onErrorLoadFs);
-  } else {
-    // Lógica para un entorno de navegador web
-    // var fileURL = 'www' + fileName;  // Ajusta la ruta según la estructura de tu proyecto
-    var fileURL= 'products.json';
-    fileEntryDeferred.resolve(fileURL);
-    // fetch(fileURL)
-    // .then(response => {
-    //   if (!response.ok) {
-    //     throw new Error('Network response was not ok');
-    //   }
-    //   console.log("Response:",response.json());
-    //   return response.json(); // Cambia a response.json() si estás trabajando con JSON
-    // })
-  }
-  
-  return fileEntryDeferred.promise;
-}
+      if(window.cordova){  
+        window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function (fs) {
+        fs.getFile(fileName, { create: true, exclusive: false }, function (fileEntry) {
+            fileEntryDeferred.resolve(fileEntry);
+        }, onErrorCreateFile);
+        }, onErrorLoadFs);
 
+        return fileEntryDeferred.promise;
+      }
+      else{
+        var fileURL= 'products.json';
+        fileEntryDeferred.resolve(fileURL);
+        return fileEntryDeferred.promise;
+      }
+      };
 
 
 /**
  * Funcion que retorna el contenido de un archivo
  * a partir de la entrada de archivo proporcionada.
- * @param{object} fileEntry Entrada del archivo cuyo contenido será leido (/products.json)
+ * @param{object} fileEntry Entrada del archivo cuyo contenido será leido 
  * y retornado como resolución de promesa.
  * @return{promise} Promesa que será resuelta con el contenido del archivo
  * una vez haya concluido la lectura.
  */
-  function readFile(fileEntry) {
-    var fileContentDeferred = $q.defer();
-    if (window.cordova) {
-      fileEntry.file(function (file) {
-        var reader = new FileReader();
-        reader.onloadend = function() {
-          fileContentDeferred.resolve(this.result);
-        };
-        reader.readAsText(file);
+    function readFile(fileEntry) {
+      var fileContentDeferred = $q.defer();
+      if(window.cordova){
+        fileEntry.file(function (file) {
+          var reader = new FileReader();
+          reader.onloadend = function() {
+              fileContentDeferred.resolve(this.result);
+          };
+          reader.readAsText(file);
       }, onErrorReadFile);
-    } else {
-      fetch(fileEntry)
+      return fileContentDeferred.promise;
+      }
+      else{
+        fetch(fileEntry)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -154,10 +127,10 @@ function getFileEntry(fileName){
         .catch(error => {
           fileContentDeferred.reject(error);
         });
+        return fileContentDeferred.promise;
+      }
+      
     }
-    return fileContentDeferred.promise;
-  }
-
 
     function onErrorCreateFile(error){
       console.log(error)

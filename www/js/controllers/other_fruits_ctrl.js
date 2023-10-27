@@ -1,7 +1,8 @@
 //Declarando el controlador OtherFruitsCtrl dentro del módulo controllers (/js/controllers.js
 //Este es el controller de la vista /templates/other_fruits.html
-controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $http, $ionicPlatform, $ionicHistory, $cordovaNativeAudio, $state, $timeout, productDataService) {
+controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $http, $ionicPlatform, $ionicHistory, $cordovaNativeAudio, $state, $timeout, productDataService,BluetoothService) {
 
+ 
   /**
    * Indice de inicio de productos a mostrar en la página actual
    * @todo  Cambiar nombre a 'currentPage'
@@ -158,7 +159,10 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
    */
       $scope.changeProducts = function (to_right) {
          restartIdleTimeCountdownOF();
-         $cordovaNativeAudio.play( 'pop' );
+         //SONIDITO
+         if(window.cordova){
+          $cordovaNativeAudio.play( 'pop' );
+         }
          var step=1;
          if(!to_right){step=-1}
          var numOfPages= Math.ceil($scope.products.length / PRODS_PER_PAGE);
@@ -270,14 +274,23 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
               return;
             }
           }
-          $cordovaNativeAudio.play( 'pop' );
+          if(window.cordova){
+            //SONIDITO
+            $cordovaNativeAudio.play( 'pop' );
+          }
+          
           $scope.product_selected=product;
-          try{
-            sendClearMessageAndData(product.plu);
+          
+          var flagValue = BluetoothService.getBluetoothFlag();
+          if(flagValue===true){
+            try{
+              sendClearMessageAndData(product.plu);
+            }
+            catch(err){
+              console.log("Error sending message", err);
+            }
           }
-          catch(err){
-            console.log("Error sending message", err);
-          }
+          
           if(product.type === "fruit-cant"){
             if($rootScope.GuiSettings.modal_cantidad_enabled){
               $scope.show_quant_modal=true;
@@ -309,9 +322,17 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
       $scope.cancelProduct = function () {
         restartIdleTimeCountdownOF();
         if($scope.show_modal===true){
-          $cordovaNativeAudio.play( 'pop' );
+          //SONIDITO
+          if(window.cordova){
+            $cordovaNativeAudio.play( 'pop' );
+          }
         }
-        sendClearMessage();
+
+        var flagValue = BluetoothService.getBluetoothFlag();
+        if(flagValue===true){
+          sendClearMessage();
+        }
+        
         $scope.product_selected=null;
         $scope.show_modal=false;
         $scope.show_quant_modal=false;
@@ -328,18 +349,27 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
    */
       $scope.acceptProduct = function (product) {
         restartIdleTimeCountdownOF();
+
         if($scope.show_modal===true){
-          $cordovaNativeAudio.play( 'pop' );
+          //SONIDITO
+          if(window.cordova){
+            $cordovaNativeAudio.play( 'pop' );
+          }
         }
-        try{
-          sendEnterMessage();
+
+        var flagValue = BluetoothService.getBluetoothFlag();
+        if(flagValue===true){
+          try{
+            sendEnterMessage();
+          }
+          catch(err){
+            console.log("Error sending message", err);
+          }
         }
-        catch(err){
-          console.log("Error sending message", err);
-        }
-        $scope.product_selected=null;
-        $scope.show_modal=false;
-        $timeout(enableSelection,300);
+          $scope.product_selected=null;
+          $scope.show_modal=false;
+          
+          $timeout(enableSelection,300);
       }
   
   /**
@@ -353,16 +383,24 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
       $scope.acceptQuantity = function (quantity) {
         restartIdleTimeCountdownOF();
         if($scope.show_quant_modal===true){
-          $cordovaNativeAudio.play( 'pop' );
+          //SONIDITO
+          if(window.cordova){
+            $cordovaNativeAudio.play( 'pop' );
+          }
         }
-        try{
-          sendQuantity(quantity);
+        var flagValue = BluetoothService.getBluetoothFlag();
+        if(flagValue===true){
+          try{
+            sendQuantity(quantity);
+          }
+          catch(err){
+            console.log("Error sending message", err);
+          }
         }
-        catch(err){
-          console.log("Error sending message", err);
-        }
+        
         $scope.product_selected=null;
         $scope.show_quant_modal=false;
+        
         $timeout(enableSelection,300);
       }
   

@@ -1,6 +1,8 @@
 //Declarando el controlador HomeCtrl dentro del módulo controllers (/js/controllers.js
 //Este es el controller de la vista /templates/home.html
-controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ionicPlatform, $ionicHistory, $ionicModal, $timeout, $interval, $cordovaNativeAudio, $state, productDataService, CacheImages){
+controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ionicPlatform, $ionicHistory, $ionicModal, $timeout, $interval, $cordovaNativeAudio, $state, productDataService, CacheImages,BluetoothService){
+
+  
 
   /**
    * Variable que indica si se comprobará de forma bloqueante la conectividad BLE o se deshabilitará la misma.
@@ -74,6 +76,8 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * Variable que indica si la conexión BLE está establecida.
    * @type {boolean}
    */
+  //ACÁ HAY UN TEMA, SI 'BLE_DISABLE' ES TRUE ENTONCES
+  //'connectedToBluetooth' NO TENDRIA QUE SER FALSE?
       if(BLE_DISABLE){
         $scope.connectedToBluetooth=true;
       }
@@ -176,7 +180,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
           $state.go("other_vegetables");
         }
       };
-  
+      
   /**
    * Función que obtiene la IP del server y la MAC desde el archivo
    * donde la app lo almacena. Si no puede obtener estos datos, utiliza 
@@ -239,7 +243,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               $scope.show_init_modal=false;
               $scope.$apply();
               //enableAndConnectBle();
-          },8000);
+          },2000);
         }
       }
       else{
@@ -314,6 +318,10 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
                   else{
                     $scope.connectedToBluetooth = true;
                     $scope.show_init_modal= $scope.touchs >= 15;
+                    //ACÁ YA CONECTE EL BLUTUTH
+                    // Establecer el valor de bluetoothFlag
+                    BluetoothService.setBluetoothFlag(true);
+                    
   
   /*                  rssiSample = $interval(function() {
                           ble.readRSSI($rootScope.settings.bluetooth_mac, function(rssi) {

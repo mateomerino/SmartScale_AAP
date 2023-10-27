@@ -2,6 +2,7 @@ angular.module('appServices', [])
 
 .factory('productDataService', function($ionicPlatform, $q) {
 
+
 /**
  * Servicio de obtención de productos y actualización a partir de archivo local
  * @type {object}
@@ -363,7 +364,24 @@ angular.module('appServices', [])
      return def.promise
   }
 
+  
 
   return service;
 })
+
+.service('BluetoothService',function(){
+  var bluetoothFlag=false;
+
+  this.getBluetoothFlag = function() {
+    return bluetoothFlag;
+  };
+
+  this.setBluetoothFlag = function(value) {
+    bluetoothFlag = value;
+  };
+
+})
 ;
+
+
+

@@ -1,6 +1,6 @@
 //Declarando el controlador OtherVegetablesCtrl dentro del módulo controllers (/js/controllers.js
 //Este es el controller de la vista /templates/other_vegetables.html
-controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, $http, $ionicPlatform, $ionicHistory, $cordovaNativeAudio, $state, $timeout, productDataService) {
+controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, $http, $ionicPlatform, $ionicHistory, $cordovaNativeAudio, $state, $timeout, productDataService,BluetoothService) {
 
   /**
    * Indice de inicio de productos a mostrar en la página actual
@@ -131,7 +131,11 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
    */
       $scope.changeProducts = function (to_right) {
          restartIdleTimeCountdownOV();
-         $cordovaNativeAudio.play( 'pop' );
+         //SONIDITO
+         if(window.cordova){
+          $cordovaNativeAudio.play( 'pop' );
+         }
+         
          var step=1
          if(!to_right){step=-1}
          var numOfPages= Math.ceil($scope.products.length / PRODS_PER_PAGE);
@@ -242,14 +246,23 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
               return;
             }
           }
-          $cordovaNativeAudio.play( 'pop' );
+          if(window.cordova){
+            //SONIDITO
+            $cordovaNativeAudio.play( 'pop' );
+          }
+          
           $scope.product_selected=product;
-          try{
-            sendClearMessageAndData(product.plu);
+          
+          var flagValue = BluetoothService.getBluetoothFlag();
+          if(flagValue===true){
+            try{
+              sendClearMessageAndData(product.plu);
+            }
+            catch(err){
+              console.log("Error sending message", err);
+            }
           }
-          catch(err){
-            console.log("Error sending message", err);
-          }
+          
           if(product.type === "veg-cant"){
             if($rootScope.GuiSettings.modal_cantidad_enabled){
               $scope.show_quant_modal=true;
@@ -282,9 +295,17 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
       $scope.cancelProduct = function () {
         restartIdleTimeCountdownOV();
         if($scope.show_modal===true){
-          $cordovaNativeAudio.play( 'pop' );
+          //SONIDITO
+          if(window.cordova){
+            $cordovaNativeAudio.play( 'pop' );
+          }
         }
-        sendClearMessage();
+
+        var flagValue = BluetoothService.getBluetoothFlag();
+        if(flagValue===true){
+          sendClearMessage();
+        }
+        
         $scope.product_selected = null;
         $scope.show_modal=false;
         $scope.show_quant_modal=false;
@@ -302,9 +323,16 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
       $scope.acceptProduct = function (product) {
         restartIdleTimeCountdownOV();
         if($scope.show_modal===true){
-          $cordovaNativeAudio.play( 'pop' );
+          if(window.cordova){
+            $cordovaNativeAudio.play( 'pop' );
+          }
         }
-        sendEnterMessage();
+
+        var flagValue = BluetoothService.getBluetoothFlag();
+        if(flagValue==true){
+          sendEnterMessage();
+        }
+        
         $timeout(enableSelection,300);
         $scope.show_modal=false;
         $scope.product_selected = null;
@@ -321,14 +349,22 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
       $scope.acceptQuantity = function (quantity) {
         restartIdleTimeCountdownOV();
         if($scope.show_quant_modal===true){
-          $cordovaNativeAudio.play( 'pop' );
+          //SONIDITO
+          if(window.cordova){
+            $cordovaNativeAudio.play( 'pop' );
+          }
         }
-        try{
-          sendQuantity(quantity);
+
+        var flagValue = BluetoothService.getBluetoothFlag();
+        if(flagValue){
+          try{
+            sendQuantity(quantity);
+          }
+          catch(err){
+            console.log("Error sending message", err);
+          }
         }
-        catch(err){
-          console.log("Error sending message", err);
-        }
+
         $scope.product_selected=null;
         $scope.show_quant_modal=false;
         $timeout(enableSelection,300);

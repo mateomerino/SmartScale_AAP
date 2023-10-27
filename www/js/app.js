@@ -37,7 +37,7 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
     modal_cantidad_enabled:true,
 
     defaultQuantity:"1",
-
+    
     // variable para habilitar la pantalla de 20 productos más vendidos
     best_selling_screen_enabled: true
 
@@ -60,9 +60,11 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
       "background-color": "rgb(237,28,36)"
     },
     // variable para habilitar/deshabilitar el modal de productos pesables
-    modal_enabled:false,
+    // modal_enabled:false,
+    modal_enabled:true,
 
-    modal_cantidad_enabled:false,
+    // modal_cantidad_enabled:false,
+    modal_cantidad_enabled:true,
 
     defaultQuantity:"1",
 

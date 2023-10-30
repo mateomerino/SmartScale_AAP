@@ -91,8 +91,8 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
       };
   
     /**
-      * Función que cambia a la vista fruits (/templates/other_fruits.html)
-      * Se llama desde la vista vegetables (/templates/other_vegetables.html)
+      * Función que cambia a la vista de elaborados (/templates/other_elaborated.html)
+      * Se llama desde la vista meet (/templates/other_meet.html)
     */
       $scope.goToElaborated = function () {
           $ionicHistory.nextViewOptions({
@@ -126,7 +126,7 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
   
   /**
    * Función que cambia de página de productos
-   * Se llama desde la vista (/templates/other_vegetables.html)
+   * Se llama desde la vista (/templates/other_pork.html)
    * Reinicializa el contador de tiempo de inactividad
    */
       $scope.changeProducts = function (to_right) {
@@ -182,7 +182,7 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
   
   /**
    * Función que se ejecuta automáticamente cada vez que la aplicación 
-   * ingresa a la vista other_vegetables.
+   * ingresa a la vista other_pork.
    */
       $scope.$on('$ionicView.enter', function(){
         //Inicializo contador de tiempo de inactividad y comienzo el decremento

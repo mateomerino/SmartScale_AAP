@@ -2,8 +2,6 @@
 //Este es el controller de la vista /templates/home.html
 controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ionicPlatform, $ionicHistory, $ionicModal, $timeout, $interval, $cordovaNativeAudio, $state, productDataService, CacheImages,BluetoothService){
 
-  
-
   /**
    * Variable que indica si se comprobará de forma bloqueante la conectividad BLE o se deshabilitará la misma.
    * Si toma el valor por defecto la aplicación se comporta como en producción, de lo contrario se podrá utilizar sin una conexión
@@ -282,7 +280,6 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * Luego de 8 segundos muestra el texto de conexión
    * y llama a la función enableAndConnectBle().
    */
-  
       if(BLE_DISABLE){
         showInitModal = function(){
           $scope.init10Secs=true;
@@ -293,7 +290,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               $scope.show_init_modal=false;
               $scope.$apply();
               //enableAndConnectBle();
-          },1000);
+          },10000);
         }
       }
       else{

@@ -1,3 +1,4 @@
+/*ESTE ES EL DE LA POSICION DE LA IMAGEN PRINCIPAL!!!!!!!*/
 .menu-button-content{
   height: 100%;
   width: 80%;
@@ -6,8 +7,8 @@
   background-color: white;
   color: white;
   z-index: 200;
-  margin-left: 10%;
-  border-radius: 10px;
+  margin-left: 2.8%;
+  border-radius: 5px;
 }
 .menu-text{
   font-family: "sanuk" !important;

@@ -40,11 +40,10 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
     
     // variable para habilitar la pantalla de 20 productos más vendidos
     best_selling_screen_enabled: true
-
   };
 
   var libertadSettings = { 
-    menu_picture: "res_img/inicio_lib.png",
+    menu_picture: "res_img/inicio_aap.png",
     menu_logo: "res_img/logo-LIBERTAD.png",
     arrow_imgs:{
       left:"res_img/flechaIzq_lib.png",
@@ -52,12 +51,16 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
       left_dis:"res_img/flechaIzq_lib_disable.png",
       right_dis:"res_img/flechaDer_lib_disable.png"
     },
+    //COLOR DEL MENU PRINCIPAL
     menu_container_style: {
       "height": "100%",
-      "background-color": "rgb(237,28,36)"
+      // "background-color": "rgb(237,28,36)"
+      "background-color": "rgb(255, 115, 0)"
     },
+    //COLOR DE LOS BORDES DE LAS PANTALLAS DE FRUTAS Y VERDURAS
     color_style: {
-      "background-color": "rgb(237,28,36)"
+      // "background-color": "rgb(237,28,36)"
+      "background-color": "rgb(255, 115, 0)"
     },
     // variable para habilitar/deshabilitar el modal de productos pesables
     // modal_enabled:false,
@@ -162,15 +165,12 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
     row: "product-20-row-24p"
   };
 
-
-
   //selección del setting de Gui a utilizar
   $rootScope.GuiSettings = libertadSettings;
 
   //seleccion del setting de tamaño de matriz 
   $rootScope.MatrizSettings = matriz24prod;
-
-
+  
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)

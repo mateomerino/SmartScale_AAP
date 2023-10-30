@@ -50,7 +50,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * para la apertura de la pantalla de configuración.
    * @type {number}
    */
-      $scope.touchs = 0;
+      $scope.touchs = 5;
   
   /**
    * Variable que indica si se muestra la pantalla de inicialización
@@ -243,7 +243,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               $scope.show_init_modal=false;
               $scope.$apply();
               //enableAndConnectBle();
-          },2000);
+          },1000);
         }
       }
       else{
@@ -512,6 +512,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    */
       $scope.increase = function() {
         $scope.touchs++;
+        console.log("Touchs:",$scope.touchs);
       }
   
   /**

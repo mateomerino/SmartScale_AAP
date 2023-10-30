@@ -43,7 +43,6 @@ controllers.controller('TopVegetablesCtrl', function ($scope, $q, $rootScope, $h
    */
       var timeOutPromiseTV;
   
-  
   /**
    * Función que deja las variables en un estado consistente y regresa a la vista menu
    * (/templates/home.html)
@@ -79,7 +78,6 @@ controllers.controller('TopVegetablesCtrl', function ($scope, $q, $rootScope, $h
           $state.go('other_vegetables', null, {reload: false});
       };
   
-  
   /**
    * Función que decrementa el contador de tiempo de inactividad
    * en uno. Si se encuentra habilitada la cuenta regresiva, se programa 
@@ -89,7 +87,6 @@ controllers.controller('TopVegetablesCtrl', function ($scope, $q, $rootScope, $h
         $timeout.cancel(timeOutPromiseTV);
         timeOutPromiseTV = $timeout(function(){$scope.goToMenu();}, MAX_IDLE_TIME);
       };
-  
   
   /**
    * Función que se llama automáticamente antes de ingresar a la vista.

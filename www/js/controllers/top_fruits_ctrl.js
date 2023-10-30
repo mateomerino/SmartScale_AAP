@@ -87,7 +87,7 @@ controllers.controller('TopFruitsCtrl', function ($scope, $q, $rootScope, $http,
         timeOutPromiseTF = $timeout(function(){$scope.goToMenu();}, MAX_IDLE_TIME);
       };
   
-      /**
+  /**
    * Función que se llama automáticamente antes de ingresar a la vista.
    * Se llama cada vez que la app está por ingresar a la vista other_vegetables
    */

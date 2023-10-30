@@ -1,5 +1,4 @@
-<ion-view view-title = "Other Fruits" scroll="false" overflow-scroll="false">
-
+<ion-view view-title = "Other Vegetables" scroll="false" overflow-scroll="false">
     <div ng-show="show_modal" ng-include src="'templates/modal.html'"></div>
     <div ng-show="show_quant_modal" ng-include src="'templates/choose_quantity_modal.html'"></div>
     <div class="navigation-arrow arrow-left" ng-style="{{GuiSettings.color_style}}" on-touch="goToMenu()" on-drag="goToMenu()">
@@ -16,10 +15,10 @@
                         ng-if = "$index >= sectionIndex && $index < (sectionIndex + MatrizSettings.colsPerPage)"
                         on-touch="selectProduct(product)" on-drag="selectProduct(product)"
                         class="{{MatrizSettings.col}}">
-                <div  class="product-20-image" ng-cache back-img='{{"http://" + settings.server_ip + "/" + product.small_img}}'>
+                <div class="product-20-image" ng-cache back-img='{{"http://" + settings.server_ip + "/" + product.small_img}}'>
                             <!-- <div class="layer" ng-show="product_selected.code == product.code"></div>-->
                 </div>
-                <div class="product-text item-text-wrap lib-text">{{product.name.toUpperCase()}}</div>
+                <div class="product-text item-text-wrap lib-text">{{product.name.toUpperCase()}} </div>
               </div>
           </div>
           <!-- Elementos a mostrar si está DESHABILITADO el modo de navegación de páginas tipo bucle infinito -->
@@ -48,12 +47,14 @@
               <div class="col-12 col-offset-10-modif" on-touch="changeProducts(true)" on-drag="changeProducts(true)">
                 <img ng-src="{{GuiSettings.arrow_imgs.right}}" class= "arrow-img">
               </div>
-          </div>
+            </div>  
+        </div>
     </div>
-  <div class="navigation-arrow arrow-right" ng-style="{{GuiSettings.color_style}}" on-touch="goToVegetables()" on-drag="goToVegetables()">
+
+  <div class="navigation-arrow arrow-right" ng-style="{{GuiSettings.color_style}}" on-touch="goToElaborated()" on-drag="goToElaborated()">
         <i class="icon ion-more icon-content"></i>
-        <div class="arrow-text-content lib-text"> VERDURAS </div>
+        <div class="arrow-text-content lib-text"> ELABORADOS </div>
   </div>
-  
+
 </ion-view>
 

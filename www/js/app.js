@@ -205,15 +205,20 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
       templateUrl: 'templates/top_vegetables.html',
       controller: 'TopVegetablesCtrl' 
     })
-    .state('other_fruits',{
-      url:'/other_fruits',
-      templateUrl: 'templates/other_fruits.html',
+    .state('other_meet',{
+      url:'/other_meet',
+      templateUrl: 'templates/other_meet.html',
       controller: 'OtherFruitsCtrl' 
     })
-    .state('other_vegetables',{
-      url:'/other_vegetables',
-      templateUrl: 'templates/other_vegetables.html',
+    .state('other_pork',{
+      url:'/other_pork',
+      templateUrl: 'templates/other_pork.html',
       controller: 'OtherVegetablesCtrl' 
+    })
+    .state('other_elaborated',{
+      url:'/other_elaborated',
+      templateUrl: 'templates/other_elaborated.html',
+      controller: 'OtherElaboratedCtrl' 
     });
   //  Default state:
   $urlRouterProvider.otherwise('/app');

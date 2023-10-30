@@ -74,7 +74,7 @@ controllers.controller('TopFruitsCtrl', function ($scope, $q, $rootScope, $http,
           $scope.EnabledSelection=true;
           $scope.product_selected = null;
           $scope.startPage = 0;
-          $state.go('other_fruits', null, {reload: false});
+          $state.go('other_meet', null, {reload: false});
       };
   
   /**

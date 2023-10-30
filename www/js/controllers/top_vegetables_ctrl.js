@@ -75,7 +75,7 @@ controllers.controller('TopVegetablesCtrl', function ($scope, $q, $rootScope, $h
           $scope.product_selected = null;
           $scope.EnabledSelection=true;
           $scope.startPage = 0;
-          $state.go('other_vegetables', null, {reload: false});
+          $state.go('other_pork', null, {reload: false});
       };
   
   /**

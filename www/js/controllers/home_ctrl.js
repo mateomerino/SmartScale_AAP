@@ -149,11 +149,43 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
           }
       });
   
+  // /**
+  //  * Función que cambia a la pantalla de Frutas,
+  //  * es llamada desde la vista (templates/home.html).
+  //  */
+  //     $scope.goToFruits = function () {
+  //       $ionicHistory.nextViewOptions({
+  //         disableBack: true
+  //       });
+  //       if($rootScope.GuiSettings.best_selling_screen_enabled){
+  //         $state.go("top_fruits");
+  //       }
+  //       else{
+  //         $state.go("other_fruits");
+  //       }
+  //     };
+
+  // /**
+  //  * Función que cambia a la pantalla de Verduras,
+  //  * es llamada desde la vista (templates/home.html).
+  //  */
+  //     $scope.goToVegetables = function () {
+  //       $ionicHistory.nextViewOptions({
+  //         disableBack: true
+  //       });
+  //       if($rootScope.GuiSettings.best_selling_screen_enabled){
+  //         $state.go("top_vegetables");
+  //       }
+  //       else{
+  //         $state.go("other_vegetables");
+  //       }
+  //     };
+
   /**
    * Función que cambia a la pantalla de Frutas,
    * es llamada desde la vista (templates/home.html).
    */
-      $scope.goToFruits = function () {
+      $scope.goToMeet = function () {
         $ionicHistory.nextViewOptions({
           disableBack: true
         });
@@ -161,25 +193,43 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
           $state.go("top_fruits");
         }
         else{
-          $state.go("other_fruits");
+          $state.go("other_meet");
         }
       };
   
+
   /**
    * Función que cambia a la pantalla de Verduras,
    * es llamada desde la vista (templates/home.html).
    */
-      $scope.goToVegetables = function () {
-        $ionicHistory.nextViewOptions({
-          disableBack: true
-        });
-        if($rootScope.GuiSettings.best_selling_screen_enabled){
-          $state.go("top_vegetables");
-        }
-        else{
-          $state.go("other_vegetables");
-        }
-      };
+  $scope.goToPork = function () {
+    $ionicHistory.nextViewOptions({
+      disableBack: true
+    });
+    if($rootScope.GuiSettings.best_selling_screen_enabled){
+      $state.go("top_vegetables");
+    }
+    else{
+      $state.go("other_pork");
+    }
+  };
+
+  /**
+   * Función que cambia a la pantalla de Verduras,
+   * es llamada desde la vista (templates/home.html).
+   */
+  $scope.goToElaborated = function () {
+    $ionicHistory.nextViewOptions({
+      disableBack: true
+    });
+    if($rootScope.GuiSettings.best_selling_screen_enabled){
+      $state.go("top_vegetables");
+    }
+    else{
+      $state.go("other_elaborated");
+    }
+  };
+  
       
   /**
    * Función que obtiene la IP del server y la MAC desde el archivo

@@ -94,7 +94,7 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
       * Función que cambia a la vista fruits (/templates/other_fruits.html)
       * Se llama desde la vista vegetables (/templates/other_vegetables.html)
     */
-      $scope.goToFruits = function () {
+      $scope.goToElaborated = function () {
           $ionicHistory.nextViewOptions({
             disableBack: true
           });
@@ -107,7 +107,7 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
             $state.go('top_fruits', null, {reload: false});
           }
           else{
-            $state.go('other_fruits', null, {reload: false});
+            $state.go('other_elaborated', null, {reload: false});
           }
           
       };

@@ -163,7 +163,7 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
         $scope.product_selected = null;
         //obtengo todos los vegetales desde archivo local
         if($rootScope.GuiSettings.best_selling_screen_enabled){
-          productDataService.getOtherVegetables()
+          productDataService.getOtherPork()
             .then(function (response) {
               $scope.products = response;
               //calculo el número de páginas
@@ -171,7 +171,7 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
             });
         }
         else{
-          productDataService.getAllVegetables()
+          productDataService.getAllPork()
             .then(function (response) {
               $scope.products = response;
               //calculo el número de páginas
@@ -220,7 +220,7 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
             });
         }
         else{
-          productDataService.getAllVegetables()
+          productDataService.getAllPork()
             .then(function (response) {
               $scope.products = response;
               //calculo el número de páginas

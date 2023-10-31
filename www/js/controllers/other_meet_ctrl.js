@@ -210,7 +210,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
         $scope.product_selected = null;
         //obtengo todas las frutas desde archivo local
         if($rootScope.GuiSettings.best_selling_screen_enabled){
-          productDataService.getOtherFruits()
+          productDataService.getOtherMeet()
             .then(function (response) {
               $scope.products = response;
               //calculo el número de páginas
@@ -218,7 +218,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
             });
         }
         else{
-          productDataService.getAllFruits()
+          productDataService.getAllMeet()
             .then(function (response) {
               $scope.products = response;
               console.log("Response:",response);
@@ -261,7 +261,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
         $scope.products = [];
         //obtengo todas las frutas desde archivo local
         if($rootScope.GuiSettings.best_selling_screen_enabled){
-          productDataService.getOtherFruits()
+          productDataService.getOtherMeet()
             .then(function (response) {
               $scope.products = response;
               //calculo el número de páginas
@@ -269,7 +269,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
             });
         }
         else{
-          productDataService.getAllFruits()
+          productDataService.getAllMeet()
             .then(function (response) {
               $scope.products = response;
               console.log("Response:",response);

@@ -247,7 +247,7 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
               });
           }
           else{
-            productDataService.getAllFruits()
+            productDataService.getAllElaborated()
               .then(function (response) {
                 $scope.products = response;
                 //calculo el número de páginas

@@ -212,18 +212,18 @@ angular.module('appServices', [])
  * resuelve luego de terminar de leer el contenido del archivo con una lista
  * de todos los productos con type == "fruit"
  */
-  service.getAllFruits = function() {
+  service.getAllMeet = function() {
     var productPromise = productsDeferred.promise.then( function (response){
       var products = response;
       var bestSellingCount = 0;
-      var fruits =[];
+      var meet =[];
       for (var i = 0; i < products.length; i++) {
         // if (products[i].type === "fruit" || products[i].type === "fruit-cant") {
          if (products[i].type === "bovino" || products[i].type === "fruit-cant") {
-          fruits.push(products[i]);
+          meet.push(products[i]);
         }
       }
-      return fruits;
+      return meet;
     });
     return productPromise;
   }
@@ -236,18 +236,18 @@ angular.module('appServices', [])
  * resuelve luego de terminar de leer el contenido del archivo con una lista
  * de todos los productos con type == "fruit" y best_selling == true
  */
-  service.getBestSellingFruits = function() {
+  service.getBestSellingMeet = function() {
     var productPromise = productsDeferred.promise.then( function (response){
       var products = response;
       var bestSellingCount = 0;
-      var fruits =[];
+      var meet =[];
       for (var i = 0; i < products.length; i++) {
         if ((products[i].type === "bovino" || products[i].type === "fruit-cant") && products[i].best_selling && bestSellingCount < 20) {
-          fruits.push(products[i]);
+          meet.push(products[i]);
           bestSellingCount ++;
         }
       }
-      return fruits;
+      return meet;
     });
     return productPromise;
   }
@@ -260,18 +260,18 @@ angular.module('appServices', [])
  * resuelve luego de terminar de leer el contenido del archivo con una lista
  * de todos los productos con type == "vegetable" y best_selling == true
  */
-    service.getBestSellingVegetables = function() {
+    service.getBestSellingPork = function() {
     var productPromise = productsDeferred.promise.then( function (response){
       var products = response;
       var bestSellingCount = 0;
-      var vegetables =[];
+      var pork =[];
       for (var i = 0; i < products.length; i++) {
         if ((products[i].type === "cerdo" || products[i].type === "veg-cant") && products[i].best_selling && bestSellingCount < 20) {
-          vegetables.push(products[i]);
+          pork.push(products[i]);
           bestSellingCount ++;
         }
       }
-      return vegetables;
+      return pork;
     });
     return productPromise;
   }
@@ -284,17 +284,17 @@ angular.module('appServices', [])
  * resuelve luego de terminar de leer el contenido del archivo con una lista
  * de todos los productos con type == "vegetable"
  */
-  service.getAllVegetables = function() {
+  service.getAllPork = function() {
     var productPromise = productsDeferred.promise.then( function (response){
       var products = response;
       var bestSellingCount = 0;
-      var vegetables =[];
+      var pork =[];
       for (var i = 0; i < products.length; i++) {
         if (products[i].type === "cerdo" || products[i].type === "veg-cant") {
-          vegetables.push(products[i]);
+          pork.push(products[i]);
         }
       }
-      return vegetables;
+      return pork;
     });
     return productPromise;
   }
@@ -306,20 +306,20 @@ angular.module('appServices', [])
  * resuelve luego de terminar de leer el contenido del archivo con una lista
  * de todos los productos con type == "vegetable"
  */
-  service.getOtherVegetables = function() {
+  service.getOtherPork = function() {
     var productPromise = productsDeferred.promise.then( function (response){
       var products = response;
       var bestSellingCount = 0;
-      var vegetables =[];
+      var pork =[];
       for (var i = 0; i < products.length; i++) {
         if((products[i].type === "vegetable" || products[i].type === "veg-cant") && products[i].best_selling){
-          bestSellingCount++;
+          pork++;
         }
         if ((products[i].type === "vegetable" || products[i].type === "veg-cant") && (!products[i].best_selling || bestSellingCount >= 20)) {
-          vegetables.push(products[i]);
+          pork.push(products[i]);
         }
       }
-      return vegetables;
+      return pork;
     });
     return productPromise;
   }
@@ -331,21 +331,21 @@ angular.module('appServices', [])
  * resuelve luego de terminar de leer el contenido del archivo con una lista
  * de todos los productos con type == "vegetable"
  */
-  service.getOtherFruits = function() {
+  service.getOtherPork = function() {
     var productPromise = productsDeferred.promise.then( function (response){
       var products = response;
       var bestSellingCount = 0;
-      var fruits =[];
+      var pork =[];
       for (var i = 0; i < products.length; i++) {
         // if((products[i].type === "fruit" || products[i].type === "fruit-cant") && products[i].best_selling){
           if((products[i].type === "bovino" || products[i].type === "fruit-cant") && products[i].best_selling){
           bestSellingCount++;
         }
         if ((products[i].type === "bovino" || products[i].type === "fruit-cant") && (!products[i].best_selling || bestSellingCount >= 20)) {
-          fruits.push(products[i]);
+          pork.push(products[i]);
         }
       }
-      return fruits;
+      return pork;
     });
     return productPromise;
   }
@@ -361,14 +361,14 @@ service.getAllElaborated = function() {
   var productPromise = productsDeferred.promise.then( function (response){
     var products = response;
     var bestSellingCount = 0;
-    var fruits =[];
+    var elaborated =[];
     for (var i = 0; i < products.length; i++) {
       // if (products[i].type === "fruit" || products[i].type === "fruit-cant") {
        if (products[i].type === "elaborado" || products[i].type === "fruit-cant") {
-        fruits.push(products[i]);
+        elaborated.push(products[i]);
       }
     }
-    return fruits;
+    return elaborated;
   });
   return productPromise;
 }

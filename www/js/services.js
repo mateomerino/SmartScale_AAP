@@ -218,7 +218,8 @@ angular.module('appServices', [])
       var bestSellingCount = 0;
       var fruits =[];
       for (var i = 0; i < products.length; i++) {
-         if (products[i].type === "fruit" || products[i].type === "fruit-cant") {
+        // if (products[i].type === "fruit" || products[i].type === "fruit-cant") {
+         if (products[i].type === "bovino" || products[i].type === "fruit-cant") {
           fruits.push(products[i]);
         }
       }
@@ -241,7 +242,7 @@ angular.module('appServices', [])
       var bestSellingCount = 0;
       var fruits =[];
       for (var i = 0; i < products.length; i++) {
-        if ((products[i].type === "fruit" || products[i].type === "fruit-cant") && products[i].best_selling && bestSellingCount < 20) {
+        if ((products[i].type === "bovino" || products[i].type === "fruit-cant") && products[i].best_selling && bestSellingCount < 20) {
           fruits.push(products[i]);
           bestSellingCount ++;
         }
@@ -265,7 +266,7 @@ angular.module('appServices', [])
       var bestSellingCount = 0;
       var vegetables =[];
       for (var i = 0; i < products.length; i++) {
-        if ((products[i].type === "vegetable" || products[i].type === "veg-cant") && products[i].best_selling && bestSellingCount < 20) {
+        if ((products[i].type === "cerdo" || products[i].type === "veg-cant") && products[i].best_selling && bestSellingCount < 20) {
           vegetables.push(products[i]);
           bestSellingCount ++;
         }
@@ -289,7 +290,7 @@ angular.module('appServices', [])
       var bestSellingCount = 0;
       var vegetables =[];
       for (var i = 0; i < products.length; i++) {
-        if (products[i].type === "vegetable" || products[i].type === "veg-cant") {
+        if (products[i].type === "cerdo" || products[i].type === "veg-cant") {
           vegetables.push(products[i]);
         }
       }
@@ -336,10 +337,11 @@ angular.module('appServices', [])
       var bestSellingCount = 0;
       var fruits =[];
       for (var i = 0; i < products.length; i++) {
-        if((products[i].type === "fruit" || products[i].type === "fruit-cant") && products[i].best_selling){
+        // if((products[i].type === "fruit" || products[i].type === "fruit-cant") && products[i].best_selling){
+          if((products[i].type === "bovino" || products[i].type === "fruit-cant") && products[i].best_selling){
           bestSellingCount++;
         }
-        if ((products[i].type === "fruit" || products[i].type === "fruit-cant") && (!products[i].best_selling || bestSellingCount >= 20)) {
+        if ((products[i].type === "bovino" || products[i].type === "fruit-cant") && (!products[i].best_selling || bestSellingCount >= 20)) {
           fruits.push(products[i]);
         }
       }
@@ -347,7 +349,29 @@ angular.module('appServices', [])
     });
     return productPromise;
   }
-
+/**
+ * Función que retorna una promesa a ser resuelta con los productos de 
+ * type == "fruit" que serán leidos cuando se utilice 
+ * service.readProductsFile().
+ * @return{promise} Promesa que se 
+ * resuelve luego de terminar de leer el contenido del archivo con una lista
+ * de todos los productos con type == "fruit"
+ */
+service.getAllElaborated = function() {
+  var productPromise = productsDeferred.promise.then( function (response){
+    var products = response;
+    var bestSellingCount = 0;
+    var fruits =[];
+    for (var i = 0; i < products.length; i++) {
+      // if (products[i].type === "fruit" || products[i].type === "fruit-cant") {
+       if (products[i].type === "elaborado" || products[i].type === "fruit-cant") {
+        fruits.push(products[i]);
+      }
+    }
+    return fruits;
+  });
+  return productPromise;
+}
 /**
  * Funcion que sobreescribe los datos proporcionados en el archivo
  * local de productos.

@@ -111,7 +111,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
                 $scope.products = [];
               }
               startUpdatePromise.resolve();
-            //  console.log("Products: ", $scope.products);
+             console.log("Products: ", $scope.products);
             });
           });
       });
@@ -290,7 +290,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               $scope.show_init_modal=false;
               $scope.$apply();
               //enableAndConnectBle();
-          },10000);
+          },1000);
         }
       }
       else{
@@ -445,6 +445,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    */
        function updateProducts () {
         $http.get("http://"+$rootScope.settings.server_ip+"/api/images", { timeout: 10000 }).then(
+          // $http.get("http://"+$rootScope.settings.server_ip+"/api/images2", { timeout: 10000 }).then(
           function(response){
             //response.data contiene los productos provenientes del server.
             var update;
@@ -519,8 +520,17 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
                   //Por cada producto de la base de datos
                   response.data.forEach(function(product){
                     //Descargo las imágenes grande y pequeña
-                    CacheImages.checkCacheStatus("http://" + $rootScope.settings.server_ip + "/" + product.small_img);
-                    CacheImages.checkCacheStatus("http://" + $rootScope.settings.server_ip + "/" + product.big_img);
+                    try {
+                      CacheImages.checkCacheStatus("http://" + $rootScope.settings.server_ip + "/" + product.small_img);
+                    } catch (error) {
+                      console.error("Error en la primera llamada a CacheImages.checkCacheStatus:", error);
+                    }
+                    try {
+                      CacheImages.checkCacheStatus("http://" + $rootScope.settings.server_ip + "/" + product.big_img);
+                    } catch (error) {
+                      console.error("Error en la segunda llamada a CacheImages.checkCacheStatus:", error);
+                    }
+                    
                   })
                 });
                 //Guardo en archivo los cambios en los productos de la app
@@ -528,7 +538,6 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
                   //Leo nuevamente los productos desde archivo
                   productDataService.readProductsFile();
                 })
-                
               }
             });
           },
@@ -542,7 +551,6 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               return;
             }
           });
-  
           try{
             $timeout.cancel(updateProductsNextPromise);
           }

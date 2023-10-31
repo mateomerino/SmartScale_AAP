@@ -221,6 +221,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
           productDataService.getAllFruits()
             .then(function (response) {
               $scope.products = response;
+              console.log("Response:",response);
               //calculo el número de páginas
               $scope.numOfPages = Math.ceil($scope.products.length / PRODS_PER_PAGE);
             });
@@ -271,6 +272,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
           productDataService.getAllFruits()
             .then(function (response) {
               $scope.products = response;
+              console.log("Response:",response);
               //calculo el número de páginas
               $scope.numOfPages = Math.ceil($scope.products.length / PRODS_PER_PAGE);
             });
@@ -319,7 +321,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
               $scope.acceptQuantity($rootScope.GuiSettings.defaultQuantity);
             }
           }
-          else if(product.type === "fruit"){
+          else if(product.type === "bovino"){
             if($rootScope.GuiSettings.modal_enabled){
               $scope.show_modal=true;
             }

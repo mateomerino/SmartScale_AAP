@@ -272,7 +272,7 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
             }
             
           }
-          else if(product.type === "vegetable"){
+          else if(product.type === "cerdo"){
             if($rootScope.GuiSettings.modal_enabled){
               $scope.show_modal=true;
             }

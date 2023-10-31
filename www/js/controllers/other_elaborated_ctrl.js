@@ -119,8 +119,7 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
             
         };
     
-    
-    
+  
     /**
      * Función que reinicializa el contador de tiempo de inactividad
      * al máximo permitido e inhabilita la cuenta atrás del mismo.
@@ -198,7 +197,7 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
               });
           }
           else{
-            productDataService.getAllFruits()
+            productDataService.getAllElaborated()
               .then(function (response) {
                 $scope.products = response;
                 //calculo el número de páginas
@@ -299,7 +298,7 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
                 $scope.acceptQuantity($rootScope.GuiSettings.defaultQuantity);
               }
             }
-            else if(product.type === "fruit"){
+            else if(product.type === "elaborado"){
               if($rootScope.GuiSettings.modal_enabled){
                 $scope.show_modal=true;
               }

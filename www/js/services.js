@@ -397,6 +397,8 @@ service.getAllElaborated = function() {
 
 .service('BluetoothService',function(){
   var bluetoothFlag=false;
+  var device;
+  var deviceName;
 
   this.getBluetoothFlag = function() {
     return bluetoothFlag;
@@ -406,6 +408,21 @@ service.getAllElaborated = function() {
     bluetoothFlag = value;
   };
 
+  this.getDevice = function(){
+    return device;
+  }
+
+  this.setDevice = function(deviceValue){
+    device=deviceValue; 
+  }
+
+  this.getDeviceName = function(){
+    return deviceName;
+  }
+
+  this.setDeviceName = function(deviceNameValue){
+    deviceName = deviceNameValue;
+  }
 })
 ;
 

@@ -437,19 +437,40 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
    * provisto al periférico BLE conectado.
    * @param{array} charArray serie de caracteres a enviar.
    */
-      function sendBluetooth(charArray){
+  function sendBluetooth(charArray){
   
-        var msg ="";
-        for (var i=0; i<charArray.length; i++){
-          msg+=String.fromCharCode(charArray[i]);
-        }
-        console.log(msg);
-  
-        ble.write($rootScope.device_id, "f0001130-0451-4000-b000-000000000000", "f0001131-0451-4000-b000-000000000000", charArray.buffer,
-          function success() {
-          }, function error(e) {
-        });
+    var msg ="";
+    for (var i=0; i<charArray.length; i++){
+      msg+=String.fromCharCode(charArray[i]);
+    }
+    console.log(msg);
+
+    // ble.write($rootScope.device_id, "f0001130-0451-4000-b000-000000000000", "f0001131-0451-4000-b000-000000000000", charArray.buffer,
+    //   function success() {
+    //   }, function error(e) {
+    // });
+    device = BluetoothService.getDevice();
+    var SERVICE_UUID = 'f0001130-0451-4000-b000-000000000000'; // Reemplaza con el UUID de tu servicio
+    var CHARACTERISTIC_UUID = 'f0001131-0451-4000-b000-000000000000'; // Reemplaza con el UUID de tu característica
+    var service = evothings.ble.getService(device, SERVICE_UUID);
+    var characteristic = evothings.ble.getCharacteristic(service, CHARACTERISTIC_UUID);
+    evothings.ble.writeCharacteristic(
+      device,
+      characteristic,
+      // charArray.buffer, // Buffer view with data to write
+      charArray,
+      function()
+      {
+          console.log('characteristic written');
+          window.plugins.toast.showShortCenter('Escribi cuestion');
+      },
+      function(errorCode)
+      {
+          console.log('writeCharacteristic error: ' + errorCode);
+          window.plugins.toast.showShortCenter('Writing error '+ errorCode);
       }
+    );
+  }
   
   /**
    * Función que activa la seleccion de productos.

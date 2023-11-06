@@ -10,6 +10,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * @default {false}
    */
      var BLE_DISABLE=true;
+    // var BLE_DISABLE=false;
   
   /**
    * Intentos realizados de conexión BLE
@@ -114,9 +115,56 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
              console.log("Products: ", $scope.products);
             });
           });
+          
+          // var deviceAddress = '54:6C:0E:B3:AF:00'; // Reemplaza con la dirección MAC de tu dispositivo
+          // connectToBluetoothDevice2($rootScope.settings.bluetooth_mac);
+          ConnectBle();
       });
   
+
+    
+      // evothings.ble.connectToDevice(
+      //   deviceAddress,
+      //   function(deviceAddress)
+      //   {
+      //       console.log('Connected to device: ' + deviceAddress.name);
+      //       window.plugins.toast.showShortCenter('Conexión exitosa');
+      //   },
+      //   function(deviceAddress)
+      //   {
+      //       console.log('Disconnected from device: ' + deviceAddress.name);
+      //       window.plugins.toast.showShortCenter('Disconnecticut');
+      //   },
+      //   function(errorCode)
+      //   {
+      //     window.plugins.toast.showShortCenter('Error'+errorCode);  
+      //     console.log('Connect error: ' + errorCode);
+      //   });
+    
+
+  //   function connectToBluetoothDevice(deviceAddress) {
+      
+  //     window.plugins.toast.showShortCenter('Me quiero CONNECTICUT');
+  //     ble.connect(
+  //         deviceAddress,
+  //         function (peripheral) {
+  //             console.log('Conexión exitosa con el dispositivo BLE', peripheral);
   
+  //             // Mostrar una notificación "toast" de éxito
+  //             window.plugins.toast.showShortCenter('Conexión exitosa');
+  
+  //             // Realiza acciones adicionales después de la conexión exitosa, si es necesario
+  //         },
+  //         function (error) {
+  //             console.error('Error al conectar con el dispositivo BLE', error);
+  
+  //             // Mostrar una notificación "toast" de error
+  //             window.plugins.toast.showShortCenter('Error al conectar con el dispositivo BLE');
+  
+  //             // Maneja errores o realiza acciones adicionales en caso de fallo
+  //         }
+  //     );
+  // }
   /**
    * Función que se ejecuta automáticamente cada vez que la applicación 
    * ingresa a la vista Home.
@@ -255,7 +303,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
                 var serverIpEmpty = fileContentJson.server_ip === undefined || fileContentJson.server_ip === "" || fileContentJson.server_ip === null;
                 var btMacEmpty = fileContentJson.bluetooth_mac === undefined || fileContentJson.bluetooth_mac === "" || fileContentJson.bluetooth_mac === null;
                 $rootScope.settings.server_ip = serverIpEmpty? '172.16.30.122:3000' : fileContentJson.server_ip;
-                $rootScope.settings.bluetooth_mac = btMacEmpty? 'CC:78:AB:8A:9A:02' : fileContentJson.bluetooth_mac;
+                $rootScope.settings.bluetooth_mac = btMacEmpty? '54:6C:0E:B3:AF:00' : fileContentJson.bluetooth_mac;
                 $scope.settings = angular.copy($rootScope.settings);
                 settingsDeferred.resolve($scope.settings);
               }
@@ -290,7 +338,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               $scope.show_init_modal=false;
               $scope.$apply();
               //enableAndConnectBle();
-          },1000);
+          },10000);
         }
       }
       else{
@@ -309,7 +357,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
   
   
   /**
-   * Funcion que corrobora si el bluetooth está encendido en el disositivo.
+   * Funcion que corrobora si el bluetooth está encendido en el dispositivo.
    * Si no se encuentra encendido, le pide al usuario que lo encienda.
    * Si el usuario no enciende el bluetooth tras el pedido explicito
    * la app no hará intentos de conexión BLE
@@ -317,26 +365,118 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * Si el dispositivo estaba encendido o es encendido por el usuario tras el pedido explicito, 
    * se procede a llamar a la función connectToBluetooth()
    */
-      function enableAndConnectBle(){
-        ble.isEnabled(
-            function() {
-                console.log("Bluetooth is enabled");
-                connectToBluetooth();
+  function ConnectBle() {
+    var tries=0;
+    window.plugins.toast.showShortCenter('QUIERO CONEEEEEEE');
+    evothings.ble.startScan(
+    function(device) {
+      window.plugins.toast.showShortCenter(device.name);
+      if (device.name === 'MT 8442') {
+      window.plugins.toast.showShortCenter('Lo encontre');
+      evothings.ble.stopScan();
+      window.plugins.toast.showShortCenter('Dejo de scanning');
+      tryConnection(device);
+      // Ahora, intentamos conectarnos al dispositivo
+      function tryConnection(device){
+        evothings.ble.connectToDevice(
+        device,
+        function(device) {
+          window.plugins.toast.showShortCenter('Conectado');
+          // Aquí puedes agregar tu código para manejar la conexión exitosa
+          $scope.connectedToBluetooth=true;
+          var SERVICE_UUID = 'f0001130-0451-4000-b000-000000000000'; // Reemplaza con el UUID de tu servicio
+          var CHARACTERISTIC_UUID = 'f0001131-0451-4000-b000-000000000000'; // Reemplaza con el UUID de tu característica
+          var service = evothings.ble.getService(device, SERVICE_UUID);
+          var characteristic = evothings.ble.getCharacteristic(service, CHARACTERISTIC_UUID);
+          var data = new Uint8Array(4);
+          data[0] = 0x68; // 'h'
+          data[1] = 0x2F; // '/'
+          data[2] = 0x63; // 'c'
+          data[3] = 0x5F; // '_'
+          evothings.ble.writeCharacteristic(
+            device,
+            characteristic,
+            data, // Buffer view with data to write
+            function()
+            {
+                console.log('characteristic written');
+                window.plugins.toast.showShortCenter('Escribi cuestion');
             },
-            function() {
-                ble.enable(
-                    function() {
-                        console.log("Bluetooth is enabled");
-                        connectToBluetooth();
-                    },
-                    function() {
-                        console.log("The user did *not* enable Bluetooth");
-                    }
-                );
-            }
-          );
+            function(errorCode)
+            {
+                console.log('writeCharacteristic error: ' + errorCode);
+                window.plugins.toast.showShortCenter('Writing error '+ errorCode);
+            });
+
+        },
+        function(device) {
+          window.plugins.toast.showShortCenter('Desconectado');
+          // Aquí puedes agregar tu código para manejar la desconexión
+        },
+        function(error) {
+          window.plugins.toast.showShortCenter('Error de conexión: ' + error);
+          // Aquí puedes agregar tu código para manejar errores de conexión
+          if(error===133){
+          tries++;
+          window.plugins.toast.showShortCenter('Intento nro'+tries);
+          if(tries===20){
+            window.plugins.toast.showShortCenter('Intente 20 times');    
+          }
+          if (device){
+            window.plugins.toast.showShortCenter('Disconnecting');
+            evothings.ble.close(device);
+          }
+          setTimeout(function() { tryConnection(device) }, 500)
+          }
+        }
+        );
       }
+      }
+    }
+    );
+  }
+        
+        
+        
+        // connectToBluetooth();
+        // ble.isEnabled(
+        //     function() {
+        //       window.plugins.toast.showShortCenter('HABILITAO!'); 
+        //         console.log("Bluetooth is enabled");
+        //         connectToBluetooth();
+        //     },
+        //     function() {
+        //         ble.enable(
+        //             function() {
+        //                 console.log("Bluetooth is enabled");
+        //                 connectToBluetooth();
+        //             },
+        //             function() {
+        //                 console.log("The user did *not* enable Bluetooth");
+        //             }
+        //         );
+        //     }
+        //   );
+      
   
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /**
    * El dispositivo escanea todos los periféricos BLE disponibles.
    * si la IP del dispositivo encontrado coincide con la configurada en la app
@@ -348,16 +488,23 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * al número máximo de intentos, se vuelve a llamar a connectToBluetooth()
    */
       function connectToBluetooth(){
+        
           tries ++;
           result = $q.defer();
-          ble.startScan([],
+          // ble.startScan([],
+          evothings.ble.startScan(
             function(device) {
+              window.plugins.toast.showShortCenter(device.name);  
              console.log(device);
-              if(device.id === $rootScope.settings.bluetooth_mac){
+              // if(device.id === $rootScope.settings.bluetooth_mac){
+                if(device.name === 'MT 8442'){
                 console.log("trying to connect");
-                ble.connect(device.id, function connectSuccess(peripheral){
+                window.plugins.toast.showShortCenter('ENCUENTRO COINDICENCE'); 
+                // ble.connect(device.id, function connectSuccess(peripheral){
+                  evothings.ble.connectToDevice(device.name,function(device){
                   $rootScope.device_id = device.id;
                   console.log("connected To Bluetooth");
+                  window.plugins.toast.showShortCenter('CONE'); 
                   if(firstConnection){
                       firstConnection=false;
                       setTimeout(reconnectBluetooth,1000);
@@ -367,17 +514,17 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
                     $scope.show_init_modal= $scope.touchs >= 15;
                     //ACÁ YA CONECTE EL BLUTUTH
                     // Establecer el valor de bluetoothFlag
-                    BluetoothService.setBluetoothFlag(true);
+                    // BluetoothService.setBluetoothFlag(true);
                     
   
-  /*                  rssiSample = $interval(function() {
+ /*                   rssiSample = $interval(function() {
                           ble.readRSSI($rootScope.settings.bluetooth_mac, function(rssi) {
                                   console.log('read RSSI ',rssi);
                               }, function(err) {
                                   console.error('unable to read RSSI',err);
                               })
                       }, 2000); 
-  */                }
+    */               }
                   tries = 0;
                   $scope.$apply();
                 }, function connectFailure(response) {

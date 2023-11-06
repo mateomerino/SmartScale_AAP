@@ -253,15 +253,15 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
           
           $scope.product_selected=product;
           
-          var flagValue = BluetoothService.getBluetoothFlag();
-          if(flagValue===true){
+          // var flagValue = BluetoothService.getBluetoothFlag();
+          // if(flagValue===true){
             try{
               sendClearMessageAndData(product.plu);
             }
             catch(err){
               console.log("Error sending message", err);
             }
-          }
+          // }
           
           if(product.type === "veg-cant"){
             if($rootScope.GuiSettings.modal_cantidad_enabled){
@@ -301,10 +301,10 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
           }
         }
 
-        var flagValue = BluetoothService.getBluetoothFlag();
-        if(flagValue===true){
+        // var flagValue = BluetoothService.getBluetoothFlag();
+        // if(flagValue===true){
           sendClearMessage();
-        }
+        // }
         
         $scope.product_selected = null;
         $scope.show_modal=false;
@@ -328,10 +328,10 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
           }
         }
 
-        var flagValue = BluetoothService.getBluetoothFlag();
-        if(flagValue==true){
+        // var flagValue = BluetoothService.getBluetoothFlag();
+        // if(flagValue==true){
           sendEnterMessage();
-        }
+        // }
         
         $timeout(enableSelection,300);
         $scope.show_modal=false;
@@ -355,15 +355,15 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
           }
         }
 
-        var flagValue = BluetoothService.getBluetoothFlag();
-        if(flagValue){
+        // var flagValue = BluetoothService.getBluetoothFlag();
+        // if(flagValue){
           try{
             sendQuantity(quantity);
           }
           catch(err){
             console.log("Error sending message", err);
           }
-        }
+        // }
 
         $scope.product_selected=null;
         $scope.show_quant_modal=false;

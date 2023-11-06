@@ -23,6 +23,8 @@ angular.module('appServices', [])
    $ionicPlatform.ready(function () {
     //Leo productos desde archivo local
     service.readProductsFile();
+    //VOY A TESTEAR CUESTIONE ASI
+    
   });
 
 

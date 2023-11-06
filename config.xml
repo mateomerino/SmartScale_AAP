@@ -72,5 +72,7 @@
     <plugin name="cordova-android-support-gradle-release" spec="^3.0.1">
         <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
     </plugin>
+    <plugin name="cordova-plugin-ble" spec="^2.0.1" />
+    <plugin name="cordova-plugin-x-toast" spec="^2.7.3" />
     <engine name="android" spec="^6.3.0" />
 </widget>

@@ -303,15 +303,15 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
           
           $scope.product_selected=product;
           
-          var flagValue = BluetoothService.getBluetoothFlag();
-          if(flagValue===true){
+          // var flagValue = BluetoothService.getBluetoothFlag();
+          // if(flagValue===true){
             try{
               sendClearMessageAndData(product.plu);
             }
             catch(err){
               console.log("Error sending message", err);
             }
-          }
+          // }
           
           if(product.type === "fruit-cant"){
             if($rootScope.GuiSettings.modal_cantidad_enabled){
@@ -350,10 +350,10 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
           }
         }
 
-        var flagValue = BluetoothService.getBluetoothFlag();
-        if(flagValue===true){
+        // var flagValue = BluetoothService.getBluetoothFlag();
+        // if(flagValue===true){
           sendClearMessage();
-        }
+        // }
         
         $scope.product_selected=null;
         $scope.show_modal=false;
@@ -379,15 +379,15 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
           }
         }
 
-        var flagValue = BluetoothService.getBluetoothFlag();
-        if(flagValue===true){
+        // var flagValue = BluetoothService.getBluetoothFlag();
+        // if(flagValue===true){
           try{
             sendEnterMessage();
           }
           catch(err){
             console.log("Error sending message", err);
           }
-        }
+        // }
           $scope.product_selected=null;
           $scope.show_modal=false;
           
@@ -410,15 +410,15 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
             $cordovaNativeAudio.play( 'pop' );
           }
         }
-        var flagValue = BluetoothService.getBluetoothFlag();
-        if(flagValue===true){
+        // var flagValue = BluetoothService.getBluetoothFlag();
+        // if(flagValue===true){
           try{
             sendQuantity(quantity);
           }
           catch(err){
             console.log("Error sending message", err);
           }
-        }
+        // }
         
         $scope.product_selected=null;
         $scope.show_quant_modal=false;

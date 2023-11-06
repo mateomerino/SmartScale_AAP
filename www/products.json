@@ -1,752 +1,542 @@
 [
     {
         "id": 1,
-        "name": "Banana",
+        "name": "Costeleta Bovina",
         "version": 1,
-        "small_img": "banana.jpg",
-        "big_img": "banana_big.jpg",
+        "small_img": "COSTELETA_BOVINA.jpg",
+        "big_img": "COSTELETA_BOVINA_BIG.jpg",
         "plu": "1",
-        "best_selling": 0,
-        "type": "fruit"
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 2,
-        "name": "Durazno",
+        "name": "Tapa De Nalga Bovina",
         "version": 1,
-        "small_img": "durazno.jpg",
-        "big_img": "durazno_big.jpg",
+        "small_img": "TAPA_DE_NALGA_BOVINA.jpg",
+        "big_img": "TAPA_DE_NALGA_BOVINA_BIG.jpg",
         "plu": "2",
-        "best_selling": 0,
-        "type": "fruit"
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 3,
-        "name": "Frutillas",
+        "name": "Carne Para Moler Especial",
         "version": 1,
-        "small_img": "frutilla.jpg",
-        "big_img": "frutilla_big.jpg",
+        "small_img": "CARNE_PARA_MOLER_ESPECIAL.jpg",
+        "big_img": "CARNE_PARA_MOLER_ESPECIAL_BIG.jpg",
         "plu": "3",
-        "best_selling": 0,
-        "type": "fruit"
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 4,
-        "name": "Naranja",
+        "name": "Aguja Bovina",
         "version": 1,
-        "small_img": "naranja.jpg",
-        "big_img": "naranja_big.jpg",
+        "small_img": "AGUJA_BOVINA.jpg",
+        "big_img": "AGUJA_BOVINA_BIG.jpg",
         "plu": "4",
-        "best_selling": 0,
-        "type": "fruit"
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 5,
-        "name": "Anana",
+        "name": "Puchero Comun Bovino",
         "version": 1,
-        "small_img": "anana.jpg",
-        "big_img": "anana_big.jpg",
+        "small_img": "PUCHERO_COMUN_BOVINO.jpg",
+        "big_img": "PUCHERO_COMUN_BOVINO_BIG.jpg",
         "plu": "5",
-        "best_selling": 0,
-        "type": "fruit"
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 6,
-        "name": "Damasco",
+        "name": "Matambre Bovino",
         "version": 1,
-        "small_img": "damasco.jpg",
-        "big_img": "damasco_big.jpg",
+        "small_img": "MATAMBRE_BOVINO.jpg",
+        "big_img": "MATAMBRE_BOVINO_BIG.jpg",
         "plu": "6",
-        "best_selling": 0,
-        "type": "fruit"
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 7,
-        "name": "Pera",
+        "name": "Colita De Cuadril Bovino",
         "version": 1,
-        "small_img": "pera.jpg",
-        "big_img": "pera_big.jpg",
+        "small_img": "COLITA_DE_CUADRIL_BOVINO.jpg",
+        "big_img": "COLITA_DE_CUADRIL_BOVINO_BIG.jpg",
         "plu": "7",
-        "best_selling": 0,
-        "type": "fruit"
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 8,
-        "name": "Kiwi",
+        "name": "Pecho Bovino",
         "version": 1,
-        "small_img": "kiwi.jpg",
-        "big_img": "kiwi_big.jpg",
+        "small_img": "PECHO_BOVINO.jpg",
+        "big_img": "PECHO_BOVINO_BIG.jpg",
         "plu": "8",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "bovino"
     },
     {
         "id": 9,
-        "name": "Manzana Verde",
+        "name": "Cuiquisuela Bovina",
         "version": 1,
-        "small_img": "manzana_verde.jpg",
-        "big_img": "manzana_verde_big.jpg",
+        "small_img": "CUIQUISUELA_BOVINA.jpg",
+        "big_img": "CUIQUISUELA_BOVINA_BIG.jpg",
         "plu": "9",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "bovino"
     },
     {
         "id": 10,
-        "name": "Mandarina",
+        "name": "Falda Bovina",
         "version": 1,
-        "small_img": "mandarina.jpg",
-        "big_img": "mandarina_big.jpg",
+        "small_img": "FALDA_BOVINA.jpg",
+        "big_img": "FALDA_BOVINA_BIG.jpg",
         "plu": "10",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "bovino"
     },
     {
         "id": 11,
-        "name": "Manzana Roja",
+        "name": "Tapa De Cuadril Bovino",
         "version": 1,
-        "small_img": "manzana_roja.jpg",
-        "big_img": "manzana_roja_big.jpg",
+        "small_img": "TAPA_DE_CUADRIL_BOVINO.jpg",
+        "big_img": "TAPA_DE_CUADRIL_BOVINO_BIG.jpg",
         "plu": "11",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "bovino"
     },
     {
         "id": 12,
-        "name": "Limon",
+        "name": "Lomito Bovino",
         "version": 1,
-        "small_img": "limon.jpg",
-        "big_img": "limon_big.jpg",
+        "small_img": "LOMITO_BOVINO.jpg",
+        "big_img": "LOMITO_BOVINO_BIG.jpg",
         "plu": "12",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "bovino"
     },
     {
         "id": 13,
-        "name": "Sandia",
+        "name": "Nalga Bovino",
         "version": 1,
-        "small_img": "sandia.jpg",
-        "big_img": "sandia_big.jpg",
+        "small_img": "NALGA_BOVINO.jpg",
+        "big_img": "NALGA_BOVINO_BIG.jpg",
         "plu": "13",
-        "best_selling": 0,
-        "type": "fruit"
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 14,
-        "name": "Cereza",
+        "name": "Paleta Con Hueso Bovina",
         "version": 1,
-        "small_img": "cereza.jpg",
-        "big_img": "cereza_big.jpg",
+        "small_img": "PALETA_CON_HUESO_BOVINA.jpg",
+        "big_img": "PALETA_CON_HUESO_BOVINA_BIG.jpg",
         "plu": "14",
-        "best_selling": 0,
-        "type": "fruit"
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 15,
-        "name": "Ciruela",
+        "name": "Puchero Especial Bovino",
         "version": 1,
-        "small_img": "ciruela.jpg",
-        "big_img": "ciruela_big.jpg",
+        "small_img": "PUCHERO_ESPECIAL_BOVINO.jpg",
+        "big_img": "PUCHERO_ESPECIAL_BOVINO_BIG.jpg",
         "plu": "15",
-        "best_selling": 0,
-        "type": "fruit"
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 16,
-        "name": "Acelga",
+        "name": "Vacio Bovino",
         "version": 1,
-        "small_img": "acelga.jpg",
-        "big_img": "acelga_big.jpg",
-        "plu": "20",
-        "best_selling": 0,
-        "type": "vegetable"
+        "small_img": "VACIO_BOVINO.jpg",
+        "big_img": "VACIO_BOVINO_BIG.jpg",
+        "plu": "16",
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 17,
-        "name": "Achicoria",
+        "name": "Cuadrada Bovina",
         "version": 1,
-        "small_img": "achicoria.jpg",
-        "big_img": "achicoria_big.jpg",
-        "plu": "21",
+        "small_img": "CUADRADA_BOVINA.jpg",
+        "big_img": "CUADRADA_BOVINA_BIG.jpg",
+        "plu": "17",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "bovino"
     },
     {
         "id": 18,
-        "name": "Aguaymanto",
+        "name": "Peceto Bovino",
         "version": 1,
-        "small_img": "aguaymanto.jpg",
-        "big_img": "aguaymanto_big.jpg",
-        "plu": "22",
+        "small_img": "PECETO_BOVINO.jpg",
+        "big_img": "PECETO_BOVINO_BIG.jpg",
+        "plu": "18",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "bovino"
     },
     {
         "id": 19,
-        "name": "Aji",
-        "version": 6,
-        "small_img": "aji.jpg",
-        "big_img": "aji_big.jpg",
-        "plu": "23",
+        "name": "Bola De Lomo Bovina",
+        "version": 1,
+        "small_img": "BOLA_DE_LOMO_BOVINA.jpg",
+        "big_img": "BOLA_DE_LOMO_BOVINA_BIG.jpg",
+        "plu": "19",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "bovino"
     },
     {
         "id": 20,
-        "name": "Ajo",
+        "name": "Cuadril Bovino",
         "version": 1,
-        "small_img": "ajo.jpg",
-        "big_img": "ajo_big.jpg",
-        "plu": "24",
+        "small_img": "CUADRIL_BOVINO.jpg",
+        "big_img": "CUADRIL_BOVINO_BIG.jpg",
+        "plu": "20",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "bovino"
     },
     {
         "id": 21,
-        "name": "Alcaucil",
+        "name": "Osobuco Bovino",
         "version": 1,
-        "small_img": "alcaucil.jpg",
-        "big_img": "alcaucil_big.jpg",
-        "plu": "25",
+        "small_img": "OSOBUCO_BOVINO.jpg",
+        "big_img": "OSOBUCO_BOVINO_BIG.jpg",
+        "plu": "21",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "bovino"
     },
     {
         "id": 22,
-        "name": "Anquito",
+        "name": "Costilla Bovina",
         "version": 1,
-        "small_img": "anquito.jpg",
-        "big_img": "anquito_big.jpg",
-        "plu": "27",
-        "best_selling": 0,
-        "type": "vegetable"
+        "small_img": "COSTILLA_BOVINA.jpg",
+        "big_img": "COSTILLA_BOVINA_BIG.jpg",
+        "plu": "22",
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 23,
-        "name": "Apio",
+        "name": "Carne Para Moler Comun",
         "version": 1,
-        "small_img": "apio.jpg",
-        "big_img": "apio_big.jpg",
-        "plu": "28",
-        "best_selling": 0,
-        "type": "vegetable"
+        "small_img": "CARNE_PARA_MOLER_COMUN.jpg",
+        "big_img": "CARNE_PARA_MOLER_COMUN_BIG.jpg",
+        "plu": "23",
+        "best_selling": 1,
+        "type": "bovino"
     },
     {
         "id": 24,
-        "name": "Arandano",
+        "name": "Bola De Lomo Cerdo",
         "version": 1,
-        "small_img": "arandano.jpg",
-        "big_img": "arandano_big.jpg",
-        "plu": "29",
-        "best_selling": 0,
-        "type": "fruit"
+        "small_img": "BOLA_DE_LOMO_CERDO.jpg",
+        "big_img": "BOLA_DE_LOMO_CERDO_BIG.jpg",
+        "plu": "24",
+        "best_selling": 1,
+        "type": "cerdo"
     },
     {
         "id": 25,
-        "name": "Arveja",
+        "name": "Tocino De Tapa",
         "version": 1,
-        "small_img": "arveja.jpg",
-        "big_img": "arveja_big.jpg",
-        "plu": "30",
-        "best_selling": 0,
-        "type": "vegetable"
+        "small_img": "TOCINO_DE_TAPA.jpg",
+        "big_img": "TOCINO_DE_TAPA_BIG.jpg",
+        "plu": "25",
+        "best_selling": 1,
+        "type": "cerdo"
     },
     {
         "id": 26,
-        "name": "Batata",
+        "name": "Chuleta De Paleta Cerdo",
         "version": 1,
-        "small_img": "batata.jpg",
-        "big_img": "batata_big.jpg",
-        "plu": "32",
-        "best_selling": 0,
-        "type": "vegetable"
+        "small_img": "CHULETA_DE_PALETA_CERDO.jpg",
+        "big_img": "CHULETA_DE_PALETA_CERDO_BIG.jpg",
+        "plu": "26",
+        "best_selling": 1,
+        "type": "cerdo"
     },
     {
         "id": 27,
-        "name": "Berenjena",
+        "name": "Bondiola De Cerdo",
         "version": 1,
-        "small_img": "berenjena.jpg",
-        "big_img": "berenjena_big.jpg",
-        "plu": "33",
+        "small_img": "BONDIOLA_DE_CERDO.jpg",
+        "big_img": "BONDIOLA_DE_CERDO_BIG.jpg",
+        "plu": "27",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "cerdo"
     },
     {
         "id": 28,
-        "name": "Brocoli",
+        "name": "Pecho Cerdo",
         "version": 1,
-        "small_img": "brocoli.jpg",
-        "big_img": "brocoli_big.jpg",
-        "plu": "34",
+        "small_img": "PECHO_CERDO.jpg",
+        "big_img": "PECHO_CERDO_BIG.jpg",
+        "plu": "28",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "cerdo"
     },
     {
         "id": 29,
-        "name": "Calabaza",
+        "name": "Cuarto Trasero",
         "version": 1,
-        "small_img": "calabaza.jpg",
-        "big_img": "calabaza_big.jpg",
-        "plu": "35",
+        "small_img": "CUARTO_TRASERO.jpg",
+        "big_img": "CUARTO_TRASERO_BIG.jpg",
+        "plu": "29",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "cerdo"
     },
     {
         "id": 30,
-        "name": "Cebolla",
+        "name": "Recorte De Cerdo",
         "version": 1,
-        "small_img": "cebolla.jpg",
-        "big_img": "cebolla_big.jpg",
-        "plu": "36",
+        "small_img": "RECORTE_DE_CERDO.jpg",
+        "big_img": "RECORTE_DE_CERDO_BIG.jpg",
+        "plu": "30",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "cerdo"
     },
     {
         "id": 31,
-        "name": "Cebolla Blanca",
+        "name": "Tocino De Lomo",
         "version": 1,
-        "small_img": "cebolla_blanca.jpg",
-        "big_img": "cebolla_blanca_big.jpg",
-        "plu": "37",
+        "small_img": "TOCINO_DE_LOMO.jpg",
+        "big_img": "TOCINO_DE_LOMO_BIG.jpg",
+        "plu": "31",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "cerdo"
     },
     {
         "id": 32,
-        "name": "Cebolla Roja",
+        "name": "Matambre Cerdo",
         "version": 1,
-        "small_img": "cebolla_roja.jpg",
-        "big_img": "cebolla_roja_big.jpg",
-        "plu": "38",
-        "best_selling": 0,
-        "type": "vegetable"
+        "small_img": "MATAMBRE_CERDO.jpg",
+        "big_img": "MATAMBRE_CERDO_BIG.jpg",
+        "plu": "32",
+        "best_selling": 1,
+        "type": "cerdo"
     },
     {
         "id": 33,
-        "name": "Champigñon",
+        "name": "Nalga De Cerdo",
         "version": 1,
-        "small_img": "champignon.jpg",
-        "big_img": "champignon_big.jpg",
-        "plu": "40",
-        "best_selling": 0,
-        "type": "vegetable"
+        "small_img": "NALGA_DE_CERDO.jpg",
+        "big_img": "NALGA_DE_CERDO_BIG.jpg",
+        "plu": "33",
+        "best_selling": 1,
+        "type": "cerdo"
     },
     {
         "id": 34,
-        "name": "Chaucha",
+        "name": "Churrasquito Cerdo",
         "version": 1,
-        "small_img": "chaucha.jpg",
-        "big_img": "chaucha_big.jpg",
-        "plu": "41",
-        "best_selling": 0,
-        "type": "vegetable"
+        "small_img": "CHURRASQUITO_CERDO.jpg",
+        "big_img": "CHURRASQUITO_CERDO_BIG.jpg",
+        "plu": "34",
+        "best_selling": 1,
+        "type": "cerdo"
     },
     {
         "id": 35,
-        "name": "Choclo",
+        "name": "Carnasa Cerdo",
         "version": 1,
-        "small_img": "choclo.jpg",
-        "big_img": "choclo_big.jpg",
-        "plu": "42",
+        "small_img": "CARNASA_CERDO.jpg",
+        "big_img": "CARNASA_CERDO_BIG.jpg",
+        "plu": "35",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "cerdo"
     },
     {
         "id": 36,
-        "name": "Ciboulette",
+        "name": "Solomillo De Cerdo",
         "version": 1,
-        "small_img": "ciboulette.jpg",
-        "big_img": "ciboulette_big.jpg",
-        "plu": "43",
+        "small_img": "SOLOMILLO_DE_CERDO.jpg",
+        "big_img": "SOLOMILLO_DE_CERDO_BIG.jpg",
+        "plu": "36",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "cerdo"
     },
     {
         "id": 37,
-        "name": "Coco",
+        "name": "Costilla Cerdo",
         "version": 1,
-        "small_img": "coco.jpg",
-        "big_img": "coco_big.jpg",
-        "plu": "45",
+        "small_img": "COSTILLA_CERDO.jpg",
+        "big_img": "COSTILLA_CERDO_BIG.jpg",
+        "plu": "37",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "cerdo"
     },
     {
         "id": 38,
-        "name": "Coliflor",
+        "name": "Puchero De Cerdo",
         "version": 1,
-        "small_img": "coliflor.jpg",
-        "big_img": "coliflor_big.jpg",
-        "plu": "46",
+        "small_img": "PUCHERO_DE_CERDO.jpg",
+        "big_img": "PUCHERO_DE_CERDO_BIG.jpg",
+        "plu": "38",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "cerdo"
     },
     {
         "id": 39,
-        "name": "Endivia",
+        "name": "Cuadril Cerdo",
         "version": 1,
-        "small_img": "endivia.jpg",
-        "big_img": "endivia_big.jpg",
-        "plu": "49",
-        "best_selling": 0,
-        "type": "vegetable"
+        "small_img": "CUADRIL_CERDO.jpg",
+        "big_img": "CUADRIL_CERDO_BIG.jpg",
+        "plu": "39",
+        "best_selling": 1,
+        "type": "cerdo"
     },
     {
         "id": 40,
-        "name": "Esparrago",
+        "name": "Peceto De Cerdo",
         "version": 1,
-        "small_img": "esparrago.jpg",
-        "big_img": "esparrago_big.jpg",
-        "plu": "50",
-        "best_selling": 0,
-        "type": "vegetable"
+        "small_img": "PECETO_DE_CERDO.jpg",
+        "big_img": "PECETO_DE_CERDO_BIG.jpg",
+        "plu": "40",
+        "best_selling": 1,
+        "type": "cerdo"
     },
     {
         "id": 41,
-        "name": "Espinaca",
+        "name": "Carre De Cerdo",
         "version": 1,
-        "small_img": "espinaca.jpg",
-        "big_img": "espinaca_big.jpg",
-        "plu": "51",
-        "best_selling": 0,
-        "type": "vegetable"
+        "small_img": "CARRE_DE_CERDO.jpg",
+        "big_img": "CARRE_DE_CERDO_BIG.jpg",
+        "plu": "41",
+        "best_selling": 1,
+        "type": "cerdo"
     },
     {
         "id": 42,
-        "name": "Frambuesa",
+        "name": "Pulpa Jamon Cerdo",
         "version": 1,
-        "small_img": "frambuesa.jpg",
-        "big_img": "frambuesa_big.jpg",
-        "plu": "52",
+        "small_img": "PULPA_JAMON_CERDO.jpg",
+        "big_img": "PULPA_JAMON_CERDO_BIG.jpg",
+        "plu": "42",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "cerdo"
     },
     {
         "id": 43,
-        "name": "Granada",
+        "name": "Chuleta De Jamon Cerdo",
         "version": 1,
-        "small_img": "granada.jpg",
-        "big_img": "granada_big.jpg",
-        "plu": "54",
+        "small_img": "CHULETA_DE_JAMON_CERDO.jpg",
+        "big_img": "CHULETA_DE_JAMON_CERDO_BIG.jpg",
+        "plu": "43",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "cerdo"
     },
     {
         "id": 44,
-        "name": "Higo",
+        "name": "Pulpa De Paleta Cerdo",
         "version": 1,
-        "small_img": "higo.jpg",
-        "big_img": "higo_big.jpg",
-        "plu": "55",
-        "best_selling": 0,
-        "type": "fruit"
+        "small_img": "PULPA_DE_PALETA_CERDO.jpg",
+        "big_img": "PULPA_DE_PALETA_CERDO_BIG.jpg",
+        "plu": "44",
+        "best_selling": 1,
+        "type": "cerdo"
     },
     {
         "id": 45,
-        "name": "Lechuga Criolla",
+        "name": "Chorizo Especial Cerdo",
         "version": 1,
-        "small_img": "lechuga_criolla.jpg",
-        "big_img": "lechuga_criolla_big.jpg",
-        "plu": "57",
-        "best_selling": 0,
-        "type": "vegetable"
+        "small_img": "CHORIZO_ESPECIAL_CERDO.jpg",
+        "big_img": "CHORIZO_ESPECIAL_CERDO_BIG.jpg",
+        "plu": "45",
+        "best_selling": 1,
+        "type": "elaborado"
     },
     {
         "id": 46,
-        "name": "Lechuga Repollada",
+        "name": "Milanes Comun Cerdo",
         "version": 1,
-        "small_img": "lechuga_repollada.jpg",
-        "big_img": "lechuga_repollada_big.jpg",
-        "plu": "58",
+        "small_img": "MILANES_COMUN_CERDO.jpg",
+        "big_img": "MILANES_COMUN_CERDO_BIG.jpg",
+        "plu": "46",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "elaborado"
     },
     {
         "id": 47,
-        "name": "Lechuga Romana",
+        "name": "Milanesa Especial Cerdo",
         "version": 1,
-        "small_img": "lechuga_romana.jpg",
-        "big_img": "lechuga_romana_big.jpg",
-        "plu": "59",
+        "small_img": "MILANESA_ESPECIAL_CERDO.jpg",
+        "big_img": "MILANESA_ESPECIAL_CERDO_BIG.jpg",
+        "plu": "47",
         "best_selling": 1,
-        "type": "vegetable"
+        "type": "elaborado"
     },
     {
         "id": 48,
-        "name": "Lima",
+        "name": "Milanesa Comun Pollo",
         "version": 1,
-        "small_img": "lima.jpg",
-        "big_img": "lima_big.jpg",
-        "plu": "60",
+        "small_img": "MILANESA_COMUN_POLLO.jpg",
+        "big_img": "MILANESA_COMUN_POLLO_BIG.jpg",
+        "plu": "48",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "elaborado"
     },
     {
         "id": 49,
-        "name": "Mango",
+        "name": "Chorizo Especial Pollo",
         "version": 1,
-        "small_img": "mango.jpg",
-        "big_img": "mango_big.jpg",
-        "plu": "63",
-        "best_selling": 0,
-        "type": "fruit"
+        "small_img": "CHORIZO_ESPECIAL_POLLO.jpg",
+        "big_img": "CHORIZO_ESPECIAL_POLLO_BIG.jpg",
+        "plu": "49",
+        "best_selling": 1,
+        "type": "elaborado"
     },
     {
         "id": 50,
-        "name": "Maracuya",
+        "name": "Milanesa Especial Bovina",
         "version": 1,
-        "small_img": "maracuya.jpg",
-        "big_img": "maracuya_big.jpg",
-        "plu": "66",
+        "small_img": "MILANESA_ESPECIAL_BOVINA.jpg",
+        "big_img": "MILANESA_ESPECIAL_BOVINA_BIG.jpg",
+        "plu": "50",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "elaborado"
     },
     {
         "id": 51,
-        "name": "Melon",
+        "name": "Milanesa Comun Bovina",
         "version": 1,
-        "small_img": "melon.jpg",
-        "big_img": "melon_big.jpg",
-        "plu": "67",
+        "small_img": "MILANESA_COMUN_BOVINA.jpg",
+        "big_img": "MILANESA_COMUN_BOVINA_BIG.jpg",
+        "plu": "51",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "elaborado"
     },
     {
         "id": 52,
-        "name": "Mora",
+        "name": "Milanesa Especial Pollo",
         "version": 1,
-        "small_img": "mora.jpg",
-        "big_img": "mora_big.jpg",
-        "plu": "68",
-        "best_selling": 0,
-        "type": "fruit"
+        "small_img": "MILANESA_ESPECIAL_POLLO.jpg",
+        "big_img": "MILANESA_ESPECIAL_POLLO_BIG.jpg",
+        "plu": "52",
+        "best_selling": 1,
+        "type": "elaborado"
     },
     {
         "id": 53,
-        "name": "Palta",
+        "name": "Salchicha Parrillera",
         "version": 1,
-        "small_img": "palta.jpg",
-        "big_img": "palta_big.jpg",
-        "plu": "70",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 55,
-        "name": "Papaya",
-        "version": 1,
-        "small_img": "papaya.jpg",
-        "big_img": "papaya_big.jpg",
-        "plu": "72",
+        "small_img": "SALCHICHA_PARRILLERA.jpg",
+        "big_img": "SALCHICHA_PARRILLERA_BIG.jpg",
+        "plu": "53",
         "best_selling": 1,
-        "type": "fruit"
+        "type": "elaborado"
     },
     {
-        "id": 56,
-        "name": "Pepino",
+        "id": 54,
+        "name": "Chorizo Comun Bovino",
         "version": 1,
-        "small_img": "pepino.jpg",
-        "big_img": "pepino_big.jpg",
-        "plu": "73",
+        "small_img": "CHORIZO_COMUN_BOVINO.jpg",
+        "big_img": "CHORIZO_COMUN_BOVINO_BIG.jpg",
+        "plu": "54",
         "best_selling": 1,
-        "type": "vegetable"
-    },
-    {
-        "id": 57,
-        "name": "Perejil",
-        "version": 1,
-        "small_img": "perejil.jpg",
-        "big_img": "perejil_big.jpg",
-        "plu": "75",
-        "best_selling": 1,
-        "type": "vegetable"
-    },
-    {
-        "id": 58,
-        "name": "Pimiento Amarillo",
-        "version": 1,
-        "small_img": "pimiento_a.jpg",
-        "big_img": "pimiento_a_big.jpg",
-        "plu": "76",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 59,
-        "name": "Pimiento Rojo",
-        "version": 1,
-        "small_img": "pimiento_r.jpg",
-        "big_img": "pimiento_r_big.jpg",
-        "plu": "77",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 60,
-        "name": "Pimiento Verde",
-        "version": 1,
-        "small_img": "pimiento_v.jpg",
-        "big_img": "pimiento_v_big.jpg",
-        "plu": "78",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 61,
-        "name": "Pomelo",
-        "version": 1,
-        "small_img": "pomelo.jpg",
-        "big_img": "pomelo_big.jpg",
-        "plu": "79",
-        "best_selling": 0,
-        "type": "fruit"
-    },
-    {
-        "id": 62,
-        "name": "Rabanito",
-        "version": 1,
-        "small_img": "rabanito.jpg",
-        "big_img": "rabanito_big.jpg",
-        "plu": "80",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 63,
-        "name": "Remolacha",
-        "version": 1,
-        "small_img": "remolacha.jpg",
-        "big_img": "remolacha_big.jpg",
-        "plu": "81",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 64,
-        "name": "Repollito De Bruselas",
-        "version": 1,
-        "small_img": "repollito_de_bruselas.jpg",
-        "big_img": "repollito_de_bruselas_big.jpg",
-        "plu": "82",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 65,
-        "name": "Repollo",
-        "version": 1,
-        "small_img": "repollo.jpg",
-        "big_img": "repollo_big.jpg",
-        "plu": "83",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 66,
-        "name": "Repollo Morado",
-        "version": 1,
-        "small_img": "repollo_morado.jpg",
-        "big_img": "repollo_morado_big.jpg",
-        "plu": "84",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 67,
-        "name": "Rucula",
-        "version": 1,
-        "small_img": "rucula.jpg",
-        "big_img": "rucula_big.jpg",
-        "plu": "85",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 68,
-        "name": "Tomate De Arbol",
-        "version": 1,
-        "small_img": "tomate_de_arbol.jpg",
-        "big_img": "tomate_de_arbol_big.jpg",
-        "plu": "87",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 69,
-        "name": "Tomate Perita",
-        "version": 1,
-        "small_img": "tomate_perita.jpg",
-        "big_img": "tomate_perita_big.jpg",
-        "plu": "88",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 70,
-        "name": "Tomate Redondo",
-        "version": 1,
-        "small_img": "tomate_redondo.jpg",
-        "big_img": "tomate_redondo_big.jpg",
-        "plu": "89",
-        "best_selling": 0,
-        "type": "vegetable"
-    },
-    {
-        "id": 71,
-        "name": "Tuna",
-        "version": 1,
-        "small_img": "tuna.jpg",
-        "big_img": "tuna_big.jpg",
-        "plu": "90",
-        "best_selling": 0,
-        "type": "fruit"
-    },
-    {
-        "id": 72,
-        "name": "Uva",
-        "version": 1,
-        "small_img": "uva.jpg",
-        "big_img": "uva_big.jpg",
-        "plu": "91",
-        "best_selling": 0,
-        "type": "fruit"
-    },
-    {
-        "id": 73,
-        "name": "Uva Blanca",
-        "version": 1,
-        "small_img": "uva_verde.jpg",
-        "big_img": "uva_verde_big.jpg",
-        "plu": "92",
-        "best_selling": 0,
-        "type": "fruit"
-    },
-    {
-        "id": 74,
-        "name": "Zanahoria",
-        "version": 1,
-        "small_img": "zanahoria.jpg",
-        "big_img": "zanahoria_big.jpg",
-        "plu": "93",
-        "best_selling": 1,
-        "type": "vegetable"
-    },
-    {
-        "id": 75,
-        "name": "Zapallito",
-        "version": 1,
-        "small_img": "zapallito.jpg",
-        "big_img": "zapallito_big.jpg",
-        "plu": "94",
-        "best_selling": 1,
-        "type": "vegetable"
-    },
-    {
-        "id": 76,
-        "name": "Zapallo",
-        "version": 1,
-        "small_img": "zapallo.jpg",
-        "big_img": "zapallo_big.jpg",
-        "plu": "95",
-        "best_selling": 1,
-        "type": "vegetable"
+        "type": "elaborado"
     }
 ]

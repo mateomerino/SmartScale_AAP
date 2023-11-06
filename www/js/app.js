@@ -130,7 +130,7 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
     defaultQuantity:"1",
 
     // variable para habilitar/deshabilitar el modo bucle al avanzar páginas de productos
-    page_loop_enabled:false,
+    page_loop_enabled:true,
 
     best_selling_screen_enabled: false
   };
@@ -169,7 +169,7 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
   $rootScope.GuiSettings = libertadSettings;
 
   //seleccion del setting de tamaño de matriz 
-  $rootScope.MatrizSettings = matriz24prod;
+  $rootScope.MatrizSettings = matriz35prod;
   
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

@@ -2,7 +2,6 @@
 //Este es el controller de la vista /templates/other_fruits.html
 controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, $http, $ionicPlatform, $ionicHistory, $cordovaNativeAudio, $state, $timeout, productDataService,BluetoothService) {
 
- 
     /**
      * Indice de inicio de productos a mostrar en la página actual
      * @todo  Cambiar nombre a 'currentPage'
@@ -118,7 +117,6 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
             }
             
         };
-    
   
     /**
      * Función que reinicializa el contador de tiempo de inactividad
@@ -326,12 +324,10 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
               $cordovaNativeAudio.play( 'pop' );
             }
           }
-  
           // var flagValue = BluetoothService.getBluetoothFlag();
           // if(flagValue===true){
             sendClearMessage();
           // }
-          
           $scope.product_selected=null;
           $scope.show_modal=false;
           $scope.show_quant_modal=false;
@@ -348,14 +344,12 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
      */
         $scope.acceptProduct = function (product) {
           restartIdleTimeCountdownOF();
-  
           if($scope.show_modal===true){
             //SONIDITO
             if(window.cordova){
               $cordovaNativeAudio.play( 'pop' );
             }
           }
-  
           // var flagValue = BluetoothService.getBluetoothFlag();
           // if(flagValue===true){
             try{
@@ -367,7 +361,6 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
           // }
             $scope.product_selected=null;
             $scope.show_modal=false;
-            
             $timeout(enableSelection,300);
         }
     
@@ -479,10 +472,6 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
       }
       console.log(msg);
 
-      // ble.write($rootScope.device_id, "f0001130-0451-4000-b000-000000000000", "f0001131-0451-4000-b000-000000000000", charArray.buffer,
-      //   function success() {
-      //   }, function error(e) {
-      // });
       device = BluetoothService.getDevice();
       var SERVICE_UUID = 'f0001130-0451-4000-b000-000000000000'; // Reemplaza con el UUID de tu servicio
       var CHARACTERISTIC_UUID = 'f0001131-0451-4000-b000-000000000000'; // Reemplaza con el UUID de tu característica
@@ -491,7 +480,6 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
       evothings.ble.writeCharacteristic(
         device,
         characteristic,
-        // charArray.buffer, // Buffer view with data to write
         charArray,
         function()
         {

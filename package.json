@@ -6,6 +6,7 @@
     "cordova-android": "^6.3.0",
     "cordova-android-support-gradle-release": "^3.0.1",
     "cordova-plugin-ble": "^2.0.1",
+    "cordova-plugin-bluetooth-status": "^1.0.4",
     "cordova-plugin-compat": "^1.1.0",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-crosswalk-webview": "^2.4.0",
@@ -64,7 +65,8 @@
         "ANDROID_SUPPORT_VERSION": "27.+"
       },
       "cordova-plugin-ble": {},
-      "cordova-plugin-x-toast": {}
+      "cordova-plugin-x-toast": {},
+      "cordova-plugin-bluetooth-status": {}
     },
     "platforms": [
       "android"

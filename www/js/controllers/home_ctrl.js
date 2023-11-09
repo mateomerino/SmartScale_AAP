@@ -219,10 +219,10 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               }
               finally{
                 var serverIpEmpty = fileContentJson.server_ip === undefined || fileContentJson.server_ip === "" || fileContentJson.server_ip === null;
-                var btName = fileContentJson.bluetooth_mac === undefined || fileContentJson.bluetooth_mac === "" || fileContentJson.bluetooth_mac === null;
+                var btMacEmpty = fileContentJson.bluetooth_mac === undefined || fileContentJson.bluetooth_mac === "" || fileContentJson.bluetooth_mac === null;
                 $rootScope.settings.server_ip = serverIpEmpty? '172.16.30.122:3000' : fileContentJson.server_ip;
+                $rootScope.settings.bluetooth_mac = btMacEmpty? 'CC:78:AB:87:57:03' : fileContentJson.bluetooth_mac;
                 // $rootScope.settings.bluetooth_mac = btMacEmpty? '54:6C:0E:B3:AF:00' : fileContentJson.bluetooth_mac;
-                $rootScope.settings.bluetooth_mac = btName? 'MT 8442' : fileContentJson.bluetooth_mac;
                 $scope.settings = angular.copy($rootScope.settings);
                 settingsDeferred.resolve($scope.settings);
               }
@@ -232,9 +232,10 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
         }
         else{
           var serverIp='172.16.30.122:3000';
-          var btName = 'MT 8442';
+          var btMac = 'CC:78:AB:87:57:03';
+          // var btMac = '54:6C:0E:B3:AF:00';
           $rootScope.settings.server_ip = serverIp;
-          $rootScope.settings.bluetooth_mac = btName;
+          $rootScope.settings.bluetooth_mac = btMac;
           $scope.settings = angular.copy($rootScope.settings);
           settingsDeferred.resolve($scope.settings);
           return settingsDeferred.promise
@@ -417,20 +418,14 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
     window.plugins.toast.showShortCenter('QUIERO CONE');
     tries ++;
     result = $q.defer();
-    // ble.startScan([],
     evothings.ble.startScan(
       function(device) {
-        // // if(device.id === $rootScope.settings.bluetooth_mac){
-        //ESTA ES LA SUCCESSFUL FUNCTION DEL STARTSCAN!!!!
-
-        if(device.address === '54:6C:0E:B3:AF:00'){
-          //Encuentro el shit
+        //ESTA ES LA SUCCESSFUL FUNCTION DEL STARTSCAN!!!
+        if(device.address === $rootScope.settings.bluetooth_mac){
           window.plugins.toast.showShortCenter('Lo encontre');
           evothings.ble.stopScan();
-          // ble.connect(
           evothings.ble.connectToDevice(
             device, 
-            // function connectSuccess(peripheral){
             function (device){
               //SUCCESFULL FUNCTION DEL CONNECTICUT
               if(firstConnection){
@@ -445,9 +440,11 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
                 window.plugins.toast.showShortCenter('SECOND CONNECTION');
                 BluetoothService.setDevice(device);
                 BluetoothService.setDeviceName(device.name);
+                BluetoothService.setBluetoothFlag(true);
                 connectionSuccess(device);
                 $scope.connectedToBluetooth = true;
                 $scope.show_init_modal= $scope.touchs >= 15;
+                
                 
 /*                  rssiSample = $interval(function() {
                     ble.readRSSI($rootScope.settings.bluetooth_mac, function(rssi) {
@@ -460,7 +457,6 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
             tries = 0;
             $scope.$apply();
             }, 
-            // function connectFailure(response) {
             function (device) {
               //Error function del connecticut
               window.plugins.toast.showShortCenter('Desconectado');
@@ -483,23 +479,13 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
     });
 
     setTimeout(function() {
-        ble.stopScan(
-            function(){ 
-                ble.isConnected(
-                  $rootScope.settings.bluetooth_mac,
-                  function() {
-                      console.log("Peripheral is connected");
-                  },
-                  function() {
-                      console.log("Peripheral is *not* connected");
-                      if(tries <= MAX_BLE_TRIES){connectToBluetooth();}
-                  }
-                ); 
-              },
-            function() { console.log("stopScan failed"); }
-        );
+      flag=BluetoothService.getBluetoothFlag();
+      if(flag==false){
+        if(tries <= MAX_BLE_TRIES){connectToBluetooth();}
+      }else{
+        window.plugins.toast.showShortCenter('Im connected');
+      }
     }, 15000);
-
 };
 
   

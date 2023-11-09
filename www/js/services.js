@@ -400,7 +400,7 @@ service.getAllElaborated = function() {
   var device;
   var deviceName;
   var deviceAddress;
-
+  
   this.getBluetoothFlag = function() {
     return bluetoothFlag;
   };

@@ -113,6 +113,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
             //  console.log("Products: ", $scope.products);
             });
           });
+          console.log("Seteo:" + $rootScope.settings.bluetooth_mac);
           // ConnectBle();
       });
   
@@ -218,9 +219,10 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               }
               finally{
                 var serverIpEmpty = fileContentJson.server_ip === undefined || fileContentJson.server_ip === "" || fileContentJson.server_ip === null;
-                var btMacEmpty = fileContentJson.bluetooth_mac === undefined || fileContentJson.bluetooth_mac === "" || fileContentJson.bluetooth_mac === null;
+                var btName = fileContentJson.bluetooth_mac === undefined || fileContentJson.bluetooth_mac === "" || fileContentJson.bluetooth_mac === null;
                 $rootScope.settings.server_ip = serverIpEmpty? '172.16.30.122:3000' : fileContentJson.server_ip;
-                $rootScope.settings.bluetooth_mac = btMacEmpty? '54:6C:0E:B3:AF:00' : fileContentJson.bluetooth_mac;
+                // $rootScope.settings.bluetooth_mac = btMacEmpty? '54:6C:0E:B3:AF:00' : fileContentJson.bluetooth_mac;
+                $rootScope.settings.bluetooth_mac = btName? 'MT 8442' : fileContentJson.bluetooth_mac;
                 $scope.settings = angular.copy($rootScope.settings);
                 settingsDeferred.resolve($scope.settings);
               }
@@ -230,9 +232,9 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
         }
         else{
           var serverIp='172.16.30.122:3000';
-          var btMac = 'CC:78:AB:8A:9A:02';
+          var btName = 'MT 8442';
           $rootScope.settings.server_ip = serverIp;
-          $rootScope.settings.bluetooth_mac = btMac;
+          $rootScope.settings.bluetooth_mac = btName;
           $scope.settings = angular.copy($rootScope.settings);
           settingsDeferred.resolve($scope.settings);
           return settingsDeferred.promise
@@ -265,8 +267,8 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               $scope.init10Secs=false;
               $scope.connectedToBluetooth=false;
               $scope.$apply();
-              // enableAndConnectBle();
-              ConnectBle();
+              enableAndConnectBle();
+              // ConnectBle();
           },8000);
         }
       }
@@ -283,66 +285,63 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
   //  * se procede a llamar a la función connectToBluetooth()
   //  */
   function ConnectBle() {
-    var tries=0;
     window.plugins.toast.showShortCenter('QUIERO CONEEEEEEE');
     evothings.ble.startScan(
     function(device) {
-      window.plugins.toast.showShortCenter(device.name);
-      if (device.name === 'MT 8442') {
-      window.plugins.toast.showShortCenter('Lo encontre');
-      evothings.ble.stopScan();
-      window.plugins.toast.showShortCenter('Dejo de scanning');
-      tryConnection(device);
-      // Ahora, intentamos conectarnos al dispositivo
-      function tryConnection(device){
-        evothings.ble.connectToDevice(
-        device,
-        function(device) {
-          window.plugins.toast.showShortCenter('Conectado');
-
-          if(firstConnection){
-            firstConnection=false;
-            BluetoothService.setDevice(device);
-            BluetoothService.setDeviceName(device.name);
-          }
-          $scope.connectedToBluetooth=true;
-          $scope.show_init_modal= $scope.touchs >= 15;
-          $scope.$apply();
-          connectionSuccess();
-          // tryReconnection();
-          // Aquí puedes agregar tu código para manejar la conexión exitosa
-          
-        },
-        function(device) {
-          window.plugins.toast.showShortCenter('Desconectado');
-          // Aquí puedes agregar tu código para manejar la desconexión
-        },
-        function(error) {
-          window.plugins.toast.showShortCenter('Error de conexión: ' + error);
-          // Aquí puedes agregar tu código para manejar errores de conexión
-          if(error===133){
-            tries++;
-            window.plugins.toast.showShortCenter('Intento nro'+tries);
-          if(tries===20){
-            window.plugins.toast.showShortCenter('Intente 20 times');    
-          }
-          if (device){
-            window.plugins.toast.showShortCenter('Disconnecting');
-            evothings.ble.close(device);
-          }
-          setTimeout(function() { tryConnection(device) }, 500)
-          }
-        }
-        );
+      window.plugins.toast.showShortCenter(device.address);
+      if (device.address === '54:6C:0E:B3:AF:00') {
+        window.plugins.toast.showShortCenter('Lo encontre');
+        // window.plugins.toast.showShortCenter(device.id);
+        // window.plugins.toast.showShortCenter('ADDRESS'+ device.address);
+        evothings.ble.stopScan();
+        // window.plugins.toast.showShortCenter('Dejo de scanning');
+        tryConnection(device);
       }
+    });
+  }
+
+  function tryConnection(device){
+    var tries=0;
+    evothings.ble.connectToDevice(
+    device,
+    function(device) {
+      if(firstConnection){
+        firstConnection=false;
+        window.plugins.toast.showShortCenter('FIRST CONNECTION');
+        BluetoothService.setDevice(device);
+        BluetoothService.setDeviceName(device.name);
+        BluetoothService.setDeviceAddres(device.address);
+        tryReconnection(device);
+        connectionSuccess();
+      }
+    },
+    function(device) {
+      window.plugins.toast.showShortCenter('Desconectado');
+      // Aquí puedes agregar tu código para manejar la desconexión
+    },
+    function(error) {
+      window.plugins.toast.showShortCenter('Error de conexión: ' + error);
+      // Aquí puedes agregar tu código para manejar errores de conexión
+      if(error===133){
+        tries++;
+        window.plugins.toast.showShortCenter('Intento nro'+tries);
+      if(tries===20){
+        window.plugins.toast.showShortCenter('Intente 20 times');    
+      }
+      if (device){
+        window.plugins.toast.showShortCenter('Disconnecting');
+        evothings.ble.close(device);
+      }
+      setTimeout(function() { ConnectBle(device) }, 500)
       }
     }
     );
   }
-  
-  function tryReconnection(){
 
-  }
+  // function tryReconnection(device){
+  //   evothings.ble.close(device);
+  //   ConnectBle();
+  // }
 
   function connectionSuccess(){
     device = BluetoothService.getDevice();
@@ -362,13 +361,13 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
       function()
       {
           console.log('characteristic written');
-          // window.plugins.toast.showShortCenter('Escribi cuestion');
-          window.plugins.toast.showShortCenter('SERVICE UUID: '+ service);
+          // window.plugins.toast.showShortCenter('Escritura correcta');
+          // window.plugins.toast.showShortCenter('SERVICE UUID: '+ service);
       },
       function(errorCode)
       {
           console.log('writeCharacteristic error: ' + errorCode);
-          window.plugins.toast.showShortCenter('Writing error '+ errorCode);
+          window.plugins.toast.showShortCenter('Error escritura'+ errorCode);
       }
     );
   }
@@ -382,7 +381,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
  * se procede a llamar a la función connectToBluetooth()
  */
     function enableAndConnectBle(){
-      // connectToBluetooth();
+      connectToBluetooth();
       // ble.isEnabled(
       //     function() {
       //         console.log("Bluetooth is enabled");
@@ -415,24 +414,41 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * al número máximo de intentos, se vuelve a llamar a connectToBluetooth()
    */
   function connectToBluetooth(){
+    window.plugins.toast.showShortCenter('QUIERO CONE');
     tries ++;
     result = $q.defer();
-    ble.startScan([],
+    // ble.startScan([],
+    evothings.ble.startScan(
       function(device) {
-       console.log(device);
-        if(device.id === $rootScope.settings.bluetooth_mac){
-          console.log("trying to connect");
-          ble.connect(device.id, function connectSuccess(peripheral){
-            $rootScope.device_id = device.id;
-            console.log("connected To Bluetooth");
-            if(firstConnection){
-                firstConnection=false;
-                setTimeout(reconnectBluetooth,1000);
-            }
-            else{
-              $scope.connectedToBluetooth = true;
-              $scope.show_init_modal= $scope.touchs >= 15;
+        // // if(device.id === $rootScope.settings.bluetooth_mac){
+        //ESTA ES LA SUCCESSFUL FUNCTION DEL STARTSCAN!!!!
 
+        if(device.address === '54:6C:0E:B3:AF:00'){
+          //Encuentro el shit
+          window.plugins.toast.showShortCenter('Lo encontre');
+          evothings.ble.stopScan();
+          // ble.connect(
+          evothings.ble.connectToDevice(
+            device, 
+            // function connectSuccess(peripheral){
+            function (device){
+              //SUCCESFULL FUNCTION DEL CONNECTICUT
+              if(firstConnection){
+                firstConnection=false;
+                window.plugins.toast.showShortCenter('FIRST CONNECTION');
+                BluetoothService.setDevice(device);
+                BluetoothService.setDeviceName(device.name);
+                connectionSuccess(device);
+                setTimeout(reconnectBluetooth,1000);
+              }
+              else{
+                window.plugins.toast.showShortCenter('SECOND CONNECTION');
+                BluetoothService.setDevice(device);
+                BluetoothService.setDeviceName(device.name);
+                connectionSuccess(device);
+                $scope.connectedToBluetooth = true;
+                $scope.show_init_modal= $scope.touchs >= 15;
+                
 /*                  rssiSample = $interval(function() {
                     ble.readRSSI($rootScope.settings.bluetooth_mac, function(rssi) {
                             console.log('read RSSI ',rssi);
@@ -440,23 +456,31 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
                             console.error('unable to read RSSI',err);
                         })
                 }, 2000); 
-*/                }
+*/              } 
             tries = 0;
             $scope.$apply();
-          }, function connectFailure(response) {
-//                  console.log(response);
-              console.log("Failed to connect Bluetooth: ",response);
+            }, 
+            // function connectFailure(response) {
+            function (device) {
+              //Error function del connecticut
+              window.plugins.toast.showShortCenter('Desconectado');
               $scope.connectedToBluetooth=false;
               $scope.show_init_modal= true;
               $scope.$apply();
               if(tries <= MAX_BLE_TRIES){connectToBluetooth();}
               return;
-          });
-        }
-      }, function(){
+            },
+            function(error){
+              //Error function del connecticut
+              window.plugins.toast.showShortCenter('Error de conexión: ' + error);
+            });
+          }
+      }, 
+      function(){
+        //ESTA ES LA ERROR FUNCTION DEL STARTSCAN!
           if(tries <= MAX_BLE_TRIES){connectToBluetooth();}
           return;
-      });
+    });
 
     setTimeout(function() {
         ble.stopScan(
@@ -485,15 +509,25 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * llamando nuevamente a enableAndConnectBle()
    */
       function reconnectBluetooth(){
-        console.log("disconnecting");
-        ble.disconnect( $rootScope.settings.bluetooth_mac,
-                        function() {
-                            console.log("Peripheral is disconnected");
-                            setTimeout(enableAndConnectBle,1000);
-                        },
-                        function() {
-                            console.log("Peripheral failed to disconnect");
-                        });
+        // console.log("disconnecting");
+        window.plugins.toast.showShortCenter('Quiero desconectar');
+        var device= BluetoothService.getDevice();
+        evothings.ble.close(device);
+        connectionSuccess();
+        setTimeout(enableAndConnectBle,1000);
+        window.plugins.toast.showShortCenter('Puse el timeout pa reconecta');
+
+        // ble.disconnect( $rootScope.settings.bluetooth_mac,
+        
+        //   device,
+        //   function() {
+        //       console.log("Peripheral is disconnected");
+        //       window.plugins.toast.showShortCenter('BLE CLOSE');
+        //       setTimeout(enableAndConnectBle,1000);
+        //   },
+        //   function() {
+        //       console.log("Peripheral failed to disconnect");
+        //   });
       }
   
   /**
@@ -673,15 +707,17 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * archivo una vez haya sido determinada.
    */
       function getFileEntry(fileName){
-        var fileEntryDeferred = $q.defer();
-        window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function (fs) {
-        console.log('file system open: ' + fs.name);
-        console.log(fs);
-        fs.getFile(fileName, { create: true, exclusive: false }, function (fileEntry) {
-            fileEntryDeferred.resolve(fileEntry);
-        }, onErrorCreateFile);
-        }, onErrorLoadFs);
-        return fileEntryDeferred.promise;
+        if(window.cordova){
+          var fileEntryDeferred = $q.defer();
+          window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function (fs) {
+          console.log('file system open: ' + fs.name);
+          console.log(fs);
+          fs.getFile(fileName, { create: true, exclusive: false }, function (fileEntry) {
+              fileEntryDeferred.resolve(fileEntry);
+          }, onErrorCreateFile);
+          }, onErrorLoadFs);
+          return fileEntryDeferred.promise;
+        }
       };
   
   /**

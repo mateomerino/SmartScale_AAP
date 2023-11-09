@@ -399,6 +399,7 @@ service.getAllElaborated = function() {
   var bluetoothFlag=false;
   var device;
   var deviceName;
+  var deviceAddress;
 
   this.getBluetoothFlag = function() {
     return bluetoothFlag;
@@ -423,6 +424,15 @@ service.getAllElaborated = function() {
   this.setDeviceName = function(deviceNameValue){
     deviceName = deviceNameValue;
   }
+
+  this.getDeviceAddress = function() {
+    return deviceAddress;
+  }
+
+  this.setDeviceAddress = function(deviceAddressValue) {
+    deviceAddress = deviceAddressValue;
+  }
+  
 })
 ;
 

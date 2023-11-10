@@ -9,8 +9,8 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * @type {boolean}
    * @default {false}
    */
-    //  var BLE_DISABLE=true;
-    var BLE_DISABLE=false;
+     var BLE_DISABLE=true;
+    // var BLE_DISABLE=false;
   
   /**
    * Intentos realizados de conexión BLE

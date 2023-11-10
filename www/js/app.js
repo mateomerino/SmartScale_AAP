@@ -43,8 +43,8 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
   };
 
   var libertadSettings = { 
-    menu_picture: "res_img/inicio_aap.png",
-    menu_logo: "res_img/logo-LIBERTAD.png",
+    menu_picture: "res_img/test.png",
+    menu_logo: "res_img/uaa-test.png",
     arrow_imgs:{
       left:"res_img/flechaIzq_lib.png",
       right:"res_img/flechaDer_lib.png",

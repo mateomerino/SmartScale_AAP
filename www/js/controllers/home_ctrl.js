@@ -260,7 +260,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               $scope.show_init_modal=false;
               $scope.$apply();
               //enableAndConnectBle();
-          },10000);
+          },1000);
         }
       }
       else{
@@ -390,7 +390,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
       cordova.plugins.BluetoothStatus.enableBT();
       setTimeout(function () {
         connectToBluetooth();
-      }, 10000);
+      }, 8000);
       
     }
       

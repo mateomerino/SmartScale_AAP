@@ -20,53 +20,43 @@ HAY QUE ARREGLAR LA CUESTION CON EL PLUGIN BLUETOOTH. PARA COMPILAR HASTA DONDE 
 
 	Plugins bluetooth que no causan problemas de compilación:
 	cordova-plugin-ble
-		Funcion que Casi anda, llega a error 133 de conexion y no sale de ahi
-										function ConnectBle() {
-									var tries=0;
-									window.plugins.toast.showShortCenter('QUIERO CONEEEEEEE');
-									evothings.ble.startScan(
-									function(device) {
-										window.plugins.toast.showShortCenter(device.name);
-										if (device.name === 'MT 8442') {
-										window.plugins.toast.showShortCenter('Lo encontre');
-										evothings.ble.stopScan();
-										window.plugins.toast.showShortCenter('Dejo de scanning');
-										tryConnection(device);
-										// Ahora, intentamos conectarnos al dispositivo
-										function tryConnection(device){
-											evothings.ble.connectToDevice(
-											device,
-											function(device) {
-												window.plugins.toast.showShortCenter('Conectado');
-												// Aquí puedes agregar tu código para manejar la conexión exitosa
-											},
-											function(device) {
-												window.plugins.toast.showShortCenter('Desconectado');
-												// Aquí puedes agregar tu código para manejar la desconexión
-											},
-											function(error) {
-												window.plugins.toast.showShortCenter('Error de conexión: ' + error);
-												// Aquí puedes agregar tu código para manejar errores de conexión
-												if(error===133){
-												tries++;
-												window.plugins.toast.showShortCenter('Intento nro'+tries);
-												if(tries===20){
-													window.plugins.toast.showShortCenter('Intente 20 times');    
-												}
-												if (device){
-													window.plugins.toast.showShortCenter('Disconnecting');
-													evothings.ble.close(device);
-												}
-												setTimeout(function() { tryConnection(device) }, 500)
-												}
-											}
-											);
-										}
-										
-										}
-									}
-									);
-									}
+		FUNCION QUE SE USA PA TESTEA CUESTION
+function enableAndConnectBle(){
+      setTimeout(function() {
+        evothings.ble.startScan(
+          function(device) {
+            //ESTA ES LA SUCCESSFUL FUNCTION DEL STARTSCAN!!!
+            window.plugins.toast.showShortCenter('Estoy buscando');
+            if(device.address === $rootScope.settings.bluetooth_mac)
+            {
+              window.plugins.toast.showShortCenter('ENCUENTRO');
+              evothings.ble.stopScan();
+              evothings.ble.connect(
+                device, 
+                function(connectInfo)
+                {
+                  // evothings.ble.stopScan();
+                  //SUCCESFULL FUNCTION DEL CONNECTICUT
+                  window.plugins.toast.showShortCenter('CONECTADO');
+                  BluetoothService.setDevice(device);
+                  BluetoothService.setDeviceName(device.name);
+                  connectionSuccess();
+                  $scope.connectedToBluetooth = true;
+                  $scope.show_init_modal= $scope.touchs >= 15;
+                }, 
+                function(errorCode)
+                {
+                  //Error function del connecticut
+                  window.plugins.toast.showShortCenter('Error de conexión: ' + errorCode);
+                });
+            }
+          }, 
+          function(){
+            //ESTA ES LA ERROR FUNCTION DEL STARTSCAN!
+            window.plugins.toast.showShortCenter('STARTSCAN ERROR');
+        });
+      }, 10000);
+	  }
 	cordova-plugin-networking-bluetooth
 	cordova-plugin-bluetoothclassic-serial
 

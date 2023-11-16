@@ -230,7 +230,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
                 var btMacEmpty = fileContentJson.bluetooth_mac === undefined || fileContentJson.bluetooth_mac === "" || fileContentJson.bluetooth_mac === null;
                 $rootScope.settings.server_ip = serverIpEmpty? '172.16.30.122:3000' : fileContentJson.server_ip;
                 // $rootScope.settings.bluetooth_mac = btMacEmpty? 'CC:78:AB:87:57:03' : fileContentJson.bluetooth_mac;
-                $rootScope.settings.bluetooth_mac = btMacEmpty? '54:6C:0E:B3:AF:00' : fileContentJson.bluetooth_mac;
+                $rootScope.settings.bluetooth_mac = btMacEmpty? '54:6C:0E:B3:AF:01' : fileContentJson.bluetooth_mac;
                 $scope.settings = angular.copy($rootScope.settings);
                 settingsDeferred.resolve($scope.settings);
               }
@@ -241,7 +241,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
         else{
           var serverIp='172.16.30.122:3000';
           // var btMac = 'CC:78:AB:87:57:03';
-          var btMac = '54:6C:0E:B3:AF:00';
+          var btMac = '54:6C:0E:B3:AF:01';
           $rootScope.settings.server_ip = serverIp;
           $rootScope.settings.bluetooth_mac = btMac;
           $scope.settings = angular.copy($rootScope.settings);

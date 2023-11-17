@@ -228,9 +228,9 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               finally{
                 var serverIpEmpty = fileContentJson.server_ip === undefined || fileContentJson.server_ip === "" || fileContentJson.server_ip === null;
                 var btMacEmpty = fileContentJson.bluetooth_mac === undefined || fileContentJson.bluetooth_mac === "" || fileContentJson.bluetooth_mac === null;
-                $rootScope.settings.server_ip = serverIpEmpty? '172.16.30.122:3000' : fileContentJson.server_ip;
+                $rootScope.settings.server_ip = serverIpEmpty? '10.85.1.16:3000' : fileContentJson.server_ip;
                 // $rootScope.settings.bluetooth_mac = btMacEmpty? 'CC:78:AB:87:57:03' : fileContentJson.bluetooth_mac;
-                $rootScope.settings.bluetooth_mac = btMacEmpty? '54:6C:0E:B3:AF:01' : fileContentJson.bluetooth_mac;
+                $rootScope.settings.bluetooth_mac = btMacEmpty? '00:E0:7C:F9:B6:23' : fileContentJson.bluetooth_mac;
                 $scope.settings = angular.copy($rootScope.settings);
                 settingsDeferred.resolve($scope.settings);
               }
@@ -239,9 +239,8 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
           return settingsDeferred.promise
         }
         else{
-          var serverIp='172.16.30.122:3000';
-          // var btMac = 'CC:78:AB:87:57:03';
-          var btMac = '54:6C:0E:B3:AF:01';
+          var serverIp='10.85.1.16:3000';
+          var btMac = '00:E0:7C:F9:B6:23';
           $rootScope.settings.server_ip = serverIp;
           $rootScope.settings.bluetooth_mac = btMac;
           $scope.settings = angular.copy($rootScope.settings);
@@ -294,12 +293,12 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
   //  * se procede a llamar a la función connectToBluetooth()
   //  */
   function ConnectBle() {
-    window.plugins.toast.showShortCenter('QUIERO CONEEEEEEE');
+    // window.plugins.toast.showShortCenter('QUIERO CONEEEEEEE');
     evothings.ble.startScan(
     function(device) {
-      window.plugins.toast.showShortCenter(device.address);
+      // window.plugins.toast.showShortCenter(device.address);
       if (device.address === '54:6C:0E:B3:AF:00') {
-        window.plugins.toast.showShortCenter('Lo encontre');
+        // window.plugins.toast.showShortCenter('Lo encontre');
         // window.plugins.toast.showShortCenter(device.id);
         // window.plugins.toast.showShortCenter('ADDRESS'+ device.address);
         evothings.ble.stopScan();
@@ -343,7 +342,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
       function(errorCode)
       {
           console.log('writeCharacteristic error: ' + errorCode);
-          window.plugins.toast.showShortCenter('Error escritura'+ errorCode);
+          // window.plugins.toast.showShortCenter('Error escritura'+ errorCode);
       }
     );
   }
@@ -382,11 +381,11 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
     // result = $q.defer();
     if($scope.connectedToBluetooth===false){
       scantimes++;
-      window.plugins.toast.showShortCenter('Scantimes: ' + scantimes);
+      // window.plugins.toast.showShortCenter('Scantimes: ' + scantimes);
       evothings.ble.startScan(
         function(device) {
           //ESTA ES LA SUCCESSFUL FUNCTION DEL STARTSCAN!!!
-          window.plugins.toast.showShortCenter('Encuentro: ' + device.name);
+          // window.plugins.toast.showShortCenter('Encuentro: ' + device.name);
           if(device.address === $rootScope.settings.bluetooth_mac){
             evothings.ble.stopScan();
             BluetoothService.setDevice(device);
@@ -396,7 +395,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
         }, 
         function(error){
           //ESTA ES LA ERROR FUNCTION DEL STARTSCAN!
-          window.plugins.toast.showShortCenter('STARTSCAN ERROR' + error);
+          // window.plugins.toast.showShortCenter('STARTSCAN ERROR' + error);
             if(tries <= MAX_BLE_TRIES){connectToBluetooth();}
       });
     }
@@ -406,7 +405,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
   {
     evothings.ble.stopScan();
     device=BluetoothService.getDevice();
-    window.plugins.toast.showShortCenter('Me quiero conectar a ' + device.name);
+    // window.plugins.toast.showShortCenter('Me quiero conectar a ' + device.name);
     $scope.$apply();
     setTimeout(function(){
       evothings.ble.connectToDevice(
@@ -446,12 +445,12 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
         function (device)
         {
           // //Error function del connecticut
-          window.plugins.toast.showShortCenter('Desconectado');
+          // window.plugins.toast.showShortCenter('Desconectado');
         },
         function(error)
         {
           //Error function del connecticut
-          window.plugins.toast.showShortCenter('Error de conexión: ' + error);
+          // window.plugins.toast.showShortCenter('Error de conexión: ' + error);
         });
     },5000)
 
@@ -474,7 +473,6 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
         device=null;
         connectionSuccess();
         setTimeout(enableAndConnectBle,1000);
-        
       }
   
       

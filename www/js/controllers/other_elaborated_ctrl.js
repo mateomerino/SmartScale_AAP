@@ -484,12 +484,12 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
         function()
         {
             console.log('characteristic written');
-            window.plugins.toast.showShortCenter('Escribi cuestion');
+            // window.plugins.toast.showShortCenter('Escribi cuestion');
         },
         function(errorCode)
         {
             console.log('writeCharacteristic error: ' + errorCode);
-            window.plugins.toast.showShortCenter('Writing error '+ errorCode);
+            // window.plugins.toast.showShortCenter('Writing error '+ errorCode);
         }
       );
     }

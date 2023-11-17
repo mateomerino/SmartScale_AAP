@@ -312,8 +312,8 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
             }
             catch(err){
               console.log("Error sending message", err);
-              window.plugins.toast.showShortCenter('ERROR: '+ err);
-              window.plugins.toast.showShortCenter('SERVICE UUID: '+ service);
+              // window.plugins.toast.showShortCenter('ERROR: '+ err);
+              // window.plugins.toast.showShortCenter('SERVICE UUID: '+ service);
             }
           // }
           
@@ -520,12 +520,12 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
           function()
           {
               console.log('characteristic written');
-              window.plugins.toast.showShortCenter('Escribi cuestion');
+              // window.plugins.toast.showShortCenter('Escribi cuestion');
           },
           function(errorCode)
           {
               console.log('writeCharacteristic error: ' + errorCode);
-              window.plugins.toast.showShortCenter('Writing error '+ errorCode);
+              // window.plugins.toast.showShortCenter('Writing error '+ errorCode);
           }
         );
       }

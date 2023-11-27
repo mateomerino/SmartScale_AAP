@@ -220,7 +220,6 @@ angular.module('appServices', [])
       var bestSellingCount = 0;
       var meet =[];
       for (var i = 0; i < products.length; i++) {
-        // if (products[i].type === "fruit" || products[i].type === "fruit-cant") {
          if (products[i].type === "bovino" || products[i].type === "fruit-cant") {
           meet.push(products[i]);
         }
@@ -314,32 +313,7 @@ angular.module('appServices', [])
       var bestSellingCount = 0;
       var pork =[];
       for (var i = 0; i < products.length; i++) {
-        if((products[i].type === "vegetable" || products[i].type === "veg-cant") && products[i].best_selling){
-          pork++;
-        }
-        if ((products[i].type === "vegetable" || products[i].type === "veg-cant") && (!products[i].best_selling || bestSellingCount >= 20)) {
-          pork.push(products[i]);
-        }
-      }
-      return pork;
-    });
-    return productPromise;
-  }
-
-/**
- * Función que retorna una promesa a ser resuelta con los productos de 
- * type == "vegetable"que no sean mejor vendidos.
- * @return{promise} Promesa que se 
- * resuelve luego de terminar de leer el contenido del archivo con una lista
- * de todos los productos con type == "vegetable"
- */
-  service.getOtherPork = function() {
-    var productPromise = productsDeferred.promise.then( function (response){
-      var products = response;
-      var bestSellingCount = 0;
-      var pork =[];
-      for (var i = 0; i < products.length; i++) {
-        // if((products[i].type === "fruit" || products[i].type === "fruit-cant") && products[i].best_selling){
+        
           if((products[i].type === "bovino" || products[i].type === "fruit-cant") && products[i].best_selling){
           bestSellingCount++;
         }
@@ -351,6 +325,7 @@ angular.module('appServices', [])
     });
     return productPromise;
   }
+
 /**
  * Función que retorna una promesa a ser resuelta con los productos de 
  * type == "fruit" que serán leidos cuando se utilice 
@@ -365,7 +340,6 @@ service.getAllElaborated = function() {
     var bestSellingCount = 0;
     var elaborated =[];
     for (var i = 0; i < products.length; i++) {
-      // if (products[i].type === "fruit" || products[i].type === "fruit-cant") {
        if (products[i].type === "elaborado" || products[i].type === "fruit-cant") {
         elaborated.push(products[i]);
       }
@@ -374,6 +348,7 @@ service.getAllElaborated = function() {
   });
   return productPromise;
 }
+
 /**
  * Funcion que sobreescribe los datos proporcionados en el archivo
  * local de productos.
@@ -389,9 +364,6 @@ service.getAllElaborated = function() {
       });
      return def.promise
   }
-
-  
-
   return service;
 })
 

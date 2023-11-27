@@ -291,16 +291,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
             
           }
           
-          
-          if(product.type === "fruit-cant"){
-            if($rootScope.GuiSettings.modal_cantidad_enabled){
-              $scope.show_quant_modal=true;
-            }
-            else{
-              $scope.acceptQuantity($rootScope.GuiSettings.defaultQuantity);
-            }
-          }
-          else if(product.type === "bovino"){
+          if(product.type === "bovino"){
             if($rootScope.GuiSettings.modal_enabled){
               $scope.show_modal=true;
             }
@@ -329,10 +320,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
           }
         }
 
-        // var flagValue = BluetoothService.getBluetoothFlag();
-        // if(flagValue===true){
-          sendClearMessage();
-        // }
+        sendClearMessage();
         
         $scope.product_selected=null;
         $scope.show_modal=false;
@@ -358,19 +346,17 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
           }
         }
 
-        // var flagValue = BluetoothService.getBluetoothFlag();
-        // if(flagValue===true){
-          try{
-            sendEnterMessage();
-          }
-          catch(err){
-            console.log("Error sending message", err);
-          }
-        // }
-          $scope.product_selected=null;
-          $scope.show_modal=false;
-          
-          $timeout(enableSelection,300);
+        try{
+          sendEnterMessage();
+        }
+        catch(err){
+          console.log("Error sending message", err);
+        }
+      
+        $scope.product_selected=null;
+        $scope.show_modal=false;
+        
+        $timeout(enableSelection,300);
       }
   
   /**
@@ -389,19 +375,16 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
             $cordovaNativeAudio.play( 'pop' );
           }
         }
-        // var flagValue = BluetoothService.getBluetoothFlag();
-        // if(flagValue===true){
-          try{
-            sendQuantity(quantity);
-          }
-          catch(err){
-            console.log("Error sending message", err);
-          }
-        // }
+        
+        try{
+          sendQuantity(quantity);
+        }
+        catch(err){
+          console.log("Error sending message", err);
+        }
         
         $scope.product_selected=null;
         $scope.show_quant_modal=false;
-        
         $timeout(enableSelection,300);
       }
   
@@ -480,8 +463,6 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
           msg+=String.fromCharCode(charArray[i]);
         }
         console.log(msg);
-  
-        
         device = BluetoothService.getDevice();
         
         var SERVICE_UUID = 'f0001130-0451-4000-b000-000000000000'; // Reemplaza con el UUID de tu servicio
@@ -495,12 +476,10 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
           function()
           {
               console.log('characteristic written');
-              // window.plugins.toast.showShortCenter('Escribi cuestion');
           },
           function(errorCode)
           {
               console.log('writeCharacteristic error: ' + errorCode);
-              // window.plugins.toast.showShortCenter('Writing error '+ errorCode);
           }
         );
       }

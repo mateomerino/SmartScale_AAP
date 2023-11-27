@@ -42,7 +42,7 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
     best_selling_screen_enabled: true
   };
 
-  var libertadSettings = { 
+  var uaaSettings = { 
     menu_picture: "res_img/test.png",
     menu_logo: "res_img/uaa-test.png",
     arrow_imgs:{
@@ -166,7 +166,7 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
   };
 
   //selección del setting de Gui a utilizar
-  $rootScope.GuiSettings = libertadSettings;
+  $rootScope.GuiSettings = uaaSettings;
 
   //seleccion del setting de tamaño de matriz 
   $rootScope.MatrizSettings = matriz35prod;

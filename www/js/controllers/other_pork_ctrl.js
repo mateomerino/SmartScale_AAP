@@ -35,7 +35,6 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
    */
       var PRODS_PER_PAGE = $rootScope.MatrizSettings.prodsPerPage;
   
-  
   /**
    * Variable que indica si se muestra la pantalla de pesaje de productos para productos por peso
    * (/templates/modal.html)
@@ -112,8 +111,6 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
           
       };
   
-  
-  
   /**
    * Función que decrementa el contador de tiempo de inactividad
    * en uno. Si se encuentra habilitada la cuenta regresiva, se programa 
@@ -143,7 +140,6 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
          if( $scope.startPage<0){$scope.startPage=numOfPages-1;}
          $scope.startIndex=$scope.startPage * PRODS_PER_PAGE;
       }
-  
   
   /**
    * Función que se llama automáticamente antes de ingresar a la vista.
@@ -260,16 +256,7 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
             console.log("Error sending message", err);
           }
           
-          if(product.type === "veg-cant"){
-            if($rootScope.GuiSettings.modal_cantidad_enabled){
-              $scope.show_quant_modal=true;
-            }
-            else{
-              $scope.acceptQuantity($rootScope.GuiSettings.defaultQuantity);
-            }
-            
-          }
-          else if(product.type === "cerdo"){
+          if(product.type === "cerdo"){
             if($rootScope.GuiSettings.modal_enabled){
               $scope.show_modal=true;
             }

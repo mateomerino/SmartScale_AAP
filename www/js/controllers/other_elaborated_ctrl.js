@@ -284,16 +284,8 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
             catch(err){
               console.log("Error sending message", err);
             }
-          
-            if(product.type === "fruit-cant"){
-              if($rootScope.GuiSettings.modal_cantidad_enabled){
-                $scope.show_quant_modal=true;
-              }
-              else{
-                $scope.acceptQuantity($rootScope.GuiSettings.defaultQuantity);
-              }
-            }
-            else if(product.type === "elaborado"){
+    
+            if(product.type === "elaborado"){
               if($rootScope.GuiSettings.modal_enabled){
                 $scope.show_modal=true;
               }

@@ -122,7 +122,6 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
             });
           });
           console.log("Seteo:" + $rootScope.settings.bluetooth_mac);
-          // ConnectBle();
       });
   
   /**
@@ -283,41 +282,31 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
       
   
   
-  // /**
-  //  * Funcion que corrobora si el bluetooth está encendido en el dispositivo.
-  //  * Si no se encuentra encendido, le pide al usuario que lo encienda.
-  //  * Si el usuario no enciende el bluetooth tras el pedido explicito
-  //  * la app no hará intentos de conexión BLE
-  //  * y quedará en estado de inicialización de conexión.
-  //  * Si el dispositivo estaba encendido o es encendido por el usuario tras el pedido explicito, 
-  //  * se procede a llamar a la función connectToBluetooth()
-  //  */
+  /**
+   * Funcion que corrobora si el bluetooth está encendido en el dispositivo.
+   * Si no se encuentra encendido, le pide al usuario que lo encienda.
+   * Si el usuario no enciende el bluetooth tras el pedido explicito
+   * la app no hará intentos de conexión BLE
+   * y quedará en estado de inicialización de conexión.
+   * Si el dispositivo estaba encendido o es encendido por el usuario tras el pedido explicito, 
+   * se procede a llamar a la función connectToBluetooth()
+   */
   function ConnectBle() {
-    // window.plugins.toast.showShortCenter('QUIERO CONEEEEEEE');
     evothings.ble.startScan(
     function(device) {
-      // window.plugins.toast.showShortCenter(device.address);
       if (device.address === '54:6C:0E:B3:AF:00') {
-        // window.plugins.toast.showShortCenter('Lo encontre');
-        // window.plugins.toast.showShortCenter(device.id);
-        // window.plugins.toast.showShortCenter('ADDRESS'+ device.address);
         evothings.ble.stopScan();
-        // window.plugins.toast.showShortCenter('Dejo de scanning');
         tryConnection(device);
       }
     });
   }
 
-  
-
-  function tryReconnection(device){
-    evothings.ble.close(device);
-    setTimeout(function(){
-      ConnectBle();
-    },2000);
-    
-  }
-
+/**
+ * Funcion que se utiliza para saber si la conexión fue exitosa al momento que
+ * se quiere usar la tablet con la balanza. Envia un caracter 'enter' por Bluetooth y 
+ * la balanza hace un sonido que lo recice, de esta manera el usuario sabe si la conexión
+ * es exitosa.
+ */
   function connectionSuccess(){
     device = BluetoothService.getDevice();
     var SERVICE_UUID = 'f0001130-0451-4000-b000-000000000000'; // Reemplaza con el UUID de tu servicio
@@ -336,24 +325,18 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
       function()
       {
           console.log('characteristic written');
-          // window.plugins.toast.showShortCenter('Escritura correcta');
-          // window.plugins.toast.showShortCenter('SERVICE UUID: '+ service);
       },
       function(errorCode)
       {
           console.log('writeCharacteristic error: ' + errorCode);
-          // window.plugins.toast.showShortCenter('Error escritura'+ errorCode);
       }
     );
   }
   /**
  * Funcion que corrobora si el bluetooth está encendido en el disositivo.
- * Si no se encuentra encendido, le pide al usuario que lo encienda.
- * Si el usuario no enciende el bluetooth tras el pedido explicito
- * la app no hará intentos de conexión BLE
- * y quedará en estado de inicialización de conexión.
- * Si el dispositivo estaba encendido o es encendido por el usuario tras el pedido explicito, 
- * se procede a llamar a la función connectToBluetooth()
+ * Si no se encuentra encendido, lo enciende.
+ * Si el bluetooth se encuentra encendido, no hace nada.
+ * Luego de 10 segundos, llama a ConnectToBluetooth
  */
   function enableAndConnectBle(){
     setTimeout(function () {
@@ -364,28 +347,19 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
     },10000);
   }
       
-
   /**
    * El dispositivo escanea todos los periféricos BLE disponibles.
-   * si la IP del dispositivo encontrado coincide con la configurada en la app
-   * se intenta la conexión. Si la conexión es exitosa y 
-   * es la primera vez que se conecta, se procede a la reconexión utilizando la funcion
-   * reconnectBluetooth().
-   * Tras 15 segundos se detiene el escaneo de periféricos BLE.
-   * Si la app no estabeció conexión aún y si los intentos de conexión son menores 
-   * al número máximo de intentos, se vuelve a llamar a connectToBluetooth()
+   * si la IP del dispositivo encontrado coincide con la configurada en la app,
+   * se setean las características del dispositivo en BlueetoothService y 
+   * se intenta la conexión. 
    */
   function connectToBluetooth(){
-    // window.plugins.toast.showShortCenter('QUIERO CONE');
     tries ++;
     // result = $q.defer();
     if($scope.connectedToBluetooth===false){
       scantimes++;
-      // window.plugins.toast.showShortCenter('Scantimes: ' + scantimes);
       evothings.ble.startScan(
         function(device) {
-          //ESTA ES LA SUCCESSFUL FUNCTION DEL STARTSCAN!!!
-          // window.plugins.toast.showShortCenter('Encuentro: ' + device.name);
           if(device.address === $rootScope.settings.bluetooth_mac){
             evothings.ble.stopScan();
             BluetoothService.setDevice(device);
@@ -394,18 +368,21 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
             }
         }, 
         function(error){
-          //ESTA ES LA ERROR FUNCTION DEL STARTSCAN!
-          // window.plugins.toast.showShortCenter('STARTSCAN ERROR' + error);
             if(tries <= MAX_BLE_TRIES){connectToBluetooth();}
       });
     }
   };
 
+  /**
+   * Se obtiene el dispositivo mediante el BluetoothService y se intenta
+   * conectar. Si la conexión es exitosa setea las variables correspondientes
+   * y el programa queda listo para utilizar.
+   * Si la conexión falla, espera 15 segundos y vuelve a intentar la conexión.
+   */
   function tryConnection()
   {
     evothings.ble.stopScan();
     device=BluetoothService.getDevice();
-    // window.plugins.toast.showShortCenter('Me quiero conectar a ' + device.name);
     $scope.$apply();
     setTimeout(function(){
       evothings.ble.connectToDevice(
@@ -415,42 +392,23 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
           //SUCCESFULL FUNCTION DEL CONNECTICUT
           if(firstConnection){
             firstConnection=false;
-            // window.plugins.toast.showShortCenter('FIRST CONNECTION');
             BluetoothService.setDevice(device);
             BluetoothService.setDeviceName(device.name);
             connectionSuccess(device);
             $scope.connectedToBluetooth = true;
             $scope.show_init_modal= $scope.touchs >= 15;
-            
           }
-          else{
-            // window.plugins.toast.showShortCenter('SECOND CONNECTION');
-            BluetoothService.setDevice(device);
-            BluetoothService.setDeviceName(device.name);
-            BluetoothService.setBluetoothFlag(true);
-            $scope.connectedToBluetooth = true;
-            $scope.show_init_modal= $scope.touchs >= 15;
-            connectionSuccess(device);
-  /*                  rssiSample = $interval(function() {
-                ble.readRSSI($rootScope.settings.bluetooth_mac, function(rssi) {
-                        console.log('read RSSI ',rssi);
-                    }, function(err) {
-                        console.error('unable to read RSSI',err);
-                    })
-            }, 2000); 
-  */              } 
         tries = 0;
         $scope.$apply();
         }, 
         function (device)
         {
-          // //Error function del connecticut
-          // window.plugins.toast.showShortCenter('Desconectado');
+          //Error function del connect
         },
         function(error)
         {
-          //Error function del connecticut
-          // window.plugins.toast.showShortCenter('Error de conexión: ' + error);
+          //Error function del connect
+          
         });
     },5000)
 
@@ -460,22 +418,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
       }
     },15000)
   }
-  /**
-   * Esta función desconecta el periférico BLE, y una vez desconectado 
-   * exitosamente, tras un segundo procede a la reconexión
-   * llamando nuevamente a enableAndConnectBle()
-   */
-      function reconnectBluetooth(){
-        // console.log("disconnecting");
-        // window.plugins.toast.showShortCenter('Quiero desconectar');
-        var device= BluetoothService.getDevice();
-        evothings.ble.close(device);
-        device=null;
-        connectionSuccess();
-        setTimeout(enableAndConnectBle,1000);
-      }
   
-      
   /**
    * Esta función se encarga de actualizar las imágenes.
    * Ejecuta un request GET al servidor de imagenes sobre su api /api/images
@@ -489,7 +432,6 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    */
        function updateProducts () {
         $http.get("http://"+$rootScope.settings.server_ip+"/api/images", { timeout: 10000 }).then(
-          // $http.get("http://"+$rootScope.settings.server_ip+"/api/images2", { timeout: 10000 }).then(
           function(response){
             //response.data contiene los productos provenientes del server.
             var update;
@@ -685,7 +627,6 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
         }, onErrorReadFile);
         return fileContentDeferred.promise;
       }
-  
       function onErrorCreateFile(error){
         console.log(error)
       };
@@ -693,8 +634,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
       function onErrorReadFile(error){
         console.log(error)
       };
-  
-  
+
       function onErrorLoadFs(error){
         console.log(error)
       };

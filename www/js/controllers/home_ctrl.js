@@ -84,7 +84,6 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
   
   /**
    * Variable que indica si es la primera vez que se establece la conexión BLE.
-   * Se utiliza para realizar la doble conexión requerida.
    * @type {boolean}
    */
       firstConnection=true;
@@ -94,6 +93,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * @type {number}
    */
   var scantimes = 0;
+
   /**
    * Función que se ejecuta automáticamente cuando se terminan de 
    * cargar todos los archivos en el browser y el dispositivo está listo.
@@ -153,51 +153,42 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
       });
 
   /**
-   * Función que cambia a la pantalla de Frutas,
+   * Función que cambia a la pantalla de Carne,
    * es llamada desde la vista (templates/home.html).
    */
       $scope.goToMeet = function () {
         $ionicHistory.nextViewOptions({
           disableBack: true
         });
-        if($rootScope.GuiSettings.best_selling_screen_enabled){
-          $state.go("top_fruits");
-        }
-        else{
+        
           $state.go("other_meet");
-        }
+        
       };
   
   /**
-   * Función que cambia a la pantalla de Verduras,
+   * Función que cambia a la pantalla de Cerdo,
    * es llamada desde la vista (templates/home.html).
    */
   $scope.goToPork = function () {
     $ionicHistory.nextViewOptions({
       disableBack: true
     });
-    if($rootScope.GuiSettings.best_selling_screen_enabled){
-      $state.go("top_vegetables");
-    }
-    else{
+    
       $state.go("other_pork");
-    }
+    
   };
 
   /**
-   * Función que cambia a la pantalla de Verduras,
+   * Función que cambia a la pantalla de Elaborados,
    * es llamada desde la vista (templates/home.html).
    */
   $scope.goToElaborated = function () {
     $ionicHistory.nextViewOptions({
       disableBack: true
     });
-    if($rootScope.GuiSettings.best_selling_screen_enabled){
-      $state.go("top_vegetables");
-    }
-    else{
+    
       $state.go("other_elaborated");
-    }
+    
   };
   
   /**

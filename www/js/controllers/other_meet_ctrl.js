@@ -98,10 +98,9 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
       };
   
    
-      /**
-      * Función que cambia a la vista vegetables (/templates/other_vegetables.html)
-      * Se llama desde la vista fruits (/templates/other_fruits.html)
-    */
+  /**
+  * Función que cambia a la vista pork (/templates/other_pork.html)
+  */
       $scope.goToPork = function () {
         $ionicHistory.nextViewOptions({
           disableBack: true

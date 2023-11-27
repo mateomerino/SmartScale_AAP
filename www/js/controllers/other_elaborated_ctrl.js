@@ -97,8 +97,8 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
         };
     
       /**
-        * Función que cambia a la vista vegetables (/templates/other_vegetables.html)
-        * Se llama desde la vista fruits (/templates/other_fruits.html)
+        * Función que cambia a la vista meet (/templates/other_meet.html)
+        * Se llama desde la vista pork (/templates/other_pork.html)
       */
         $scope.goToMeet = function () {
             $ionicHistory.nextViewOptions({

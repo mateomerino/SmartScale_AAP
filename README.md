@@ -133,9 +133,9 @@ y cuando el sistema pregunte si desea instalar @ionic/cli-plugin-ionic1 responde
 	
 ## Versiones con las que se compiló en 2023
 
-node: 8.0.0
-cordova: 8.1.2
-plataforma cordova-android: 6.3.0
+node: 8.0.0,
+cordova: 8.1.2,
+plataforma cordova-android: 6.3.0,
 ionic: 3
 
 Ejecutar todos los pasos descritos anteriormente. Luego de añadir la plataforma Android, si falla la compilacion con un error 'No resource identifier found for attribute 'appComponentFactory' in package 'android' ejecutar el comando:

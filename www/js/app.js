@@ -30,14 +30,12 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
     // variable para habilitar/deshabilitar el modal de productos pesables
     modal_enabled:false,
     
-
     // variable para habilitar/deshabilitar el modo bucle al avanzar páginas de productos
     page_loop_enabled:true,
 
     modal_cantidad_enabled:true,
 
     defaultQuantity:"1",
-    
     // variable para habilitar la pantalla de 20 productos más vendidos
     best_selling_screen_enabled: true
   };
@@ -54,12 +52,10 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
     //COLOR DEL MENU PRINCIPAL
     menu_container_style: {
       "height": "100%",
-      // "background-color": "rgb(237,28,36)"
       "background-color": "rgb(255, 115, 0)"
     },
     //COLOR DE LOS BORDES DE LAS PANTALLAS DE FRUTAS Y VERDURAS
     color_style: {
-      // "background-color": "rgb(237,28,36)"
       "background-color": "rgb(255, 115, 0)"
     },
     // variable para habilitar/deshabilitar el modal de productos pesables
@@ -177,7 +173,6 @@ angular.module('starter', ['ionic', 'ngCordova','appControllers', 'appServices',
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
-
     }
     if (window.StatusBar) {
       StatusBar.hide();

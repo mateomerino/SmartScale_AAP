@@ -100,9 +100,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
    * Se ejecuta una única vez.
    */
       $ionicPlatform.ready(function () {
-        //////////////////////
         cordova.plugins.BluetoothStatus.initPlugin();
-        ////////////////////////
         showInitModal();
         getSettings().then(function(settings){
             //Obtengo los productos desde el archivo local de la app
@@ -275,31 +273,11 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
               $scope.connectedToBluetooth=false;
               $scope.$apply();
               enableAndConnectBle();
-              // ConnectBle();
           },8000);
         }
       }
       
-  
-  
-  /**
-   * Funcion que corrobora si el bluetooth está encendido en el dispositivo.
-   * Si no se encuentra encendido, le pide al usuario que lo encienda.
-   * Si el usuario no enciende el bluetooth tras el pedido explicito
-   * la app no hará intentos de conexión BLE
-   * y quedará en estado de inicialización de conexión.
-   * Si el dispositivo estaba encendido o es encendido por el usuario tras el pedido explicito, 
-   * se procede a llamar a la función connectToBluetooth()
-   */
-  function ConnectBle() {
-    evothings.ble.startScan(
-    function(device) {
-      if (device.address === '54:6C:0E:B3:AF:00') {
-        evothings.ble.stopScan();
-        tryConnection(device);
-      }
-    });
-  }
+ 
 
 /**
  * Funcion que se utiliza para saber si la conexión fue exitosa al momento que
@@ -389,7 +367,7 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
         device, 
         function (device)
         {
-          //SUCCESFULL FUNCTION DEL CONNECTICUT
+          //SUCCESFULL FUNCTION DEL CONNECT
           if(firstConnection){
             firstConnection=false;
             BluetoothService.setDevice(device);
@@ -656,7 +634,6 @@ controllers.controller('HomeCtrl', function ($scope,$rootScope, $http, $q, $ioni
           fileWriter.onwriteend = function() {
               resultDeferred.resolve(true);
           };
-  
           fileWriter.onerror = function (e) {
               console.log("Failed to write file: " + e.toString());
               resultDeferred.resolve(false);

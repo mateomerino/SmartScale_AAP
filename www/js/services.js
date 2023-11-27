@@ -38,9 +38,7 @@ angular.module('appServices', [])
         getFileEntry("/products.json").then(function(fileEntry){
           readFile(fileEntry).then(function(fileContent){
             var result = [];
-
             try{
-
               if(window.cordova){
                 result = JSON.parse(fileContent);
               }
@@ -94,7 +92,6 @@ angular.module('appServices', [])
         return fileEntryDeferred.promise;
       }
       };
-
 
 /**
  * Funcion que retorna el contenido de un archivo

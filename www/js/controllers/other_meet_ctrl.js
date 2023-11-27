@@ -464,8 +464,8 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
         console.log(msg);
         device = BluetoothService.getDevice();
         
-        var SERVICE_UUID = 'f0001130-0451-4000-b000-000000000000'; // Reemplaza con el UUID de tu servicio
-        var CHARACTERISTIC_UUID = 'f0001131-0451-4000-b000-000000000000'; // Reemplaza con el UUID de tu característica
+        var SERVICE_UUID = 'f0001130-0451-4000-b000-000000000000'; 
+        var CHARACTERISTIC_UUID = 'f0001131-0451-4000-b000-000000000000'; 
         var service = evothings.ble.getService(device, SERVICE_UUID);
         var characteristic = evothings.ble.getCharacteristic(service, CHARACTERISTIC_UUID);
         evothings.ble.writeCharacteristic(

@@ -277,17 +277,14 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
             }
             
             $scope.product_selected=product;
-            
-            // var flagValue = BluetoothService.getBluetoothFlag();
-            // if(flagValue===true){
-              try{
-                sendClearMessageAndData(product.plu);
-              }
-              catch(err){
-                console.log("Error sending message", err);
-              }
-            // }
-            
+          
+            try{
+              sendClearMessageAndData(product.plu);
+            }
+            catch(err){
+              console.log("Error sending message", err);
+            }
+          
             if(product.type === "fruit-cant"){
               if($rootScope.GuiSettings.modal_cantidad_enabled){
                 $scope.show_quant_modal=true;
@@ -324,10 +321,9 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
               $cordovaNativeAudio.play( 'pop' );
             }
           }
-          // var flagValue = BluetoothService.getBluetoothFlag();
-          // if(flagValue===true){
-            sendClearMessage();
-          // }
+          
+          sendClearMessage();
+         
           $scope.product_selected=null;
           $scope.show_modal=false;
           $scope.show_quant_modal=false;
@@ -350,18 +346,17 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
               $cordovaNativeAudio.play( 'pop' );
             }
           }
-          // var flagValue = BluetoothService.getBluetoothFlag();
-          // if(flagValue===true){
-            try{
-              sendEnterMessage();
-            }
-            catch(err){
-              console.log("Error sending message", err);
-            }
-          // }
-            $scope.product_selected=null;
-            $scope.show_modal=false;
-            $timeout(enableSelection,300);
+  
+          try{
+            sendEnterMessage();
+          }
+          catch(err){
+            console.log("Error sending message", err);
+          }
+          
+          $scope.product_selected=null;
+          $scope.show_modal=false;
+          $timeout(enableSelection,300);
         }
     
     /**
@@ -380,19 +375,16 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
               $cordovaNativeAudio.play( 'pop' );
             }
           }
-          // var flagValue = BluetoothService.getBluetoothFlag();
-          // if(flagValue===true){
-            try{
-              sendQuantity(quantity);
-            }
-            catch(err){
-              console.log("Error sending message", err);
-            }
-          // }
+          
+          try{
+            sendQuantity(quantity);
+          }
+          catch(err){
+            console.log("Error sending message", err);
+          }
           
           $scope.product_selected=null;
           $scope.show_quant_modal=false;
-          
           $timeout(enableSelection,300);
         }
     
@@ -484,12 +476,10 @@ controllers.controller('OtherElaboratedCtrl', function ($scope, $q, $rootScope, 
         function()
         {
             console.log('characteristic written');
-            // window.plugins.toast.showShortCenter('Escribi cuestion');
         },
         function(errorCode)
         {
             console.log('writeCharacteristic error: ' + errorCode);
-            // window.plugins.toast.showShortCenter('Writing error '+ errorCode);
         }
       );
     }

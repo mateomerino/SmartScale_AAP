@@ -97,27 +97,7 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
           $state.go('app', null, {reload: false});
       };
   
-    // /**
-    //   * Función que cambia a la vista vegetables (/templates/other_vegetables.html)
-    //   * Se llama desde la vista fruits (/templates/other_fruits.html)
-    // */
-    //   $scope.goToVegetables = function () {
-    //       $ionicHistory.nextViewOptions({
-    //         disableBack: true
-    //       });
-    //       $scope.show_modal=false;
-    //       $scope.show_quant_modal=false;
-    //       $scope.product_selected = null;
-    //       $scope.EnabledSelection=true;
-    //       $scope.startPage = 0;
-    //       if($rootScope.GuiSettings.best_selling_screen_enabled){
-    //         $state.go('top_vegetables', null, {reload: false});
-    //       }
-    //       else{
-    //         $state.go('other_pork', null, {reload: false});
-    //       }
-          
-    //   };
+   
       /**
       * Función que cambia a la vista vegetables (/templates/other_vegetables.html)
       * Se llama desde la vista fruits (/templates/other_fruits.html)
@@ -302,20 +282,15 @@ controllers.controller('OtherFruitsCtrl', function ($scope, $q, $rootScope, $htt
           }
           
           $scope.product_selected=product;
+  
+          try{
+            sendClearMessageAndData(product.plu);
+          }
+          catch(err){
+            console.log("Error sending message", err);
+            
+          }
           
-          // var flagValue = BluetoothService.getBluetoothFlag();
-          // if(flagValue===true){
-            try{
-              sendClearMessageAndData(product.plu);
-              //TESTIN
-              
-            }
-            catch(err){
-              console.log("Error sending message", err);
-              // window.plugins.toast.showShortCenter('ERROR: '+ err);
-              // window.plugins.toast.showShortCenter('SERVICE UUID: '+ service);
-            }
-          // }
           
           if(product.type === "fruit-cant"){
             if($rootScope.GuiSettings.modal_cantidad_enabled){

@@ -253,15 +253,12 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
           
           $scope.product_selected=product;
           
-          // var flagValue = BluetoothService.getBluetoothFlag();
-          // if(flagValue===true){
-            try{
-              sendClearMessageAndData(product.plu);
-            }
-            catch(err){
-              console.log("Error sending message", err);
-            }
-          // }
+          try{
+            sendClearMessageAndData(product.plu);
+          }
+          catch(err){
+            console.log("Error sending message", err);
+          }
           
           if(product.type === "veg-cant"){
             if($rootScope.GuiSettings.modal_cantidad_enabled){
@@ -301,11 +298,8 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
           }
         }
 
-        // var flagValue = BluetoothService.getBluetoothFlag();
-        // if(flagValue===true){
-          sendClearMessage();
-        // }
-        
+        sendClearMessage();
+      
         $scope.product_selected = null;
         $scope.show_modal=false;
         $scope.show_quant_modal=false;
@@ -327,12 +321,7 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
             $cordovaNativeAudio.play( 'pop' );
           }
         }
-
-        // var flagValue = BluetoothService.getBluetoothFlag();
-        // if(flagValue==true){
-          sendEnterMessage();
-        // }
-        
+        sendEnterMessage();
         $timeout(enableSelection,300);
         $scope.show_modal=false;
         $scope.product_selected = null;
@@ -355,16 +344,13 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
           }
         }
 
-        // var flagValue = BluetoothService.getBluetoothFlag();
-        // if(flagValue){
-          try{
-            sendQuantity(quantity);
-          }
-          catch(err){
-            console.log("Error sending message", err);
-          }
-        // }
-
+        try{
+          sendQuantity(quantity);
+        }
+        catch(err){
+          console.log("Error sending message", err);
+        }
+      
         $scope.product_selected=null;
         $scope.show_quant_modal=false;
         $timeout(enableSelection,300);
@@ -457,13 +443,11 @@ controllers.controller('OtherVegetablesCtrl', function ($scope, $q, $rootScope, 
       charArray,
       function()
       {
-          console.log('characteristic written');
-          // window.plugins.toast.showShortCenter('Escribi cuestion');
+        console.log('characteristic written');
       },
       function(errorCode)
       {
-          console.log('writeCharacteristic error: ' + errorCode);
-          // window.plugins.toast.showShortCenter('Writing error '+ errorCode);
+        console.log('writeCharacteristic error: ' + errorCode);
       }
     );
   }
